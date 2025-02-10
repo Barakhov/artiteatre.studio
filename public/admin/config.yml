@@ -8,7 +8,7 @@ backend:
 publish_mode: editorial_workflow
 media_folder: public/images
 public_folder: /images
-site_url: "https://barak.com.es/" # site name name here
+site_url: "https://aesthetic-elf-c76dc5.netlify.app/" # site name name here
 
 collections:
   - name: post
