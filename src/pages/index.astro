@@ -4,14 +4,12 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import SocialLinks from "@/components/SocialLinks.astro";
 import PostCard from "@/components/PostCard.astro";
-import ProjectCard from "@/components/ProjectCard.astro";
 import Link from "@/components/shared/Link.astro";
 import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 
 import presentation from "@/data/presentation";
-import projects from "@/data/projects";
+
 import Splide from "@/components/Splide.astro";
-import CanvasImage from "@/components/CanvasImage.astro";
 import Container from "@/components/Container.astro";
 
 const posts = await getCollection("posts");
@@ -21,112 +19,17 @@ const posts = await getCollection("posts");
   <main class="flex flex-col gap-20">
 
     <article class="flex flex-col gap-8" transition:name="myArticle">
-      <Container class="flex gap-4">
+      <Container>
         <div>
-          <div class="w-32 h-32">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="100%"
-              width="100%"
-              fill="#ff00ff"
-              viewBox="0 0 256 256"
-              id="mySvg"
-              transition:name="mySvg"
-              ><path
-                d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"
-              ></path></svg
-            >
-          </div>
-          <h1 class="text-3xl text-neutral-100">{presentation.title}</h1>
+          <h1>{presentation.title}</h1>
           <p
-            class="max-w-[60ch] leading-6"
             set:html={convertAsteriskToStrongTag(presentation.description)}
           />
           <SocialLinks />
         </div>
-        <div>
-          <CanvasImage />
-        </div>
       </Container>
     </article>
 
-    <article class="flex flex-col gap-8">
-      <Container>
-        <h2 class="text-3xl text-neutral-100">Checklist</h2>
-
-        <ul class="list-disc pl-5">
-          <li class="line-through">Darkmode</li>
-          <li>Variable font animation</li>
-          <li>spline 3D for 404 page</li>
-          <li>GSAP interaction (scrollTrigger)</li>
-          <li>Some Codrops inspiration maybe?</li>
-          <li>
-            Testimonials - "Quotes"
-            <ul class="pl-2">
-              <li class="text-red-600 line-through">
-                Ozden - Senior Product Designer
-              </li>
-              <li class="text-red-600 line-through">Joan - Head of Design</li>
-              <li class="text-red-600">Alberto - Design Lead</li>
-              <li class="text-blue-600">Miguel - CTO</li>
-              <li class="text-blue-600">Paco - Tech Guru</li>
-              <li class="text-blue-600 line-through">Alessandro - Technical Team Lead and Jedi Master</li>
-              <li class="text-yellow-500 line-through">
-                Christophe - Marketing & Growth Lead
-              </li>
-              <li class="text-yellow-500">
-                Brian - Founder & Managing Director
-              </li>
-              <li class="text-yellow-500">Martine - CMO</li>
-            </ul>
-          </li>
-          <li>
-            Mention awards<br />
-            https://www.awwwards.com/sites/payvision<br />
-            https://www.adg-fad.org/es/laus/proyecto/mendesaltaren
-          </li>
-          <li>Add - CV</li>
-          <li>
-            Pento box menu on user scroll - with image canvas anim + time and
-            weather in Madrid - Navigation
-          </li>
-        </ul>
-      </Container>
-    </article>
-
-    <article class="flex flex-col gap-8">
-      <Container>
-        <h2 class="text-3xl text-neutral-100">Ideas</h2>
-
-        <ul class="list-disc pl-5">
-          <li>https://loveandmoney.agency/</li>
-          <li>https://locomotive.ca/en/work</li>
-          <li>https://editorialnew.com/</li>
-          <li>https://pangrampangram.com/</li>
-          <li>https://webflow.com/made-in-webflow/website/nf-daily-07</li>
-          <li>https://minimal.gallery/</li>
-          <li>https://www.darkmodedesign.com/</li>
-          <li>https://refero.design/</li>
-          <li>https://reome.com/ - footer</li>
-          <li>https://www.studiogd.dk/</li>
-          <li>
-            https://stackoverflow.com/questions/39150461/distorting-an-image-on-a-single-axis-with-javascript-and-canvas
-          </li>
-          <li>https://cydstumpel.nl/</li>
-          <li>-------------------------------------</li>
-          <li>https://codepen.io/barakhov/pen/abXgdzj</li>
-          <li>https://codepen.io/barakhov/pen/OJdYpdx</li>
-          <li>https://codepen.io/barakhov/pen/RwEwppX</li>
-          <li>https://codepen.io/barakhov/pen/KKRWRdj</li>
-          <li>https://codepen.io/barakhov/pen/GBRmOY</li>
-          <li>https://codepen.io/barakhov/pen/gzxzqm</li>
-          <li>https://codepen.io/barakhov/pen/NYyNeP</li>
-          <li>https://codepen.io/barakhov/pen/jzbGeK</li>
-          <li>https://codepen.io/barakhov/pen/yVLvyY</li>
-          <li>https://codepen.io/barakhov/pen/wzPjZN</li>
-        </ul>
-      </Container>
-    </article>
 
     <Splide />
 
@@ -164,23 +67,6 @@ const posts = await getCollection("posts");
       </Container>
     </article>
 
-    <article class="flex flex-col gap-8">
-      <Container>
-        <header class="flex w-full flex-row justify-between gap-2">
-          <h2 class="text-lg text-neutral-100">
-            Selected projects ({projects.length})
-          </h2>
-        </header>
-        {projects.length === 0 && <p>Oops, no projects yet</p>}
-
-        <section class="flex flex-col gap-4" aria-label="Selected projects">
-          {
-            projects.length !== 0 &&
-              projects.map((project) => <ProjectCard {...project} />)
-          }
-        </section>
-      </Container>
-    </article>
 
   </main>
 </Layout>

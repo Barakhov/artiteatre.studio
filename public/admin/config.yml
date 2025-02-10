@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: Barakhov/barak.com.es #replace new repo
+  repo: artiteatre.studio #replace new repo
   branch: main
   squash_merges: true
   open_authoring: true
