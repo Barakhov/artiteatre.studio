@@ -40,13 +40,13 @@ All commands are run from the root of the project, from a terminal:
 6. Generate a `Client Secret` and make note of it for later. You can’t access this secret again.
 
 When you complete application registration with GitHub, you need to add the Client ID and Client Secret to your Netlify site:
-1. Go to [Site configuration > Access control > OAuth](https://app.netlify.com/sites/astro-decapcms-starter/configuration/access#oauth).
+1. Go to [Site configuration > Access control > OAuth](https://app.netlify.com/sites/astro-decapcms-starter/configuration/access#oauth). (https://app.netlify.com/sites/APP-NAME/configuration/access#oauth)
 2. Under Authentication Providers, select Install Provider
 3. Select GitHub and enter the Client ID and Client Secret from earlier, then save.
 
 That's it now enjoy 🥂
 
-
+[Original repo](https://github.com/gxanshu/astro-decap-cms-starter).
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
