@@ -19,8 +19,8 @@ const posts = await getCollection("posts");
     <article class="flex flex-col gap-8" transition:name="myArticle">
       <Container>
         <div>
-          <h1>{presentation.title}</h1>
-          <p set:html={convertAsteriskToStrongTag(presentation.description)} />
+          <h1 class="mb-4 text-2xl">{presentation.title}</h1>
+          <p class="mb-4" set:html={convertAsteriskToStrongTag(presentation.description)} />
           <SocialLinks />
         </div>
       </Container>

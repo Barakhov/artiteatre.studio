@@ -14,7 +14,7 @@ const presentation: Presentation = {
   mail: "artiteatre.nadiabanegas@gmail.com",
   title: "Nadia Banegas - artiteatre.studio",
   description:
-    "Nam a purus fermentum, viverra turpis ac, convallis est. Morbi congue nibh vel lacus pretium euismod. Nunc lectus est, dapibus at iaculis ac, accumsan at justo. Integer gravida interdum posuere.",
+    "Aqui in text de introducción explicativo molon.... Nam a purus fermentum, viverra turpis ac, convallis est. Morbi congue nibh vel lacus pretium euismod. Nunc lectus est, dapibus at iaculis ac, accumsan at justo. Integer gravida interdum posuere.",
   socials: [
     {
       label: "Facebook",
