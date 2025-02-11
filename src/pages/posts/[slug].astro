@@ -3,7 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import formatDate from "@/utils/formatDate";
-
+import Container from "@/components/Container.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -24,13 +24,15 @@ const { Content } = await post.render();
 
 <Layout title={post.data.title}>
   <main>
-    <header role="presentation">
-      <h1 class="text-md">
-        {post.data.title} - {formatDate(post.data.publishedAt)}
-      </h1>
-      <p class="italic">{post.data.description}</p>
-    </header>
+    <Container>
+      <header role="presentation">
+        <h1 class="text-md">
+          {post.data.title} - {formatDate(post.data.publishedAt)}
+        </h1>
+        <p class="italic">{post.data.description}</p>
+      </header>
 
-    <Content />
+      <Content />
+    </Container>
   </main>
 </Layout>

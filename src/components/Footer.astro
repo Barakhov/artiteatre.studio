@@ -5,19 +5,20 @@ import Container from "@/components/Container.astro";
 import presentation from "@/data/presentation";
 ---
 
-<footer id="footer">
+<footer id="footer" class="mt-auto p-4 bg-gray-200">
   <Container>
 
 
     <header>
-      <h2>Get in touch</h2>
+      <h2>Pie de página</h2>
     </header>
     <p>
-      Email me at <Link
+      Correo: <Link
         href={`mailto:${presentation.mail}`}
         label={presentation.mail}
-      /> or follow me via my social links.
+      />
     </p>
+    <p>Tel: 971 31 31 47 / 666 231 065</p>
 
     <SocialLinks />
 
