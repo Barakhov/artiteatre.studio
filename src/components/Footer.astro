@@ -3,6 +3,7 @@ import SocialLinks from "@/components/SocialLinks.astro";
 import Link from "@/components/shared/Link.astro";
 import Container from "@/components/Container.astro";
 import presentation from "@/data/presentation";
+import { SITE_URL } from "@/data/config"
 ---
 
 <footer id="footer" class="mt-auto p-4 bg-gray-200">
@@ -25,7 +26,7 @@ import presentation from "@/data/presentation";
     <form target="_blank" action="https://formsubmit.co/5d7f85a3bfef8d3f7d94f2459a0acf0d" method="POST">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none">
-      <input type="hidden" name="_next" value="https://yourdomain.co/thanks.html">
+      <input type="hidden" name="_next" value={`${SITE_URL}formulario-enviado/`}>
       <div class="form-group">
         <div class="form-row">
           <div class="col">
