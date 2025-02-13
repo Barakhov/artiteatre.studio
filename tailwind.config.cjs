@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Manrope Variable", ...defaultTheme.fontFamily.sans],
+        sans: ["Hanken Grotesk", ...defaultTheme.fontFamily.sans],
       },
     },
   },

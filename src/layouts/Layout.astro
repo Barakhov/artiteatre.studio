@@ -5,8 +5,7 @@ import Footer from "../components/Footer.astro";
 import SEOTags from "@/components/seo/SEOTags.astro";
 
 // Supports weights 200-800
-import "@fontsource-variable/manrope";
-
+import '@fontsource/hanken-grotesk';
 import "@/styles/tailwind.css";
 import "@/styles/post.css";
 
@@ -22,18 +21,16 @@ const { title } = Astro.props;
   <SEOTags title={title} />
   <ViewTransitions />
   <body class="min-h-[100dvh] flex flex-col">
-    <Header />
-    <div id="mainPanel">
-      <slot />
-    </div>
-    <Footer />
-
     <style is:global>
       html {
-        font-family: "Manrope Variable";
+        font-family: "Hanken Grotesk";
       }
     </style>
+    <Header />
+    <slot />
+    <Footer />
 
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="../scripts/pageLoad.js"></script>
   </body>
 </html>
