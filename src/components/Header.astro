@@ -6,12 +6,14 @@ import Container from "@/components/Container.astro";
 const pathname = removeTrailingSlash(Astro.url.pathname);
 ---
 
-<header class="z-20 w-full relative p-4 bg-gray-200">
+<header class="z-20 w-full relative py-4 bg-gray-200">
   <Container
-    class="flex flex-col gap-2 md:flex-row md:justify-between items-center py-4"
+    class="flex flex-col gap-2 md:flex-row md:justify-between items-center"
   >
     <h1 class="text-xl">
-      <a href="/">artiteatre.studio </a>
+      <a href="/">
+        <img class="w-36" src="/public/logos/ait-logo.svg" alt="AIT Logo" />
+      </a>
     </h1>
 
     <nav role="navigation">
