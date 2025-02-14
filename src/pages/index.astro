@@ -14,21 +14,27 @@ const posts = await getCollection("posts");
 ---
 
 <Layout>
-  <main class="flex flex-col gap-20">
-    <article class="flex flex-col gap-8 min-h-[100dvh] overflow-hidden" transition:name="myArticle">
+  <main class="flex flex-col gap-20 overflow-hidden">
+    <article class="flex flex-col gap-8 min-h-[100dvh]" transition:name="myArticle">
       <Container>
         <div>
           <h1 class="mb-4 text-8xl italic">{presentation.title}</h1>
+<div class="flex gap-6">
           <p
-            class="mb-4 text-3xl max-w-4xl"
+            class="mb-4 text-3xl max-w-4xl w-2/3"
             set:html={convertAsteriskToStrongTag(presentation.description)}
           />
+
+          <p class="mb-4 text-l max-w-4xl w-1/3">
+            Contamos con tres iniciativas educativas: la escuela de arte EL TRAÇ, la escuela de verano XXXXXX y la Asociación sin ánimo de lucro TOT TEATRE, que integra la escuela de teatro junto a diversos grupos de teatro amateur. Cada una de estas propuestas se caracteriza por un trabajo honesto, meticuloso y ético.
+          </p>
+        </div>
 
         </div>
       </Container>
 
       <div class="shapes-container flex gap-2 p-2">
-        <a href="/arte" class="shapes-item w-1/4 aspect-square relative inline-block" title="el Traç - arte">
+        <a href="/arte" class="shapes-item w-1/4 aspect-square relative inline-block" title="Arte">
           <div class="shape shape-1 bg-yellow-300 absolute inset-0"></div>
           <div class="absolute inset-0 flex items-center justify-center z-10">
             <img class="w-40" src="/logos/eltrac.svg" alt="artiteatre Logo" />
@@ -56,7 +62,7 @@ const posts = await getCollection("posts");
         <a href="/contacto" class="shapes-item w-1/4 aspect-square relative inline-block" title="Contacto">
           <div class="shape shape-4 bg-green-400 absolute inset-0"></div>
           <div class="absolute inset-0 flex items-center justify-center z-10">
-            <img class="w-16" src="/logos/hand.svg" alt="artiteatre Logo" />
+            <img class="wave w-16" src="/logos/hand.svg" alt="artiteatre Logo" />
           </div>
         </a>
       </div>

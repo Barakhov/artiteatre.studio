@@ -14,7 +14,7 @@ const presentation: Presentation = {
   mail: "artiteatre.nadiabanegas@gmail.com",
   title: "artiteatre",
   description:
-    "Una escuela en la que se imparten diferentes materias que tienen que ver con los intereses de su fundadora Nadia Banegas. Generando así tres líneas muy diferenciadas con una estructura y planteamiento propio en cada una de ellas.",
+    "Una escuela en la que se imparten diversas materias inspiradas en los intereses de su fundadora, Nadia Banegas, dando origen a tres líneas diferenciadas, cada una con su propia estructura y enfoque.",
   socials: [
     {
       label: "Facebook",
