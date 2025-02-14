@@ -6,6 +6,7 @@ import SEOTags from "@/components/seo/SEOTags.astro";
 
 // Supports weights 200-800
 import "@fontsource/hanken-grotesk";
+import "@fontsource/hanken-grotesk/400-italic.css";
 import "@/styles/tailwind.css";
 import "@/styles/post.css";
 
@@ -26,34 +27,50 @@ const { title } = Astro.props;
         font-family: "Hanken Grotesk";
       }
 
+
       .shape {
         transform-origin: center;
+        transition: background 0.3s ease-in-out;
       }
 
       .shape-1 {
-        background: #eeb51c;
+        /* background: #ffee58; */
         animation: shape-anim 24s infinite forwards linear;
       }
 
       .shape-2 {
-        background: #7181dd;
+        /* background: #ff7e76; */
         border-radius: 100%/100%;
         animation: shape-anim-rev 24s infinite forwards linear;
         animation-delay: 0.1s;
       }
 
       .shape-3 {
-        background: #a9e95c;
+        /* background: #85b6ff; */
         animation: shape-anim 24s infinite forwards linear;
         animation-delay: 0.2s;
       }
 
       .shape-4 {
-        background: #d46c5f;
+        /* background: #4ecb71; */
         border-radius: 100%/100%;
         animation: shape-anim-rev 24s infinite forwards linear;
         animation-delay: 0.3s;
       }
+
+      .shapes-container:hover a:not(:hover) .shape {
+        background: #e5e7eb !important; /* bg-gray-200  */
+      }
+
+      /* .shapes-item {
+        transition: transform 0.8s ease-out;
+      }
+
+      .shapes-item:hover {
+        z-index: 10;
+        transform: scale(1.03);
+      } */
+    
 
       @keyframes shape-anim {
         0%,

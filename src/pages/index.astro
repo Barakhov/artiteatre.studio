@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 
 import Layout from "@/layouts/Layout.astro";
-import SocialLinks from "@/components/SocialLinks.astro";
 import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 import presentation from "@/data/presentation";
 import Container from "@/components/Container.astro";
@@ -19,25 +18,25 @@ const posts = await getCollection("posts");
     <article class="flex flex-col gap-8 min-h-[100dvh] overflow-hidden" transition:name="myArticle">
       <Container>
         <div>
-          <h1 class="mb-4 text-6xl">{presentation.title}</h1>
+          <h1 class="mb-4 text-8xl italic">{presentation.title}</h1>
           <p
-            class="mb-4"
+            class="mb-4 text-3xl max-w-4xl"
             set:html={convertAsteriskToStrongTag(presentation.description)}
           />
-          <SocialLinks />
+
         </div>
       </Container>
 
-      <div class="flex gap-2 p-2">
-        <a href="/" class="w-1/4 aspect-square relative inline-block">
-          <div class="shape shape-1 absolute inset-0"></div>
+      <div class="shapes-container flex gap-2 p-2">
+        <a href="/arte" class="shapes-item w-1/4 aspect-square relative inline-block" title="el Traç - arte">
+          <div class="shape shape-1 bg-yellow-300 absolute inset-0"></div>
           <div class="absolute inset-0 flex items-center justify-center z-10">
             <img class="w-40" src="/logos/eltrac.svg" alt="artiteatre Logo" />
           </div>
         </a>
 
-        <a href="/" class="w-1/4 aspect-square relative inline-block">
-          <div class="shape shape-2 absolute inset-0"></div>
+        <a href="/teatro" class="shapes-item w-1/4 aspect-square relative inline-block" title="Teatro">
+          <div class="shape shape-2 bg-red-400 absolute inset-0"></div>
           <div class="absolute inset-0 flex items-center justify-center z-10">
             <img
               class="w-40"
@@ -47,15 +46,15 @@ const posts = await getCollection("posts");
           </div>
         </a>
 
-        <a href="/escuela" class="w-1/4 aspect-square relative inline-block">
-          <div class="shape shape-3 absolute inset-0"></div>
+        <a href="/escuela" class="shapes-item w-1/4 aspect-square relative inline-block" title="Escuela de verano">
+          <div class="shape shape-3 bg-blue-300 absolute inset-0"></div>
           <div class="absolute inset-0 flex items-center justify-center z-10">
             <img class="w-40" src="/logos/escuela.svg" alt="artiteatre Logo" />
           </div>
         </a>
 
-        <a href="/" class="w-1/4 aspect-square relative inline-block">
-          <div class="shape shape-4 absolute inset-0"></div>
+        <a href="/contacto" class="shapes-item w-1/4 aspect-square relative inline-block" title="Contacto">
+          <div class="shape shape-4 bg-green-400 absolute inset-0"></div>
           <div class="absolute inset-0 flex items-center justify-center z-10">
             <img class="w-16" src="/logos/hand.svg" alt="artiteatre Logo" />
           </div>

@@ -17,8 +17,8 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     </h1>
 
     <nav role="navigation">
-      <ul role="list" class="flex flex-row gap-2">
-        <li>
+      <ul role="list" class="flex flex-row gap-4">
+        <!-- <li>
           <a
             href="/"
             class:list={{
@@ -26,16 +26,43 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
               ["underline"]: pathname === "/",
             }}>Home</a
           >
+        </li> -->
+        <li>
+          <a
+            href="/arte"
+            class:list={{
+              ["hover:bg-yellow-300 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full"]: true,
+              ["bg-yellow-300"]: pathname === "/arte",
+            }}>Arte</a
+          >
+        </li>
+        <li>
+          <a
+            href="/teatro"
+            class:list={{
+              ["hover:bg-red-400 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full"]: true,
+              ["bg-red-400"]: pathname === "/teatro",
+            }}>Teatro</a
+          >
         </li>
         <li>
           <a
             href="/escuela"
             class:list={{
-              ["hover:text-orange-600"]: true,
-              ["underline"]: pathname === "/escuela",
+              ["hover:bg-blue-300 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full"]: true,
+              ["bg-blue-300"]: pathname === "/escuela",
             }}>Escuela verano</a
           >
         </li>
+        <li>
+          <a
+            href="/contacto"
+            class:list={{
+              ["hover:bg-green-400 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full"]: true,
+              ["bg-green-400"]: pathname === "/contacto",
+            }}>Contacto</a
+          >
+        </li>                        
       </ul>
     </nav>
   </Container>
