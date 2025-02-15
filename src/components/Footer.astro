@@ -1,83 +1,122 @@
 ---
 import SocialLinks from "@/components/SocialLinks.astro";
 import Link from "@/components/shared/Link.astro";
-import Container from "@/components/Container.astro";
 import presentation from "@/data/presentation";
 import { SITE_URL } from "@/data/config";
 ---
 
-<footer id="footer" class="mt-auto py-8">
-  <Container class="border-t border-black pt-8">
-    <div class="flex gap-8">
-      <div class="w-1/2">
-        <header>
-          <h2>Pie de página</h2>
-        </header>
-        <p>
-          Correo: <Link
-            href={`mailto:${presentation.mail}`}
-            label={presentation.mail}
-          />
-        </p>
-        <p>Tel: 971 31 31 47 / 666 231 065</p>
-
-        <SocialLinks />
+<footer class="bg-white">
+  <div class="mx-auto max-w-7xl px-4 pb-6 pt-16 lg:pt-24 border-t border-black">
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <div>
+        <div class="flex justify-center sm:justify-start">
+          <a href="/">
+            <img class="w-36" src="/logos/ait-logo.svg" alt="artiteatre Logo" />
+          </a>
+        </div>
       </div>
-      <div class="w-1/2">
-        <p class="mt-4">Formulario de contacto de prueba:</p>
 
-        <form
-          target="_blank"
-          action="https://formsubmit.co/5d7f85a3bfef8d3f7d94f2459a0acf0d"
-          method="POST"
-        >
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="text" name="_honey" style="display:none" />
-          <input
-            type="hidden"
-            name="_next"
-            value={`${SITE_URL}formulario-enviado/`}
-          />
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col">
-                <input
-                  class="border border-gray mb-2 p-2"
-                  type="text"
-                  name="name"
-                  class="form-control"
-                  placeholder="Nombre"
-                  required
+      <div
+        class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:col-span-2"
+      >
+
+          <ul class="space-y-4">
+            <li>
+              <a class="hover:underline" href="/arte">Arte</a>
+            </li>
+
+            <li>
+              <a class="hover:underline" href="/teatro">Teatro</a>
+            </li>
+
+            <li>
+              <a class="hover:underline" href="/escuela">Escuela de verano</a>
+            </li>
+
+            <li>
+              <a class="hover:underline" href="/contacto">Contacto</a>
+            </li>
+          </ul>
+
+
+
+          <ul role="list" class="space-y-4">
+            {
+              presentation.socials.map((social, index) => (
+                <li>
+                  <a class="hover:underline" href={social.link}>
+                    {social.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+
+
+
+          <ul class="space-y-4">
+            <li>
+              <span class="flex-1 break-all">
+                <Link
+                  href={`mailto:${presentation.mail}`}
+                  label={presentation.mail}
                 />
-              </div>
-              <div class="col">
-                <input
-                  class="border border-gray mb-2 p-2"
-                  type="email"
-                  name="email"
-                  class="form-control"
-                  placeholder="Email"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <textarea
-              class="border border-gray mb-2 p-2"
-              placeholder="Mensaje"
-              class="form-control"
-              name="message"
-              rows="10"
-              required></textarea>
-          </div>
-          <button
-            class="bg-gray-200 p-2"
-            type="submit"
-            class="btn btn-lg btn-dark btn-block">Enviar</button
-          >
-        </form>
+              </span>
+            </li>
+
+            <li>
+              <a
+                class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                href="#"
+              >
+                <span class="flex-1">{presentation.phone}</span>
+              </a>
+            </li>
+
+            <li
+              class="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+            >
+            <a
+            class="inline-block text-black underline transition hover:no-underline"
+            href={presentation.gmaps}
+          > 
+              <address class="-mt-0.5 flex-1 not-italic">
+                
+                {presentation.address}
+              </address>
+              </a>
+            </li>
+          </ul>
+
       </div>
     </div>
-  </Container>
+
+    <div class="mt-12 pt-6">
+      <div class="text-center sm:flex sm:justify-between sm:text-left">
+        <p class="text-sm text-gray-600">
+          <span class="block sm:inline">Todos los derechos reservados.</span>
+
+          <a
+            class="inline-block text-black underline transition hover:no-underline"
+            href="#"
+          >
+            Aviso legal
+          </a>
+
+          <span>&middot;</span>
+
+          <a
+            class="inline-block text-black underline transition hover:no-underline"
+            href="#"
+          >
+            Política de privacidad
+          </a>
+        </p>
+
+        <p class="mt-4 text-sm text-gray-600 sm:order-first sm:mt-0">
+          &copy; 2025 artiteatre
+        </p>
+      </div>
+    </div>
+  </div>
 </footer>
