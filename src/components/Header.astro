@@ -1,31 +1,39 @@
 ---
+// Your Astro frontmatter
 import removeTrailingSlash from "@/utils/removeTrailingSlash";
-import Container from "@/components/Container.astro";
+import Container from "@/components/shared/Container.astro";
 
 const pathname = removeTrailingSlash(Astro.url.pathname);
 ---
 
+<!-- Add some CSS for the animation -->
+<style>
+  /* Initially hidden via Tailwind's hidden class */
+  /* The transition is applied when we add the "active" class */
+  #menu-nav {
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  #menu-nav.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
 <header class="z-20 w-full py-4 absolute bg-white">
-  <Container
-    class="flex flex-col gap-2 md:flex-row md:justify-between items-center"
-  >
+  <Container class="flex gap-2 justify-between items-center">
     <h1 class="text-xl">
       <a href="/">
         <img class="w-36" src="/logos/ait-logo.svg" alt="artiteatre Logo" />
       </a>
     </h1>
 
-    <nav role="navigation">
+    <!-- Desktop nav -->
+    <nav class="hidden md:block" role="navigation">
       <ul role="list" class="flex flex-row gap-3">
-        <!-- <li>
-          <a
-            href="/"
-            class:list={{
-              ["hover:text-orange-600"]: true,
-              ["underline"]: pathname === "/",
-            }}>Home</a
-          >
-        </li> -->
         <li>
           <a
             href="/arte"
@@ -61,8 +69,104 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
               ["bg-green-400"]: pathname === "/contacto",
             }}>Contacto</a
           >
-        </li>                        
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="menu-button"
+      class="transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg md:hidden hover:bg-gray-800 hover:text-white"
+    >
+      Menu
+    </button>
+  </Container>
+</header>
+
+<!-- Mobile menu overlay -->
+<div id="menu-nav" class="hidden fixed inset-0 bg-white z-30">
+  <Container class="flex flex-col gap-6 justify-center items-center h-full">
+    <!-- Close button -->
+    <button
+      id="menu-close"
+      class="self-end mb-4 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg hover:bg-gray-800 hover:text-white"
+    >
+      Cerrar
+    </button>
+    <nav role="navigation">
+      <ul role="list" class="flex flex-col gap-6">
+        <li>
+          <a
+            href="/arte"
+            class:list={{
+              ["hover:bg-yellow-300 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-3xl"]: true,
+              ["bg-yellow-300"]: pathname === "/arte",
+            }}>Arte</a
+          >
+        </li>
+        <li>
+          <a
+            href="/teatro"
+            class:list={{
+              ["hover:bg-red-400 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-3xl"]: true,
+              ["bg-red-400"]: pathname === "/teatro",
+            }}>Teatro</a
+          >
+        </li>
+        <li>
+          <a
+            href="/escuela"
+            class:list={{
+              ["hover:bg-blue-300 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-3xl"]: true,
+              ["bg-blue-300"]: pathname === "/escuela",
+            }}>Escuela verano</a
+          >
+        </li>
+        <li>
+          <a
+            href="/contacto"
+            class:list={{
+              ["hover:bg-green-400 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-3xl"]: true,
+              ["bg-green-400"]: pathname === "/contacto",
+            }}>Contacto</a
+          >
+        </li>
       </ul>
     </nav>
   </Container>
-</header>
+</div>
+
+<!-- Plain JavaScript to toggle the mobile menu -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.getElementById("menu-button");
+    const menuNav = document.getElementById("menu-nav");
+    const closeButton = document.getElementById("menu-close");
+
+    // Check if the elements exist
+    if (!menuButton || !menuNav || !closeButton) {
+      console.error("One or more menu elements not found");
+      return;
+    }
+
+    // Define functions inside this scope where menuNav is guaranteed to exist
+    const openMenu = () => {
+      menuNav.classList.remove("hidden");
+      document.body.classList.add("overflow-hidden");
+      void menuNav.offsetWidth;
+      menuNav.classList.add("active");
+    };
+
+    const closeMenu = () => {
+      menuNav.classList.remove("active");
+      menuNav.addEventListener("transitionend", function handler() {
+        menuNav.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+        menuNav.removeEventListener("transitionend", handler);
+      });
+    };
+
+    menuButton.addEventListener("click", openMenu);
+    closeButton.addEventListener("click", closeMenu);
+  });
+</script>

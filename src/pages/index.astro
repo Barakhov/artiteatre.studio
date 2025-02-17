@@ -3,7 +3,7 @@ import "@/styles/index.css";
 import Layout from "@/layouts/Layout.astro";
 import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 import presentation from "@/data/presentation";
-import Container from "@/components/Container.astro";
+import Container from "@/components/shared/Container.astro";
 import Shape from "@/components/Shape.astro";
 ---
 
@@ -22,7 +22,7 @@ import Shape from "@/components/Shape.astro";
               set:html={convertAsteriskToStrongTag(presentation.description)}
             />
             <p class="mb-4 text-l max-w-4xl w-1/3">
-              La escuela de arte EL TRAÇ, la escuela de verano XIU XIU y la
+              La escuela de arte EL TRAÇ, la escuela de verano XIU-XIU y la
               Asociación sin ánimo de lucro TOT TEATRE, que integra la escuela
               de teatro junto a diversos grupos de teatro amateur. Cada una de
               estas propuestas se caracteriza por un trabajo honesto, meticuloso
