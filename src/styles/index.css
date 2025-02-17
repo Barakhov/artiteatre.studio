@@ -1,0 +1,165 @@
+.shape {
+  transform-origin: center;
+  transition: background 0.3s ease-in-out;
+}
+
+.shape-1,
+.shape-3 {
+  animation: shape-anim 24s infinite forwards linear;
+}
+
+.shape-2,
+.shape-4 {
+  border-radius: 100%/100%;
+  animation: shape-anim-rev 24s infinite forwards linear;
+}
+
+.shape-2 {
+  animation-delay: 0.1s;
+}
+
+.shape-3 {
+  animation-delay: 0.7s;
+}
+
+.shape-4 {
+  animation-delay: 0.8s;
+}
+
+.shapes-container:has(a:hover) a:not(:hover) .shape {
+  background: #e5e7eb !important; /* bg-gray-200  */
+}
+
+.wave {
+  animation: wave-animation 2.5s infinite;
+  animation-play-state: paused;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+.shapes-item:hover .wave {
+  animation-play-state: running;
+}
+
+@keyframes shape-anim {
+  0%,
+  11.25% {
+    border-radius: 0;
+    transform: rotate(0deg);
+  }
+  11.25%,
+  13.75% {
+    border-radius: 0;
+    transform: rotate(0deg);
+  }
+  13.75%,
+  36.25% {
+    border-radius: 100%/100%;
+    transform: rotate(90deg);
+  }
+  36.25%,
+  38.75% {
+    border-radius: 100%/100%;
+    transform: rotate(90deg);
+  }
+  38.75%,
+  61.25% {
+    border-radius: 0;
+    transform: rotate(180deg);
+  }
+  61.25%,
+  63.75% {
+    border-radius: 0;
+    transform: rotate(180deg);
+  }
+  63.75%,
+  86.25% {
+    border-radius: 100%/100%;
+    transform: rotate(270deg);
+  }
+  86.25%,
+  88.75% {
+    border-radius: 100%/100%;
+    transform: rotate(270deg);
+  }
+  88.75%,
+  100% {
+    border-radius: 0;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shape-anim-rev {
+  0%,
+  11.25% {
+    border-radius: 100%/100%;
+    transform: rotate(0deg);
+  }
+  11.25%,
+  13.75% {
+    border-radius: 100%/100%;
+    transform: rotate(0deg);
+  }
+  13.75%,
+  36.25% {
+    border-radius: 0;
+    transform: rotate(90deg);
+  }
+  36.25%,
+  38.75% {
+    border-radius: 0;
+    transform: rotate(90deg);
+  }
+  38.75%,
+  61.25% {
+    border-radius: 100%/100%;
+    transform: rotate(180deg);
+  }
+  61.25%,
+  63.75% {
+    border-radius: 100%/100%;
+    transform: rotate(180deg);
+  }
+  63.75%,
+  86.25% {
+    border-radius: 0;
+    transform: rotate(270deg);
+  }
+  86.25%,
+  88.75% {
+    border-radius: 0;
+    transform: rotate(270deg);
+  }
+  88.75%,
+  100% {
+    border-radius: 100%/100%;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

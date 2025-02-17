@@ -1,0 +1,23 @@
+---
+export interface Props {
+  href: string;
+  title: string;
+  shapeClass: string;
+  bgColor: string;
+  imgSrc: string;
+  imgAlt: string;
+  imgClass?: string;
+}
+
+const { href, title, shapeClass, bgColor, imgSrc, imgAlt, imgClass } = Astro.props;
+---
+<a
+  href={href}
+  title={title}
+  class="shapes-item w-1/4 aspect-square relative inline-block"
+>
+  <div class={`shape ${shapeClass} ${bgColor} absolute inset-0`}></div>
+  <div class="absolute inset-0 flex items-center justify-center z-10">
+    <img class={imgClass ?? "w-40"} src={imgSrc} alt={imgAlt} />
+  </div>
+</a>

@@ -1,120 +1,132 @@
 ---
-import SocialLinks from "@/components/SocialLinks.astro";
-import Link from "@/components/shared/Link.astro";
 import presentation from "@/data/presentation";
-import { SITE_URL } from "@/data/config";
 ---
 
-<footer class="bg-white">
-  <div class="mx-auto max-w-7xl px-4 pb-6 pt-16 lg:pt-24 border-t border-black">
-    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+<footer class="bg-white sticky bottom-0">
+  <div class="mx-auto max-w-7xl px-4 pb-6 pt-16 lg:pt-24">
+    <div class="grid grid-cols-1 gap-14 lg:gap-4 lg:grid-cols-3">
+      <!-- Logo Section -->
       <div>
-        <div class="flex justify-center sm:justify-start">
+        <div class="flex justify-start">
           <a href="/">
-            <img class="w-36" src="/logos/ait-logo.svg" alt="artiteatre Logo" />
+            <img
+              class="w-44 md:w-36"
+              src="/logos/ait-logo.svg"
+              alt="Artiteatre logo"
+            />
           </a>
         </div>
       </div>
 
+      <!-- Navigation & Contact Sections -->
       <div
         class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:col-span-2"
       >
-
-          <ul class="space-y-4">
+        <!-- Main Navigation -->
+        <nav aria-label="Footer navigation">
+          <ul
+            class="space-y-4 border-b border-gray-300 sm:border-0 pb-4 sm:pb-0"
+          >
             <li>
               <a class="hover:underline" href="/arte">Arte</a>
             </li>
-
             <li>
               <a class="hover:underline" href="/teatro">Teatro</a>
             </li>
-
             <li>
               <a class="hover:underline" href="/escuela">Escuela de verano</a>
             </li>
-
             <li>
               <a class="hover:underline" href="/contacto">Contacto</a>
             </li>
           </ul>
+        </nav>
 
-
-
-          <ul role="list" class="space-y-4">
+        <!-- Social Links -->
+        <nav aria-label="Social media links">
+          <ul
+            class="space-y-4 border-b border-gray-300 sm:border-0 pb-4 sm:pb-0"
+          >
             {
-              presentation.socials.map((social, index) => (
+              presentation.socials.map((social) => (
                 <li>
-                  <a class="hover:underline" href={social.link}>
+                  <a
+                    class="hover:underline"
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {social.label}
                   </a>
                 </li>
               ))
             }
           </ul>
+        </nav>
 
-
-
+        <!-- Contact Information -->
+        <address
+          class="sm:border-t sm:border-gray-300 sm:pt-4 sm:col-span-2 md:col-span-1 md:border-0 md:pt-0 not-italic"
+        >
           <ul class="space-y-4">
             <li>
-              <span class="flex-1 break-all">
-                <Link
-                  href={`mailto:${presentation.mail}`}
-                  label={presentation.mail}
-                />
-              </span>
-            </li>
-
-            <li>
               <a
-                class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-                href="#"
+                class="inline-block text-black transition hover:underline flex-1 break-all"
+                href={`mailto:${presentation.mail}`}
               >
-                <span class="flex-1">{presentation.phone}</span>
+                {presentation.mail}
               </a>
             </li>
-
-            <li
-              class="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
-            >
-            <a
-            class="inline-block text-black underline transition hover:no-underline"
-            href={presentation.gmaps}
-          > 
-              <address class="-mt-0.5 flex-1 not-italic">
-                
+            <li>
+              {
+                presentation.phone.split("/").map((phone, index, arr) => {
+                  const cleanNumber = phone.trim().replace(/\s/g, "");
+                  return (
+                    <>
+                      <a href={`tel:${cleanNumber}`} class="hover:underline">
+                        {phone.trim()}
+                      </a>
+                      {index < arr.length - 1 && <span> / </span>}
+                    </>
+                  );
+                })
+              }
+            </li>
+            <li>
+              <a
+                class="inline-block text-black transition hover:underline"
+                href={presentation.gmaps}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {presentation.address}
-              </address>
               </a>
             </li>
           </ul>
-
+        </address>
       </div>
     </div>
 
+    <!-- Footer Legal Links and Copyright -->
     <div class="mt-12 pt-6">
       <div class="text-center sm:flex sm:justify-between sm:text-left">
-        <p class="text-sm text-gray-600">
-          <span class="block sm:inline">Todos los derechos reservados.</span>
-
+        <p class="text-sm text-gray-600 sm:order-first">
           <a
-            class="inline-block text-black underline transition hover:no-underline"
-            href="#"
+            class="inline-block text-gray-600 transition hover:underline"
+            href="/aviso-legal"
           >
             Aviso legal
           </a>
-
           <span>&middot;</span>
-
           <a
-            class="inline-block text-black underline transition hover:no-underline"
-            href="#"
+            class="inline-block text-gray-600 transition hover:underline"
+            href="/politica-privacidad"
           >
             Política de privacidad
           </a>
         </p>
-
-        <p class="mt-4 text-sm text-gray-600 sm:order-first sm:mt-0">
-          &copy; 2025 artiteatre
+        <p class="mt-4 text-sm text-gray-600 sm:mt-0">
+          &copy; {new Date().getFullYear()} artiteatre
         </p>
       </div>
     </div>

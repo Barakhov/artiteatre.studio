@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         sans: ["Hanken Grotesk", ...defaultTheme.fontFamily.sans],
       },
+      boxShadow: {
+        'main': '0px 16px 20px -4px #eeeeee',
+      },
     },
   },
   plugins: [],
