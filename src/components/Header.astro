@@ -162,6 +162,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     const menuButton = document.getElementById("menu-button");
     const menuNav = document.getElementById("menu-nav");
     const mainTag = document.querySelector("main");
+    const footerTag = document.querySelector("footer");
 
     if (!menuButton || !menuNav) {
       console.error("One or more menu elements not found");
@@ -185,6 +186,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
         menuNav.classList.add("active");
         menuButton.textContent = "Cerrar";
         mainTag.style.opacity = "0";
+        footerTag.style.opacity = "0";
       }
     });
   });
