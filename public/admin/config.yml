@@ -34,7 +34,7 @@ collections:
     files:
       - label: "Home"
         name: "home"
-        file: "src/content/home.yml"
+        file: "src/content/pages/home.yml"
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Intro, name: intro, widget: markdown }
