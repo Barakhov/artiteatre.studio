@@ -1,5 +1,4 @@
 ---
-// Your Astro frontmatter
 import removeTrailingSlash from "@/utils/removeTrailingSlash";
 import Container from "@/components/shared/Container.astro";
 
@@ -7,26 +6,23 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
 ---
 
 <style>
-  /* Menu overlay transition */
   #menu-nav {
     transition:
       opacity 0.3s ease,
       transform 0.3s ease;
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
   #menu-nav.active {
+    transition:
+      opacity 0.2s ease,
+      transform 0.5s ease;
     opacity: 1;
     transform: translateY(0);
   }
-
-  /* Smooth logo opacity transition */
-  #menu-logo {
-    transition: opacity 0.3s ease;
-  }
 </style>
 
-<header class="z-[31] w-full py-4 absolute bg-white">
+<header class="z-[31] w-full py-4 absolute bg-white" transition:name="header">
   <Container class="flex gap-2 justify-between items-center">
     <a id="menu-logo" href="/">
       <img class="w-36" src="/logos/ait-logo.svg" alt="artiteatre Logo" />
@@ -93,16 +89,31 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
 </header>
 
 <!-- Mobile menu overlay -->
-<div id="menu-nav" class="hidden fixed inset-0 bg-white z-30">
+<div
+  id="menu-nav"
+  class="hidden fixed inset-0 bg-white z-30"
+  transition:name="menuNav"
+>
   <Container class="flex flex-col gap-6 justify-center items-center h-full">
     <nav role="navigation">
       <ul role="list" class="flex flex-col gap-6">
         <li class="flex">
           <a
+            href="/"
+            class:list={{
+              ["bg-gray-200 transition-colors duration-300 py-2 px-4 rounded-full text-3xl"]: true,
+              ["shadow-inset"]: pathname === "/",
+            }}
+          >
+            Inicio
+          </a>
+        </li>
+        <li class="flex">
+          <a
             href="/arte"
             class:list={{
               ["bg-yellow-300 transition-colors duration-300 py-2 px-4 rounded-full text-3xl"]: true,
-              ["bg-yellow-300"]: pathname === "/arte",
+              ["shadow-inset"]: pathname === "/arte",
             }}
           >
             Arte
@@ -113,7 +124,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
             href="/teatro"
             class:list={{
               ["bg-red-400 transition-colors duration-300 py-2 px-4 rounded-full text-3xl"]: true,
-              ["bg-red-400"]: pathname === "/teatro",
+              ["shadow-inset"]: pathname === "/teatro",
             }}
           >
             Teatro
@@ -124,7 +135,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
             href="/escuela"
             class:list={{
               ["bg-blue-300 transition-colors duration-300 py-2 px-4 rounded-full text-3xl"]: true,
-              ["bg-blue-300"]: pathname === "/escuela",
+              ["shadow-inset"]: pathname === "/escuela",
             }}
           >
             Escuela verano
@@ -135,7 +146,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
             href="/contacto"
             class:list={{
               ["bg-green-400 transition-colors duration-300 py-2 px-4 rounded-full text-3xl"]: true,
-              ["bg-green-400"]: pathname === "/contacto",
+              ["shadow-inset"]: pathname === "/contacto",
             }}
           >
             Contacto
@@ -146,13 +157,13 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
   </Container>
 </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
     const menuButton = document.getElementById("menu-button");
     const menuNav = document.getElementById("menu-nav");
-    const menuLogo = document.getElementById("menu-logo");
+    const mainTag = document.querySelector("main");
 
-    if (!menuButton || !menuNav || !menuLogo) {
+    if (!menuButton || !menuNav) {
       console.error("One or more menu elements not found");
       return;
     }
@@ -167,14 +178,13 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
           menuNav.removeEventListener("transitionend", handler);
         });
         menuButton.textContent = "Menu";
-        menuLogo.style.opacity = "1";
       } else {
         menuNav.classList.remove("hidden");
         document.body.classList.add("overflow-hidden");
         void menuNav.offsetWidth;
         menuNav.classList.add("active");
         menuButton.textContent = "Cerrar";
-        menuLogo.style.opacity = "0";
+        mainTag.style.opacity = "0";
       }
     });
   });
