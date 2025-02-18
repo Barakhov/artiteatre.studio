@@ -14,9 +14,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     transform: translateY(-8px);
   }
   #menu-nav.active {
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease;
+    transition: opacity 0.3s ease;
     opacity: 1;
     transform: translateY(0);
   }
@@ -42,10 +40,17 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
   }
 </style>
 
-<header class="z-[31] w-full py-4 absolute bg-white" transition:name="header">
+<header
+  class="z-[31] w-full py-4 bg-white sticky top-0"
+  transition:name="header"
+>
   <Container class="flex gap-2 justify-between items-center">
     <a id="menu-logo" href="/">
-      <img class="w-36" src="/logos/ait-logo.svg" alt="artiteatre Logo" />
+      <img
+        class="w-28 md:w-32"
+        src="/logos/ait-logo.svg"
+        alt="artiteatre Logo"
+      />
     </a>
 
     <!-- Desktop nav -->
@@ -101,7 +106,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     <!-- Mobile Menu Button -->
     <button
       id="menu-button"
-      class="transition-colors min-w-20 duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg md:hidden"
+      class="transition-colors min-w-[88px] duration-300 py-1 px-3 bg-gray-200 rounded-full text-xl md:hidden"
     >
       Menu
     </button>
@@ -172,12 +177,14 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     const menuNav = document.getElementById("menu-nav");
     const mainTag = document.querySelector("main");
     const footerTag = document.querySelector("footer");
+    const header = document.querySelector("header");
 
-    if (!menuButton || !menuNav) {
-      console.error("One or more menu elements not found");
+    if (!menuButton || !menuNav || !header) {
+      console.error("One or more required elements not found");
       return;
     }
 
+    // Toggle the mobile menu (your existing code)
     menuButton.addEventListener("click", function () {
       const isOpen = !menuNav.classList.contains("hidden");
       if (isOpen) {
@@ -198,6 +205,15 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
         menuButton.textContent = "Cerrar";
         mainTag.style.opacity = "0";
         footerTag.style.opacity = "0";
+      }
+    });
+
+    // Listen for scroll events to toggle the header background
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 0) {
+        header.classList.add("shadow-header");
+      } else {
+        header.classList.remove("shadow-header");
       }
     });
   });

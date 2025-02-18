@@ -3,24 +3,23 @@ import presentation from "@/data/presentation";
 ---
 
 <footer class="bg-white sticky bottom-0">
-  <div class="mx-auto max-w-7xl px-4 pb-6 pt-16 lg:pt-24">
-    <div class="grid grid-cols-1 gap-14 lg:gap-4 lg:grid-cols-3">
+  <div class="mx-auto max-w-7xl px-4 pb-6 pt-20 lg:pt-24">
+    <div class="grid grid-cols-1 gap-14 lg:gap-4 lg:grid-cols-4">
       <!-- Logo Section -->
-      <div>
-        <div class="flex justify-start">
-          <a href="/">
-            <img
-              class="w-44 md:w-36"
-              src="/logos/ait-logo.svg"
-              alt="Artiteatre logo"
-            />
-          </a>
-        </div>
+
+      <div class="flex justify-start lg:col-span-1">
+        <a href="/">
+          <img
+            class="w-40 md:w-32"
+            src="/logos/ait-logo.svg"
+            alt="Artiteatre logo"
+          />
+        </a>
       </div>
 
       <!-- Navigation & Contact Sections -->
       <div
-        class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:col-span-2"
+        class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:col-span-3"
       >
         <!-- Main Navigation -->
         <nav aria-label="Footer navigation">
@@ -126,7 +125,8 @@ import presentation from "@/data/presentation";
           </a>
         </p>
         <p class="mt-4 text-sm text-gray-600 sm:mt-0">
-          <a href="/admin" target="_blank" rel="noopener noreferrer">&copy;</a> {new Date().getFullYear()} artiteatre
+          <a href="/admin" target="_blank" rel="noopener noreferrer">&copy;</a>
+          {new Date().getFullYear()} artiteatre
         </p>
       </div>
     </div>
