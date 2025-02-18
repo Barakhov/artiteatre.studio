@@ -11,14 +11,34 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
       opacity 0.3s ease,
       transform 0.3s ease;
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-8px);
   }
   #menu-nav.active {
     transition:
-      opacity 0.2s ease,
-      transform 0.5s ease;
+      opacity 0.3s ease,
+      transform 0.3s ease;
     opacity: 1;
     transform: translateY(0);
+  }
+
+  #menu-nav nav ul li {
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  #menu-nav nav ul li:nth-child(1) {
+    transition-delay: 0.3s;
+  }
+  #menu-nav nav ul li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  #menu-nav nav ul li:nth-child(3) {
+    transition-delay: 0.1s;
+  }
+
+  #menu-nav.active nav ul li {
+    opacity: 1;
+    transform: translateY(0px);
   }
 </style>
 
@@ -81,7 +101,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     <!-- Mobile Menu Button -->
     <button
       id="menu-button"
-      class="transition-colors min-w-20 duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg md:hidden hover:bg-gray-800 hover:text-white"
+      class="transition-colors min-w-20 duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg md:hidden"
     >
       Menu
     </button>
@@ -97,17 +117,6 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
   <Container class="flex flex-col gap-6 justify-center items-center h-full">
     <nav role="navigation">
       <ul role="list" class="flex flex-col gap-6">
-        <li class="flex">
-          <a
-            href="/"
-            class:list={{
-              ["bg-gray-200 transition-colors duration-300 py-2 px-4 rounded-full text-3xl"]: true,
-              ["shadow-inset"]: pathname === "/",
-            }}
-          >
-            Inicio
-          </a>
-        </li>
         <li class="flex">
           <a
             href="/arte"
@@ -175,6 +184,8 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
         menuNav.classList.remove("active");
         menuNav.addEventListener("transitionend", function handler() {
           menuNav.classList.add("hidden");
+          mainTag.style.opacity = "1";
+          footerTag.style.opacity = "1";
           document.body.classList.remove("overflow-hidden");
           menuNav.removeEventListener("transitionend", handler);
         });
