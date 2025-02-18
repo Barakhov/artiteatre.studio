@@ -21,6 +21,21 @@ collections:
       - { name: title, label: Title }
       - { name: description, label: Description }
       - { name: publishedAt, label: Date, widget: date }
-      - {label: "Publish", name: "isPublish", widget: "boolean", default: true}
-      - {label: "Draft", name: "isDraft", widget: "boolean", default: false}
+      - {
+          label: "Publish",
+          name: "isPublish",
+          widget: "boolean",
+          default: true,
+        }
+      - { label: "Draft", name: "isDraft", widget: "boolean", default: false }
       - { name: body, label: Body, widget: markdown }
+  - name: pages
+    label: Pages
+    files:
+      - label: "Home"
+        name: "home"
+        file: "src/content/home.yml"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Intro, name: intro, widget: markdown }
+          - { label: Description, name: description, widget: markdown }
