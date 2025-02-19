@@ -1,14 +1,36 @@
 ---
+import { getEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/shared/Container.astro";
+import { marked } from "marked";
+
+const inicioEntry = await getEntry("pages", "verano-profesorado");
+const { title, teachers } = inicioEntry.data;
 ---
 
 <Layout>
   <main class="relative z-10 bg-white shadow-main">
     <Container>
-      <article class="min-h-[100dvh] flex items-center">
-          <h1 class="mb-4 text-2xl">Escuela verano</h1>
-          
+      <article class="flex items-center">
+        <h1 class="mb-4 text-2xl">Escuela verano</h1>
+      </article>
+
+      <article>
+        <h1 class="mb-4 text-2xl">{title}</h1>
+
+        {
+          teachers.map((teacher: any) => (
+            <div class="mb-6 p-4">
+              <h2 class="text-xl font-semibold">{teacher.name}</h2>
+              <img
+                src={teacher.image}
+                alt={teacher.image_alt}
+                class="my-4 w-full max-w-xs"
+              />
+              <p>{teacher.description}</p>
+            </div>
+          ))
+        }
       </article>
     </Container>
   </main>
