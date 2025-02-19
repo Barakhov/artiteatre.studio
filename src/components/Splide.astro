@@ -1,4 +1,8 @@
 ---
+// need to insall:
+// "@splidejs/splide": "^4.1.4",
+// "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+
 import "@splidejs/splide/dist/css/splide.min.css";
 
 const slides = [
@@ -66,7 +70,9 @@ const slides = [
         slides.map((slide) => (
           <li class="splide__slide">
             <div class="flex flex-col items-stretch justify-center max-w-96 h-full rounded-2xl p-6 bg-slate-300">
-              <p class="text-slate-900 text-lg font-medium mb-auto">{slide.text}</p>
+              <p class="text-slate-900 text-lg font-medium mb-auto">
+                {slide.text}
+              </p>
               <p class="text-slate-900 font-semibold mt-4">{slide.name}</p>
               <p class="text-slate-800 text-sm">{slide.position}</p>
             </div>
@@ -83,7 +89,7 @@ const slides = [
 
   document.addEventListener("astro:page-load", () => {
     const element = document.querySelector(".splide") as HTMLElement;
-    
+
     if (element) {
       const splide = new Splide(element, {
         type: "loop",

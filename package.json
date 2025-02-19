@@ -14,8 +14,6 @@
     "@astrojs/tailwind": "^5.1.2",
     "@divriots/jampack": "^0.30.0",
     "@fontsource/hanken-grotesk": "^5.1.1",
-    "@splidejs/splide": "^4.1.4",
-    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "astro": "^4.16.10",
     "astro-seo": "0.7.2",
     "marked": "^15.0.7",
