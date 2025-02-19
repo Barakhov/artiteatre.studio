@@ -6,11 +6,8 @@ import Container from "@/components/shared/Container.astro";
 import Shape from "@/components/Shape.astro";
 import { marked } from "marked";
 
-const homeEntry = await getEntry("pages", "home");
-const { title, intro, description } = homeEntry.data;
-
-// Convert the markdown string to HTML
-const htmlDescription = marked(description);
+const inicioEntry = await getEntry("pages", "inicio");
+const { title, intro, description } = inicioEntry.data;
 ---
 
 <Layout>
@@ -28,7 +25,7 @@ const htmlDescription = marked(description);
         <div class="flex flex-col md:flex-row gap-4 md:gap-10">
           <p class="mb-4 text-2xl md:text-3xl md:max-w-4xl md:w-2/3">{intro}</p>
           <div class="mb-4 md:text-l md:max-w-4xl md:w-1/3">
-            <p set:html={htmlDescription} />
+            <p set:html={marked(description)} />
           </div>
         </div>
       </Container>
