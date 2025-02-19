@@ -6,8 +6,8 @@ backend:
   open_authoring: true
 
 publish_mode: editorial_workflow
-media_folder: public/images
-public_folder: /images
+media_folder: public/assets
+public_folder: /assets
 site_url: "https://aesthetic-elf-c76dc5.netlify.app/" # site name name here
 
 collections:

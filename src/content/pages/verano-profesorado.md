@@ -2,7 +2,7 @@
 title: Profesorado
 teachers:
   - name: Nadia Banegas Fabregat
-    image: /images/nadia-profe.jpg
+    image: /assets/nadia-profe.jpg
     image_alt: Foto de Nadia soriendo a camara
     description: >-
       Nacida en Barcelona en 1973. Licenciada en la Facultad de Bellas Artes de
@@ -15,7 +15,7 @@ teachers:
 
       En 2006 abre la academia de arte y teatro El traç-Musicaldansa. Realizando exposiciones y obras teatrales de los alumnos desde entonces y ganando distintos premios nacionales de teatro juvenil. Entre ellos cabe destacar el Primer Premio Nacional en 2014 y los Primeros Premios Autonómicos en 2009, 2014 y 2017. Así como las menciones obtenidas por La Mejor Labor Educativa otorgadas en 2011, 2012, 2013 y 2016. La escuela de verano se inicia en 2011 ofreciendo una enseñanza de calidad y dándole mucha importancia al trato con cada uno de los alumnos, adaptándose a sus distintas necesidades y edades y priorizando la buena relación entre el grupo.
   - name: Niura Vladímirovna Barakhova Banegas
-    image: /images/niura-profe.jpg
+    image: /assets/niura-profe.jpg
     image_alt: Foto de Niura soriendo a camara
     description: >-
       La carrera de Niura se ha desarrollado en el ámbito del deporte y la
@@ -26,7 +26,7 @@ teachers:
       Ha trabajado como profesora de tiro con arco en diversos colegios de Ibiza, además ha sido deportista de alto rendimiento, demostrando su habilidad para enseñar y su pasión por el deporte.
   - image_alt: Foto de Raquel soriendo a camara
     name: Raquel Orellana Guasch
-    image: /images/raquel-profe.jpg
+    image: /assets/raquel-profe.jpg
     description: >-
       Nacida en Ibiza el 1994, dibujante de manga e ilustradora. Cursé mis
       estudios artísticos en la Escuela Joso, en la Escuela Llotja y en la
