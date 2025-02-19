@@ -4,20 +4,26 @@ import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/shared/Container.astro";
 import { marked } from "marked";
 
+// Get the teacher entry
 const inicioEntry = await getEntry("pages", "verano-profesorado");
-const { title, teachers } = inicioEntry.data;
+const { title: teacherTitle, teachers } = inicioEntry.data;
+
+// Get the documents entry
+const descargaEntry = await getEntry("pages", "verano-descargas");
+const { title: documentTitle, documents } = descargaEntry.data;
 ---
 
 <Layout>
   <main class="relative z-10 bg-white shadow-main">
     <Container>
-      <article class="flex items-center">
-        <h1 class="mb-4 text-2xl">Escuela verano</h1>
+      <!-- Header Section -->
+      <article class="flex items-center mb-8">
+        <h1 class="text-2xl">Escuela verano</h1>
       </article>
 
-      <article>
-        <h1 class="mb-4 text-2xl">{title}</h1>
-
+      <!-- Teachers Section -->
+      <article class="mb-12">
+        <h1 class="mb-4 text-2xl font-bold">{teacherTitle}</h1>
         {
           teachers.map((teacher: any) => (
             <div class="mb-6">
@@ -32,6 +38,25 @@ const { title, teachers } = inicioEntry.data;
                   <p set:html={marked(teacher.description)} />
                 </div>
               </div>
+            </div>
+          ))
+        }
+      </article>
+
+      <!-- Documents Section -->
+      <article>
+        <h1 class="mb-4 text-2xl font-bold">{documentTitle}</h1>
+        {
+          documents.map((docItem: any) => (
+            <div class="mb-6 p-4 border rounded">
+              <h2 class="mb-2 text-xl font-semibold">{docItem.name}</h2>
+              <a
+                href={docItem.doc}
+                download
+                class="underline hover:no-underline"
+              >
+                Descargar
+              </a>
             </div>
           ))
         }
