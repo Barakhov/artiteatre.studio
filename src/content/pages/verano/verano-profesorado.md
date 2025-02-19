@@ -17,7 +17,7 @@ teachers:
     image_alt: Foto de perfil de Nadia Banegas sonriendo
   - name: Niura Vladímirovna Barakhova Banegas
     image: /images/niura-profe.jpg
-    image_alt: Foto de perfil de Niura Vladímirovna Barakhova Banegas sonriendo
+    image_alt: Imagen de Niura Vladímirovna Barakhova Banegas sonriendo
     description: >-
       La carrera de Niura se ha desarrollado en el ámbito del deporte y la
       educación. Con 21 años, cuenta con el título de monitora de tiempo libre y
