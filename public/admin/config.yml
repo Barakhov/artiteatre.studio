@@ -32,10 +32,10 @@ collections:
   - name: pages
     label: Pages
     files:
-      - label: "Home"
-        name: "home"
-        file: "src/content/pages/home.yml"
+      - name: inicio
+        label: Inicio
+        file: src/content/pages/inicio.yml
         fields:
-          - { label: Title, name: title, widget: string }
-          - { label: Intro, name: intro, widget: markdown }
-          - { label: Description, name: description, widget: markdown }
+          - { label: Titulo, name: title, widget: string }
+          - { label: Introduccion, name: intro, widget: markdown }
+          - { label: Descripcion, name: description, widget: markdown }
