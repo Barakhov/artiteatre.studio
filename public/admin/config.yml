@@ -72,4 +72,11 @@ collections:
             widget: list
             fields:
               - { label: "Nombre", name: name, widget: string, required: true }
-              - { label: "Documento", name: doc, widget: file, required: true }
+              - {
+                  label: "Documento",
+                  name: doc,
+                  widget: file,
+                  media_folder: "public/documents",
+                  public_folder: "/documents",
+                  required: true,
+                }
