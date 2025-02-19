@@ -1,6 +1,6 @@
 ---
 title: Documentos para descargar
 documents:
-  - name: djj
-    doc: /documents/protocolo_de_incidencias.pdf
+  - name: PROTOCOLO DE INCIDENCIAS EL TRAÇ - MUSICALDANSA
+    doc: /assets/protocolo_de_incidencias.pdf
 ---
