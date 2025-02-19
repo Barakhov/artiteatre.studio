@@ -48,6 +48,17 @@ collections:
             name: teachers
             widget: list
             fields:
-              - { label: "Nombre", name: name, widget: string }
-              - { label: "Imagen", name: image, widget: image }
-              - { label: "Descripcion", name: description, widget: markdown }
+              - { label: "Nombre", name: name, widget: string, required: true }
+              - { label: "Imagen", name: image, widget: image, required: true }
+              - {
+                  label: "Texto alternativo/descriptivo para la imagen",
+                  name: image_alt,
+                  widget: string,
+                  required: true,
+                }
+              - {
+                  label: "Biografía",
+                  name: description,
+                  widget: markdown,
+                  required: true,
+                }
