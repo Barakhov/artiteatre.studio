@@ -62,3 +62,14 @@ collections:
                   widget: markdown,
                   required: true,
                 }
+      - name: verano-descargas
+        label: "Escuela de verano - Docs. para descargar"
+        file: src/content/pages/verano-descargas.md
+        fields:
+          - { label: Titulo, name: title, widget: string }
+          - label: "Documentos para descargar"
+            name: documents
+            widget: list
+            fields:
+              - { label: "Nombre", name: name, widget: string, required: true }
+              - { label: "Documento", name: doc, widget: file, required: true }

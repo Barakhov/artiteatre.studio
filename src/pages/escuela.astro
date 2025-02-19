@@ -20,14 +20,18 @@ const { title, teachers } = inicioEntry.data;
 
         {
           teachers.map((teacher: any) => (
-            <div class="mb-6 p-4">
-              <h2 class="text-xl font-semibold">{teacher.name}</h2>
-              <img
-                src={teacher.image}
-                alt={teacher.image_alt}
-                class="my-4 w-full max-w-xs"
-              />
-              <p>{teacher.description}</p>
+            <div class="mb-6">
+              <h2 class="mb-4 text-xl font-semibold">{teacher.name}</h2>
+              <div class="flex gap-6 items-start">
+                <img
+                  src={teacher.image}
+                  alt={teacher.image_alt}
+                  class="aspect-square w-full max-w-40 filter grayscale overflow-hidden rounded-lg"
+                />
+                <div class="marked">
+                  <p set:html={marked(teacher.description)} />
+                </div>
+              </div>
             </div>
           ))
         }
