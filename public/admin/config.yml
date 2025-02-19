@@ -39,3 +39,19 @@ collections:
           - { label: Titulo, name: title, widget: string }
           - { label: Introduccion, name: intro, widget: markdown }
           - { label: Descripcion, name: description, widget: markdown }
+      - name: verano
+        label: "Escuela de verano"
+        file: src/content/pages/verano.md
+        fields:
+          - { label: Titulo, name: title, widget: string }
+          - label: "Content Sections"
+            name: sections
+            widget: list
+            fields:
+              - {
+                  label: "Section Type",
+                  name: type,
+                  widget: select,
+                  options: ["Intro", "Materias", "Información"],
+                }
+              - { label: "Content", name: content, widget: markdown }
