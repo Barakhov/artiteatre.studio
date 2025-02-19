@@ -34,7 +34,7 @@ collections:
     files:
       - name: inicio
         label: Inicio
-        file: src/content/pages/inicio.yml
+        file: src/content/pages/inicio.md
         fields:
           - { label: Titulo, name: title, widget: string }
           - { label: Introduccion, name: intro, widget: markdown }
