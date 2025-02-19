@@ -4,9 +4,13 @@ import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/shared/Container.astro";
 import { marked } from "marked";
 
-// Get the teacher entry
-const inicioEntry = await getEntry("pages", "verano-profesorado");
-const { title: teacherTitle, teachers } = inicioEntry.data;
+// Get the intro entry
+const introEntry = await getEntry("pages", "verano-intro");
+const { title: introTitle, intro } = introEntry.data;
+
+// Get the teachers entry
+const teachersEntry = await getEntry("pages", "verano-profesorado");
+const { title: teacherTitle, teachers } = teachersEntry.data;
 
 // Get the documents entry
 const descargaEntry = await getEntry("pages", "verano-descargas");
@@ -17,13 +21,21 @@ const { title: documentTitle, documents } = descargaEntry.data;
   <main class="relative z-10 bg-white shadow-main">
     <Container>
       <!-- Header Section -->
-      <article class="flex items-center mb-8">
-        <h1 class="text-2xl">Escuela verano</h1>
+      <article class="flex items-center mt-8 mb-12">
+        <h1 class="text-4xl font-semibold">Escuela verano</h1>
+      </article>
+
+      <!-- Intro Section -->
+      <article class="mb-12">
+        <h1 class="mb-4 text-2xl font-semibold">{introTitle}</h1>
+        <div class="marked">
+          <p set:html={marked(intro)} />
+        </div>
       </article>
 
       <!-- Teachers Section -->
       <article class="mb-12">
-        <h1 class="mb-4 text-2xl font-bold">{teacherTitle}</h1>
+        <h1 class="mb-4 text-2xl font-semibold">{teacherTitle}</h1>
         {
           teachers.map((teacher: any) => (
             <div class="mb-6">
@@ -32,7 +44,7 @@ const { title: documentTitle, documents } = descargaEntry.data;
                 <img
                   src={teacher.image}
                   alt={teacher.image_alt}
-                  class="aspect-square w-full max-w-40 filter grayscale overflow-hidden rounded-lg"
+                  class="aspect-square w-full max-w-40 filter grayscale overflow-hidden rounded"
                 />
                 <div class="marked">
                   <p set:html={marked(teacher.description)} />
@@ -44,8 +56,8 @@ const { title: documentTitle, documents } = descargaEntry.data;
       </article>
 
       <!-- Documents Section -->
-      <article>
-        <h1 class="mb-4 text-2xl font-bold">{documentTitle}</h1>
+      <article class="mb-12">
+        <h1 class="mb-4 text-2xl font-semibold">{documentTitle}</h1>
         {
           documents.map((docItem: any) => (
             <div class="mb-6 p-4 border rounded">
