@@ -1,0 +1,65 @@
+<div class="w-72">
+  <svg
+    id="morph-example"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 600 600"
+    width="100%"
+    height="100%"
+  >
+    <g
+      id="rotate-group2"
+      style="transform-box: fill-box; transform-origin: 50% 50%;"
+    >
+      <path
+        id="circle2"
+        d="M300,0 
+           A300,300 0 1,1 300,600 
+           A300,300 0 1,1 300,0 Z"
+      ></path>
+      <!-- Reference shape: Square (hidden by default) -->
+      <path
+        id="square"
+        style="visibility:hidden"
+        d="M214.674 49.0041C253.01 -16.3347 347.475 -16.3347 385.809 49.0041L387.201 51.3771C404.889 81.5199 437.127 100.134 472.074 100.379L474.828 100.398C550.581 100.928 597.813 182.737 560.394 248.606L559.035 250.998C541.773 281.386 541.773 318.615 559.035 349.002L560.394 351.393C597.813 417.264 550.581 499.071 474.828 499.602L472.074 499.62C437.127 499.866 404.889 518.481 387.201 548.622L385.809 550.995C347.475 616.335 253.01 616.335 214.674 550.995L213.281 548.622C195.596 518.481 163.355 499.866 128.408 499.62L125.657 499.602C49.9039 499.071 2.67183 417.264 40.0888 351.393L41.4478 349.002C58.7095 318.615 58.7095 281.386 41.4478 250.998L40.0888 248.606C2.67183 182.737 49.9039 100.928 125.657 100.398L128.408 100.379C163.355 100.134 195.596 81.5199 213.281 51.3771L214.674 49.0041Z"
+      ></path>
+    </g>
+  </svg>
+
+  <script is:inline type="module">
+    const circleEl = document.getElementById("circle2");
+    const circlePath = circleEl.getAttribute("d");
+    const squarePath = document.getElementById("square").getAttribute("d");
+
+    // Morphing tweens for the path
+    const tweenForward = KUTE.to(
+      "#circle2",
+      { path: squarePath },
+      { duration: 300, delay: 3000 }
+    );
+    const tweenBackward = KUTE.to(
+      "#circle2",
+      { path: circlePath },
+      { duration: 300, delay: 3000 }
+    );
+    tweenForward.chain(tweenBackward);
+    tweenBackward.chain(tweenForward);
+
+    // Rotation tweens for the group element
+    const rotateForward = KUTE.to(
+      "#rotate-group2",
+      { rotate: "90deg" },
+      { duration: 300, delay: 3000 }
+    );
+    const rotateBackward = KUTE.to(
+      "#rotate-group2",
+      { rotate: "0deg" },
+      { duration: 300, delay: 3000 }
+    );
+    rotateForward.chain(rotateBackward);
+    rotateBackward.chain(rotateForward);
+
+    // Start both animations simultaneously
+    tweenForward.start();
+    rotateForward.start();
+  </script>
+</div>

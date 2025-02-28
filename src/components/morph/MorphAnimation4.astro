@@ -1,0 +1,62 @@
+<div class="w-72">
+  <svg
+    id="morph-example"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 600 600"
+    width="100%"
+    height="100%"
+  >
+    <g
+      id="rotate-group4"
+      style="transform-box: fill-box; transform-origin: 50% 50%;"
+    >
+      <path
+        id="circle4"
+        d="M600 300C600 465.685 465.685 600 300 600C134.315 600 0 465.685 0 300C0 134.315 134.315 0 300 0C465.685 0 600 134.315 600 300Z"
+      ></path>
+      <path
+        id="pentagon4"
+        style="visibility:hidden"
+        d="M495.658 575.841C496.858 589.146 463.597 606.108 453.133 597.801C363.025 526.29 237.053 526.271 146.926 597.744C136.457 606.045 103.157 589.056 104.353 575.751C109.85 514.568 85.4327 490.151 24.2505 495.647C10.9428 496.844 -6.04512 463.541 2.25723 453.074C73.7284 362.951 73.7086 236.994 2.19852 146.893C-6.10686 136.428 10.8538 103.164 24.1598 104.362C85.4087 109.877 109.853 85.4626 104.353 24.2507C103.157 10.9431 136.457 -6.045 146.926 2.25704C237.053 73.7298 363.025 73.7103 453.133 2.19836C463.597 -6.10668 496.858 10.854 495.658 24.1599C490.138 85.4368 514.576 109.879 575.839 104.362C589.144 103.164 606.106 136.426 597.802 146.891C526.309 236.993 526.288 362.954 597.745 453.074C606.046 463.544 589.057 496.844 575.749 495.647C514.552 490.151 490.141 514.595 495.658 575.841Z"
+      ></path>
+    </g>
+  </svg>
+
+  <script is:inline type="module">
+    const circleEl = document.getElementById("circle4");
+    const circlePath = circleEl.getAttribute("d");
+    const pentagonPath = document.getElementById("pentagon4").getAttribute("d");
+
+    // Morphing tweens for the path
+    const tweenForward = KUTE.to(
+      "#circle4",
+      { path: pentagonPath },
+      { duration: 300, delay: 3000 }
+    );
+    const tweenBackward = KUTE.to(
+      "#circle4",
+      { path: circlePath },
+      { duration: 300, delay: 3000 }
+    );
+    tweenForward.chain(tweenBackward);
+    tweenBackward.chain(tweenForward);
+
+    // Rotation tweens for the group element
+    const rotateForward = KUTE.to(
+      "#rotate-group4",
+      { rotate: "90deg" },
+      { duration: 300, delay: 3000 }
+    );
+    const rotateBackward = KUTE.to(
+      "#rotate-group4",
+      { rotate: "0deg" },
+      { duration: 300, delay: 3000 }
+    );
+    rotateForward.chain(rotateBackward);
+    rotateBackward.chain(rotateForward);
+
+    // Start both animations simultaneously
+    tweenForward.start();
+    rotateForward.start();
+  </script>
+</div>

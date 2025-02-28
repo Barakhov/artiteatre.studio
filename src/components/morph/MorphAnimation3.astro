@@ -1,0 +1,65 @@
+<div class="w-72">
+  <svg
+    id="morph-example"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 600 600"
+    width="100%"
+    height="100%"
+  >
+    <g
+      id="rotate-group3"
+      style="transform-box: fill-box; transform-origin: 50% 50%;"
+    >
+      <path
+        id="circle3"
+        d="M300,0 
+           A300,300 0 1,1 300,600 
+           A300,300 0 1,1 300,0 Z"
+      ></path>
+      <!-- Reference shape: Square (hidden by default) -->
+      <path
+        id="square2"
+        style="visibility:hidden"
+        d="M419.991 419.982C660.003 660.006 -60.0033 660.006 180.01 419.982C-60.0033 660.006 -60.0033 -59.9975 180.01 179.993C-60.0033 -59.9975 660.003 -59.9975 419.991 179.993C660.003 -59.9975 660.003 660.006 419.991 419.982Z"
+      ></path>
+    </g>
+  </svg>
+
+  <script is:inline type="module">
+    const circleEl = document.getElementById("circle3");
+    const circlePath = circleEl.getAttribute("d");
+    const squarePath = document.getElementById("square2").getAttribute("d");
+
+    // Morphing tweens for the path
+    const tweenForward = KUTE.to(
+      "#circle3",
+      { path: squarePath },
+      { duration: 300, delay: 3000 }
+    );
+    const tweenBackward = KUTE.to(
+      "#circle3",
+      { path: circlePath },
+      { duration: 300, delay: 3000 }
+    );
+    tweenForward.chain(tweenBackward);
+    tweenBackward.chain(tweenForward);
+
+    // Rotation tweens for the group element
+    const rotateForward = KUTE.to(
+      "#rotate-group3",
+      { rotate: "90deg" },
+      { duration: 300, delay: 3000 }
+    );
+    const rotateBackward = KUTE.to(
+      "#rotate-group3",
+      { rotate: "0deg" },
+      { duration: 300, delay: 3000 }
+    );
+    rotateForward.chain(rotateBackward);
+    rotateBackward.chain(rotateForward);
+
+    // Start both animations simultaneously
+    tweenForward.start();
+    rotateForward.start();
+  </script>
+</div>
