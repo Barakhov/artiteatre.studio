@@ -1,0 +1,62 @@
+<div class="w-72">
+  <svg
+    id="morph-example"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 600 600"
+    width="100%"
+    height="100%"
+  >
+    <g
+      id="rotate-group"
+      style="transform-box: fill-box; transform-origin: 50% 50%;"
+    >
+      <path
+        id="circle"
+        d="M600 300C600 465.685 465.685 600 300 600C134.315 600 0 465.685 0 300C0 134.315 134.315 0 300 0C465.685 0 600 134.315 600 300Z"
+      ></path>
+      <path
+        id="pentagon"
+        style="visibility:hidden"
+        d="M299.982 600V553.317C147.174 553.317 0 452.796 0 300H46.65C46.65 147.204 147.174 0 299.982 0V46.683C452.787 46.683 600 147.204 600 300H553.353C553.353 452.796 452.787 600 299.982 600Z"
+      ></path>
+    </g>
+  </svg>
+
+  <script is:inline type="module">
+    const circleEl = document.getElementById("circle");
+    const circlePath = circleEl.getAttribute("d");
+    const pentagonPath = document.getElementById("pentagon").getAttribute("d");
+
+    // Morphing tweens for the path
+    const tweenForward = KUTE.to(
+      "#circle",
+      { path: pentagonPath },
+      { duration: 300, delay: 3000 }
+    );
+    const tweenBackward = KUTE.to(
+      "#circle",
+      { path: circlePath },
+      { duration: 300, delay: 3000 }
+    );
+    tweenForward.chain(tweenBackward);
+    tweenBackward.chain(tweenForward);
+
+    // Rotation tweens for the group element
+    const rotateForward = KUTE.to(
+      "#rotate-group",
+      { rotate: "90deg" },
+      { duration: 300, delay: 3000 }
+    );
+    const rotateBackward = KUTE.to(
+      "#rotate-group",
+      { rotate: "0deg" },
+      { duration: 300, delay: 3000 }
+    );
+    rotateBackward.chain(rotateForward);
+    rotateForward.chain(rotateBackward);
+
+    // Start both animations simultaneously
+    tweenForward.start();
+    rotateForward.start();
+  </script>
+</div>
