@@ -1,16 +1,16 @@
 ---
 title: Documentos para descargar
 documents:
-  - name: PROTOCOLO DE INCIDENCIAS EL TRAÇ - MUSICALDANSA
+  - name: Protocolo de incidencias
     doc: /assets/protocolo_de_incidencias.pdf
-  - name: AUTORIZACION PARA USO DE IMAGENES DE MENORES
+  - name: Autorización para uso de imágenes de menores
     doc: /assets/autorizacion_para_uso_de_imagenes.pdf
-  - name: FORMULARI D'INSCRIPCIÓ ESCOLA D'ESTIU (CATALÀ)
+  - name: Formulari d'inscripció escola d'estiu (Català)
     doc: /assets/formulari_dinscripcio.pdf
-  - name: FORMULARIO DE INSCRIPCIÓN ESCUELA DE VERANO (CASTELLANO)
+  - name: Formulario de inscripción escuela de verano (Castellano)
     doc: /assets/formulario_de_inscripcion.pdf
-  - name: PROGRAMA EDUCATIU ESCOLA D'ESTIU (CATALÀ)
+  - name: Programa educatiu escola d'estiu (Català)
     doc: /assets/pec_escola_destiu_cat.pdf
-  - name: PROGRAMA EDUCATIVO ESCOLA D'ESTIU (CASTELLANO)
+  - name: Programa educativo escola d'estiu (Castellano)
     doc: /assets/pec_escola_destiu_cast.pdf
 ---
