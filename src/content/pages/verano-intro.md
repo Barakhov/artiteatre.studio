@@ -1,5 +1,5 @@
 ---
-title: Aula Viva - Escola d’estiu
+title: Introducción
 intro: >-
   La escuela de verano Aula Viva ofrece una oferta distinta para que los niños y
   niñas de entre 5 y 12 años pasen el verano.
