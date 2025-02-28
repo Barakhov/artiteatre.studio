@@ -21,57 +21,70 @@ const { title: documentTitle, documents } = descargaEntry.data;
   <main class="relative z-10 bg-white shadow-main">
     <Container>
       <!-- Header Section -->
-      <article class="mt-8 mb-12 flex items-center">
+      <article class="mt-16 mb-20 flex items-center">
         <h1 class="text-4xl font-semibold">Escuela verano</h1>
       </article>
 
       <!-- Intro Section -->
-      <article class="mb-12">
-        <h1 class="mb-4 text-2xl font-semibold">{introTitle}</h1>
-        <div class="marked">
+      <article class="mb-16 relative flex gap-6">
+        <h1 class="mb-20 h-fit w-1/5 text-2xl font-semibold sticky top-20">
+          {introTitle}
+        </h1>
+        <div class="marked w-3/5 text-lg">
           <p set:html={marked(intro)} />
         </div>
       </article>
 
       <!-- Teachers Section -->
-      <article class="mb-12">
-        <h1 class="mb-4 text-2xl font-semibold">{teacherTitle}</h1>
-        {
-          teachers.map((teacher: any) => (
-            <div class="mb-6">
-              <h2 class="mb-4 text-xl font-semibold">{teacher.name}</h2>
-              <div class="flex gap-6 items-start">
-                <img
-                  src={teacher.image}
-                  alt={teacher.image_alt}
-                  class="aspect-square w-full max-w-40 filter grayscale overflow-hidden rounded"
-                />
-                <div class="marked">
-                  <p set:html={marked(teacher.description)} />
+      <article class="mb-16 relative flex gap-6">
+        <h1 class="mb-20 h-fit w-1/5 text-2xl font-semibold sticky top-20">
+          {teacherTitle}
+        </h1>
+
+        <div class="w-3/5">
+          {
+            teachers.map((teacher: any) => (
+              <div class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold">{teacher.name}</h2>
+                <div class="flex gap-6 items-start">
+                  <img
+                    src={teacher.image}
+                    alt={teacher.image_alt}
+                    class="min-w-48 h-48 object-cover overflow-hidden rounded mt-1"
+                  />
+                  <div class="marked text-lg">
+                    <p set:html={marked(teacher.description)} />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
       </article>
 
       <!-- Documents Section -->
-      <article class="mb-12">
-        <h1 class="mb-4 text-2xl font-semibold">{documentTitle}</h1>
-        {
-          documents.map((docItem: any) => (
-            <div class="mb-6 p-4 border rounded">
-              <h2 class="mb-2 text-xl font-semibold">{docItem.name}</h2>
+      <article class="mb-16 relative flex gap-6">
+        <h1 class="mb-20 h-fit w-1/5 text-2xl font-semibold sticky top-20">
+          {documentTitle}
+        </h1>
+        <div class="w-3/5">
+          {
+            documents.map((docItem: any) => (
               <a
                 href={docItem.doc}
                 download
-                class="underline hover:no-underline"
+                class="mb-6 py-4 px-6 border rounded-full inline-flex gap-4 items-center justify-start hover:bg-blue-300 transition-colors duration-300 bg-gray-200"
               >
-                Descargar
+                <span class="text-lg font-semibold">{docItem.name}</span>
+                <img
+                  class="w-6"
+                  src="/icons/download-document.svg"
+                  alt="download document icon"
+                />
               </a>
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
       </article>
     </Container>
   </main>

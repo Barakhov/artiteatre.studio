@@ -56,12 +56,24 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     <!-- Desktop nav -->
     <nav class="hidden md:block" role="navigation">
       <ul role="list" class="flex flex-row gap-3">
+        <!-- <li>
+          <a
+            href="/"
+            class:list={{
+              ["hover:bg-gray-400 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg"]: true,
+              ["bg-gray-400"]: pathname === "/",
+            }}
+          >
+            Inicio
+          </a>
+        </li> -->
         <li>
           <a
             href="/arte"
             class:list={{
-              ["hover:bg-yellow-300 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg"]: true,
+              ["hover:bg-yellow-300 transition-colors duration-300 py-1 px-3 rounded-full text-lg"]: true,
               ["bg-yellow-300"]: pathname === "/arte",
+              ["bg-gray-200"]: pathname !== "/arte",
             }}
           >
             Arte
@@ -71,8 +83,9 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
           <a
             href="/teatro"
             class:list={{
-              ["hover:bg-red-400 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg"]: true,
+              ["hover:bg-red-400 transition-colors duration-300 py-1 px-3 rounded-full text-lg"]: true,
               ["bg-red-400"]: pathname === "/teatro",
+              ["bg-gray-200"]: pathname !== "/teatro",
             }}
           >
             Teatro
@@ -82,8 +95,9 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
           <a
             href="/escuela"
             class:list={{
-              ["hover:bg-blue-300 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg"]: true,
+              ["hover:bg-blue-300 transition-colors duration-300 py-1 px-3 rounded-full text-lg"]: true,
               ["bg-blue-300"]: pathname === "/escuela",
+              ["bg-gray-200"]: pathname !== "/escuela",
             }}
           >
             Escuela verano
@@ -93,8 +107,9 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
           <a
             href="/contacto"
             class:list={{
-              ["hover:bg-green-400 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg"]: true,
+              ["hover:bg-green-400 transition-colors duration-300 py-1 px-3 rounded-full text-lg"]: true,
               ["bg-green-400"]: pathname === "/contacto",
+              ["bg-gray-200"]: pathname !== "/contacto",
             }}
           >
             Contacto
@@ -106,7 +121,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     <!-- Mobile Menu Button -->
     <button
       id="menu-button"
-      class="transition-colors min-w-[88px] duration-300 py-1 px-3 bg-gray-200 rounded-full text-xl md:hidden"
+      class="transition-colors min-w-[88px] duration-300 py-1 px-3 rounded-full text-xl md:hidden"
     >
       Menu
     </button>

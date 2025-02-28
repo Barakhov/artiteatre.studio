@@ -10,8 +10,8 @@ module.exports = {
         sans: ["Hanken Grotesk", ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
-        main: "0px 16px 20px -4px #eeeeee",
-        header: "0px 8px 20px -4px #eeeeee;",
+        main: "0px 16px 20px -4px rgb(64 66 70 / 12%)",
+        header: "0px 8px 20px -4px rgb(64 66 70 / 12%);",
         inset: "inset 0 0 0 5px hsl(0deg 0% 18% / 18%);",
       },
     },
