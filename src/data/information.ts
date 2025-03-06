@@ -3,21 +3,16 @@ type Social = {
   link: string;
 };
 
-type Presentation = {
+type Information = {
   mail: string;
-  title: string;
-  description: string;
   phone: string;
   address: string;
   gmaps: string;
   socials: Social[];
 };
 
-const presentation: Presentation = {
+const information: Information = {
   mail: "artiteatre.nadiabanegas@gmail.com",
-  title: "artiteatre",
-  description:
-    "Una escuela que imparte diversas materias inspiradas en los intereses de su fundadora, Nadia Banegas, dando origen a tres iniciativas educativas, cada una con su propia estructura y enfoque.",
   socials: [
     {
       label: "Facebook - Musicaldansa",
@@ -33,4 +28,4 @@ const presentation: Presentation = {
   gmaps: "https://maps.app.goo.gl/RMRaKpxjRpi3fPYS8",
 };
 
-export default presentation;
+export default information;
