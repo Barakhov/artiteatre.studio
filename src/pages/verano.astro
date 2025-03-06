@@ -1,0 +1,255 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/shared/Container.astro";
+import { marked } from "marked";
+
+// Get the intro entry
+const introEntry = await getEntry("pages", "verano-intro");
+const { title: introTitle, intro } = introEntry.data;
+
+// Get the teachers entry
+const teachersEntry = await getEntry("pages", "verano-profesorado");
+const { title: teacherTitle, teachers } = teachersEntry.data;
+
+// Get the documents entry
+const descargaEntry = await getEntry("pages", "verano-descargas");
+const { title: documentTitle, documents } = descargaEntry.data;
+
+const sideNavigation = [
+  { label: "Introducción", href: "#introduccion" },
+  { label: "Materias", href: "#materias" },
+  { label: "Información", href: "#informacion" },
+  { label: "Profesorado", href: "#profesorado" },
+  { label: "Documentos", href: "#documentos" },
+];
+---
+
+<style>
+  .active {
+    @apply bg-verano-primary;
+    .arrow {
+      width: 24px;
+      opacity: 1;
+      padding-right: 8px;
+    }
+  }
+</style>
+
+<Layout>
+  <div
+    class="absolute top-0 w-full h-32 z-20 bg-gradient-to-b from-verano-primary/50 to-verano-primary/0"
+  >
+  </div>
+  <main class="relative z-10 bg-white shadow-main">
+    <Container>
+      <!-- Hero Section -->
+      <article class="mt-32 mb-24 flex items-center">
+        <h1 class="text-6xl font-semibold italic">
+          Aula viva - Escola d'estiu
+        </h1>
+      </article>
+      <div class="relative flex gap-6">
+        <aside class="h-fit w-1/5 sticky top-28">
+          <nav id="menu-submenu">
+            <ul class="flex flex-col gap-2">
+              {
+                sideNavigation.map((item: { label: string; href: string }) => (
+                  <li
+                    list-item={item.href.replace(/^#/, "")}
+                    class="text-xl w-fit inline-flex items-center justify-start py-1 px-4 transition-all duration-300 rounded-full bg-verano-50 hover:bg-verano-primary"
+                  >
+                    <img
+                      class="arrow w-0 opacity-0 transition-all duration-200"
+                      src="/icons/arrow-right-bold.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                    <a href={item.href}>{item.label}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </aside>
+        <div class="w-3/5">
+          <!-- Intro Section -->
+          <article
+            data-item="observed"
+            id="introduccion"
+            class="mb-24 scroll-mt-28"
+          >
+            <h2
+              class="mb-6 text-4xl font-semibold italic text-verano-secondary"
+            >
+              {introTitle}
+            </h2>
+            <section class="marked text-lg">
+              <p set:html={marked(intro)} />
+            </section>
+          </article>
+
+          <!-- Materias Section -->
+          <article
+            data-item="observed"
+            id="materias"
+            class="mb-24 scroll-mt-28"
+          >
+            <h2
+              class="mb-6 text-4xl font-semibold italic text-verano-secondary"
+            >
+              Materias
+            </h2>
+            <section class="marked text-lg">
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
+                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
+                alias inventore rerum quisquam facilis quis incidunt. Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
+                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
+                quasi, tempore necessitatibus, adipisci deserunt, alias
+                inventore rerum quisquam facilis quis incidunt.
+              </p>
+
+              <br />
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
+                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
+                alias inventore rerum quisquam facilis quis incidunt. Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
+                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
+                quasi, tempore necessitatibus, adipisci deserunt, alias
+                inventore rerum quisquam facilis quis incidunt.
+              </p>
+
+              <br />
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
+                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
+                alias inventore rerum quisquam facilis quis incidunt. Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
+                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
+                quasi, tempore necessitatibus, adipisci deserunt, alias
+                inventore rerum quisquam facilis quis incidunt.
+              </p>
+            </section>
+          </article>
+
+          <!-- Informacion Section -->
+          <article
+            data-item="observed"
+            id="informacion"
+            class="mb-24 scroll-mt-28"
+          >
+            <h2
+              class="mb-6 text-4xl font-semibold italic text-verano-secondary"
+            >
+              Información
+            </h2>
+            <section class="marked text-lg">
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
+                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
+                alias inventore rerum quisquam facilis quis incidunt. Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
+                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
+                quasi, tempore necessitatibus, adipisci deserunt, alias
+                inventore rerum quisquam facilis quis incidunt.
+              </p>
+
+              <br />
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
+                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
+                alias inventore rerum quisquam facilis quis incidunt. Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
+                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
+                quasi, tempore necessitatibus, adipisci deserunt, alias
+                inventore rerum quisquam facilis quis incidunt.
+              </p>
+
+              <br />
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
+                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
+                alias inventore rerum quisquam facilis quis incidunt. Lorem,
+                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
+                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
+                quasi, tempore necessitatibus, adipisci deserunt, alias
+                inventore rerum quisquam facilis quis incidunt.
+              </p>
+            </section>
+          </article>
+
+          <!-- Teachers Section -->
+          <article
+            data-item="observed"
+            id="profesorado"
+            class="mb-24 scroll-mt-28"
+          >
+            <h2
+              class="mb-6 text-4xl font-semibold italic text-verano-secondary"
+            >
+              {teacherTitle}
+            </h2>
+
+            {
+              teachers.map((teacher: any) => (
+                <section class="mb-12 last:mb-0">
+                  <h3 class="mb-6 text-2xl font-semibold text-verano-secondary ">
+                    {teacher.name}
+                  </h3>
+                  <div class="flex gap-6 items-start">
+                    <img
+                      src={teacher.image}
+                      alt={teacher.image_alt}
+                      class="min-w-48 h-48 object-cover overflow-hidden rounded mt-1"
+                    />
+                    <div class="marked text-lg">
+                      <p set:html={marked(teacher.description)} />
+                    </div>
+                  </div>
+                </section>
+              ))
+            }
+          </article>
+
+          <!-- Documents Section -->
+          <article
+            data-item="observed"
+            id="documentos"
+            class="mb-24 scroll-mt-28"
+          >
+            <h2
+              class="mb-6 text-4xl font-semibold italic text-verano-secondary"
+            >
+              {documentTitle}
+            </h2>
+            {
+              documents.map((docItem: any) => (
+                <a
+                  href={docItem.doc}
+                  download
+                  class="mb-6 py-4 px-6 rounded-full inline-flex gap-3 items-center justify-start hover:bg-verano-primary transition-colors duration-300 bg-verano-50"
+                >
+                  <span class="text-xl font-semiboldNO">{docItem.name}</span>
+                  <img
+                    class="w-6"
+                    src="/icons/arrow-down.svg"
+                    alt="download document icon"
+                  />
+                </a>
+              ))
+            }
+          </article>
+        </div>
+      </div>
+    </Container>
+  </main>
+</Layout>

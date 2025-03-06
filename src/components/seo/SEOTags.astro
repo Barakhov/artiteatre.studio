@@ -12,6 +12,9 @@ type Props = {
     description: string;
     image: string;
     alt: string;
+    // Optionally add width/height if needed:
+    width?: number;
+    height?: number;
   };
 };
 
@@ -21,14 +24,18 @@ const DEFAULT_TITLE_PAGE = "Artiteatre - Nadia Banegas";
 const DEFAULT_DESCRIPTION_PAGE =
   "La escuela de Nadia Banegas, que integra tres iniciativas educativas: EL TRAÇ (Escuela de arte), AULA VIVA (Escuela de verano) y TOT TEATRE (Escuela de teatro), cada una con un enfoque único, caracterizado por un trabajo honesto, meticuloso y ético";
 const DEFAULT_URL_SITE = SITE_URL;
+const DEFAULT_IMAGE = `${DEFAULT_URL_SITE}opengraph-image.jpg`;
 
 const openGraph = {
   title: og?.title || DEFAULT_TITLE_PAGE,
   type: og?.type || "website",
-  image: og?.image || "/opengraph-image.jpg",
+  image: og?.image || DEFAULT_IMAGE,
   alt: og?.alt || "og image",
   url: DEFAULT_URL_SITE,
   description: og?.description || DEFAULT_DESCRIPTION_PAGE,
+  // Optionally include width and height if you have them:
+  width: og?.width,
+  height: og?.height,
 };
 ---
 
@@ -43,6 +50,12 @@ const openGraph = {
         title: openGraph.title,
         type: openGraph.type,
         image: openGraph.image,
+        url: openGraph.url,
+      },
+      optional: {
+        description: openGraph.description,
+        ...(openGraph.width && { width: openGraph.width }),
+        ...(openGraph.height && { height: openGraph.height }),
       },
       image: {
         alt: openGraph.alt,
@@ -50,6 +63,7 @@ const openGraph = {
     }}
     twitter={{
       creator: "@a_barakhov",
+      imageAlt: openGraph.alt,
     }}
     extend={{
       link: [

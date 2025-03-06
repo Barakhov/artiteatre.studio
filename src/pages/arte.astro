@@ -4,6 +4,10 @@ import Container from "@/components/shared/Container.astro";
 ---
 
 <Layout>
+  <div
+    class="absolute top-0 w-full h-32 z-20 bg-gradient-to-b from-arte-primary/50 to-arte-primary/0"
+  >
+  </div>
   <main class="relative z-10 bg-white shadow-main">
     <Container>
       <div class="grid h-screen place-content-center bg-white px-4">
@@ -47,13 +51,16 @@ import Container from "@/components/shared/Container.astro";
           <h2
             class="mt-6 text-2xl font-bold tracking-tight text-gray-800 sm:text-4xl"
           >
-          ¡Vaya!
+            ¡Vaya!
           </h2>
 
           <p class="mt-4 mb-6 text-gray-600 mx-auto max-w-lg">
             Parece que aquí no hay contenido de momento.
           </p>
-          <a class="py-1 px-3 bg-gray-200 rounded-full hover:bg-gray-800 hover:text-white transition-colors duration-300 " href="/">Volver al inicio</a>
+          <a
+            class="py-1 px-4 bg-gray-100 rounded-full hover:bg-gray-800 hover:text-white transition-colors duration-300 text-lg"
+            href="/">Volver al inicio</a
+          >
         </div>
       </div>
     </Container>

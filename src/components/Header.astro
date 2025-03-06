@@ -40,10 +40,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
   }
 </style>
 
-<header
-  class="z-[31] w-full py-4 bg-white sticky top-0"
-  transition:name="header"
->
+<header class="z-[31] w-full py-4 sticky top-0" transition:name="header">
   <Container class="flex gap-2 justify-between items-center">
     <a id="menu-logo" href="/">
       <img
@@ -56,24 +53,13 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     <!-- Desktop nav -->
     <nav class="hidden md:block" role="navigation">
       <ul role="list" class="flex flex-row gap-3">
-        <!-- <li>
-          <a
-            href="/"
-            class:list={{
-              ["hover:bg-gray-400 transition-colors duration-300 py-1 px-3 bg-gray-200 rounded-full text-lg"]: true,
-              ["bg-gray-400"]: pathname === "/",
-            }}
-          >
-            Inicio
-          </a>
-        </li> -->
         <li>
           <a
             href="/arte"
             class:list={{
-              ["hover:bg-yellow-300 transition-colors duration-300 py-1 px-3 rounded-full text-lg"]: true,
-              ["bg-yellow-300"]: pathname === "/arte",
-              ["bg-gray-200"]: pathname !== "/arte",
+              ["hover:bg-arte-primary transition-colors duration-300 py-1 px-4 rounded-full text-lg"]: true,
+              ["bg-arte-primary"]: pathname === "/arte",
+              ["bg-gray-100"]: pathname !== "/arte",
             }}
           >
             Arte
@@ -83,9 +69,9 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
           <a
             href="/teatro"
             class:list={{
-              ["hover:bg-red-400 transition-colors duration-300 py-1 px-3 rounded-full text-lg"]: true,
-              ["bg-red-400"]: pathname === "/teatro",
-              ["bg-gray-200"]: pathname !== "/teatro",
+              ["hover:bg-teatro-primary transition-colors duration-300 py-1 px-4 rounded-full text-lg"]: true,
+              ["bg-teatro-primary"]: pathname === "/teatro",
+              ["bg-gray-100"]: pathname !== "/teatro",
             }}
           >
             Teatro
@@ -93,11 +79,11 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
         </li>
         <li>
           <a
-            href="/escuela"
+            href="/verano"
             class:list={{
-              ["hover:bg-blue-300 transition-colors duration-300 py-1 px-3 rounded-full text-lg"]: true,
-              ["bg-blue-300"]: pathname === "/escuela",
-              ["bg-gray-200"]: pathname !== "/escuela",
+              ["hover:bg-verano-primary transition-colors duration-300 py-1 px-4 rounded-full text-lg"]: true,
+              ["bg-verano-primary"]: pathname === "/verano",
+              ["bg-gray-100"]: pathname !== "/verano",
             }}
           >
             Escuela verano
@@ -107,9 +93,9 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
           <a
             href="/contacto"
             class:list={{
-              ["hover:bg-green-400 transition-colors duration-300 py-1 px-3 rounded-full text-lg"]: true,
-              ["bg-green-400"]: pathname === "/contacto",
-              ["bg-gray-200"]: pathname !== "/contacto",
+              ["hover:bg-contact-primary transition-colors duration-300 py-1 px-4 rounded-full text-lg"]: true,
+              ["bg-contact-primary"]: pathname === "/contacto",
+              ["bg-gray-100"]: pathname !== "/contacto",
             }}
           >
             Contacto
@@ -121,7 +107,7 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     <!-- Mobile Menu Button -->
     <button
       id="menu-button"
-      class="transition-colors min-w-[88px] duration-300 py-1 px-3 rounded-full text-xl md:hidden"
+      class="transition-colors min-w-[88px] duration-300 py-1 px-4 rounded-full text-xl md:hidden"
     >
       Menu
     </button>
@@ -141,44 +127,76 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
           <a
             href="/arte"
             class:list={{
-              ["bg-yellow-300 transition-colors duration-300 py-2 px-4 rounded-full text-3xl"]: true,
-              ["shadow-inset"]: pathname === "/arte",
+              ["bg-arte-primary transition-colors duration-300 py-2 px-4 rounded-full text-3xl flex items-center justify-start gap-2"]: true,
             }}
           >
-            Arte
+            {
+              pathname === "/arte" && (
+                <img
+                  class="w-6"
+                  src="/icons/arrow-right-bold.svg"
+                  alt="arrow pointing right"
+                />
+              )
+            }
+            <span>Arte</span>
           </a>
         </li>
         <li class="flex">
           <a
             href="/teatro"
             class:list={{
-              ["bg-red-400 transition-colors duration-300 py-2 px-4 rounded-full text-3xl"]: true,
-              ["shadow-inset"]: pathname === "/teatro",
+              ["bg-teatro-primary transition-colors duration-300 py-2 px-4 rounded-full text-3xl flex items-center justify-start gap-2"]: true,
             }}
           >
-            Teatro
+            {
+              pathname === "/teatro" && (
+                <img
+                  class="w-6"
+                  src="/icons/arrow-right-bold.svg"
+                  alt="arrow pointing right"
+                />
+              )
+            }
+            <span>Teatro</span>
           </a>
         </li>
         <li class="flex">
           <a
-            href="/escuela"
+            href="/verano"
             class:list={{
-              ["bg-blue-300 transition-colors duration-300 py-2 px-4 rounded-full text-3xl"]: true,
-              ["shadow-inset"]: pathname === "/escuela",
+              ["bg-verano-primary transition-colors duration-300 py-2 px-4 rounded-full text-3xl flex items-center justify-start gap-2"]: true,
             }}
           >
-            Escuela verano
+            {
+              pathname === "/verano" && (
+                <img
+                  class="w-6"
+                  src="/icons/arrow-right-bold.svg"
+                  alt="arrow pointing right"
+                />
+              )
+            }
+            <span>Escuela verano</span>
           </a>
         </li>
         <li class="flex">
           <a
             href="/contacto"
             class:list={{
-              ["bg-green-400 transition-colors duration-300 py-2 px-4 rounded-full text-3xl"]: true,
-              ["shadow-inset"]: pathname === "/contacto",
+              ["bg-contact-primary transition-colors duration-300 py-2 px-4 rounded-full text-3xl flex items-center justify-start gap-2"]: true,
             }}
           >
-            Contacto
+            {
+              pathname === "/contacto" && (
+                <img
+                  class="w-6"
+                  src="/icons/arrow-right-bold.svg"
+                  alt="arrow pointing right"
+                />
+              )
+            }
+            <span>Contacto</span>
           </a>
         </li>
       </ul>
@@ -226,10 +244,41 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
     // Listen for scroll events to toggle the header background
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0) {
-        header.classList.add("shadow-header");
+        header.classList.add("shadow-header", "bg-white");
       } else {
-        header.classList.remove("shadow-header");
+        header.classList.remove("shadow-header", "bg-white");
       }
     });
+
+    // Intersection Observer for highlighting menu items
+    const items = document.querySelectorAll('[data-item="observed"]');
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const myTarget = entry.target;
+            const sectionName = myTarget.id; // Use the id of the article as the section name
+
+            document.querySelectorAll("[list-item]").forEach((el) => {
+              el.classList.remove("active");
+            });
+
+            const listItem = document.querySelector(
+              `[list-item="${sectionName}"]`
+            );
+            if (listItem) {
+              listItem.classList.add("active");
+            }
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-10% 0px -50% 0px",
+        threshold: 0.1,
+      }
+    );
+
+    items.forEach((item) => io.observe(item));
   });
 </script>
