@@ -10,4 +10,11 @@
   p {
     margin-bottom: 16px;
   }
+
+  a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

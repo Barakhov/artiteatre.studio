@@ -1,11 +1,4 @@
-# 👨‍🚀 Astro & decap (netlify) CMS 
-
-## 🥷 Usage
-
-- You can modify all the information in the files in the `data` folder (presentation, social links, projects list, colors).
-- You can write articles in `markdown` format in the `content/posts` folder.
-- deploy to netlify
-- setup authentication for GithHub
+# 🎨🎭 Artiteatre Website - Astro & Decap CMS
 
 ## 🧞 Commands
 
@@ -20,17 +13,11 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## Features
-- seo friendly
-- amazing UI/UX (thanks to [maxencewolff](https://www.maxencewolff.com))
-- easy to setup
-- write from anywhare with git based CMS
-- [jampack](https://github.com/divriots/jampack) (for optimization)
+## How to setup authentication
 
-  ## how to setup authentication
-  the main issue you will face will deploying the site is authentication. to solve this issue please use the guide bellow
+the main issue you will face will deploying the site is authentication. to solve this issue please use the guide bellow
 
-  You need to create an API application and make note of the `Client ID` and a Client Secret so that you can use them in your Netlify configuration.
+You need to create an API application and make note of the `Client ID` and a Client Secret so that you can use them in your Netlify configuration.
 
 1. In GitHub, go to your account Settings and select Developer Settings, then OAuth Apps or use this [shortcut](https://github.com/settings/developers).
 2. Select Register a new application.
@@ -40,22 +27,9 @@ All commands are run from the root of the project, from a terminal:
 6. Generate a `Client Secret` and make note of it for later. You can’t access this secret again.
 
 When you complete application registration with GitHub, you need to add the Client ID and Client Secret to your Netlify site:
+
 1. Go to [Site configuration > Access control > OAuth](https://app.netlify.com/sites/astro-decapcms-starter/configuration/access#oauth). (https://app.netlify.com/sites/APP-NAME/configuration/access#oauth)
 2. Under Authentication Providers, select Install Provider
 3. Select GitHub and enter the Client ID and Client Secret from earlier, then save.
 
-That's it now enjoy 🥂
-
 [Original repo](https://github.com/gxanshu/astro-decap-cms-starter).
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
