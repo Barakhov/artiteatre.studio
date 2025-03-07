@@ -3,6 +3,7 @@ import { getEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/shared/Container.astro";
 import { marked } from "marked";
+import AsideNavObserver from "@/components/shared/AsideNavObserver.astro";
 
 // Get the intro entry
 const introEntry = await getEntry("pages", "verano-intro");
@@ -252,4 +253,5 @@ const sideNavigation = [
       </div>
     </Container>
   </main>
+  <AsideNavObserver />
 </Layout>

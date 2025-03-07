@@ -5,12 +5,14 @@ import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/shared/Container.astro";
 import Shape from "@/components/Shape.astro";
 import { marked } from "marked";
+import CustomCursor from "@/components/shared/CustomCursor.astro";
 
 const inicioEntry = await getEntry("pages", "inicio");
 const { title, intro, description } = inicioEntry.data;
 ---
 
 <Layout>
+  <CustomCursor />
   <main
     class="flex flex-col gap-20 overflow-hidden pb-20 relative z-10 bg-white shadow-main"
   >
@@ -35,39 +37,43 @@ const { title, intro, description } = inicioEntry.data;
       <div class="shapes-container flex gap-2 p-2 mt-auto">
         <Shape
           href="/arte"
-          title="Arte"
           shapeClass="shape-1"
           bgColor="bg-arte-primary"
           imgSrc="/logos/eltrac.svg"
           imgAlt="artiteatre Logo"
+          cursorText="Arte"
+          cursorColor="#FF3D00"
         />
 
         <Shape
           href="/teatro"
-          title="Teatro"
           shapeClass="shape-2"
           bgColor="bg-teatro-primary"
           imgSrc="/logos/musicaldansa.svg"
           imgAlt="artiteatre Logo"
+          cursorText="Teatro"
+          cursorColor="#FFC400"
         />
 
         <Shape
           href="/verano"
-          title="Escuela de verano"
           shapeClass="shape-3"
           bgColor="bg-verano-primary"
           imgSrc="/logos/verano.svg"
           imgAlt="artiteatre Logo"
+          cursorText="Escuela de verano"
+          cursorColor="#76FF03"
         />
 
         <Shape
           href="/contacto"
-          title="Contacto"
           shapeClass="shape-4"
           bgColor="bg-contact-primary"
           imgSrc="/logos/hand.svg"
           imgAlt="artiteatre Logo"
           imgClass="wave w-16"
+          cursorText="Contacto"
+          cursorColor="#1DE9B6"
         />
       </div>
     </article>

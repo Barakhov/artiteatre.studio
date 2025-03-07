@@ -1,0 +1,149 @@
+---
+
+---
+
+<style>
+  [data-cursor-text] {
+    width: 60%;
+    height: 30vh;
+    background-color: #eaeaea80;
+    border: 4px dashed #888;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    color: #888;
+    margin: 2vh auto;
+    /* cursor: none; */ /* Uncomment to hide the default cursor */
+  }
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: transparent;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+  .cursor .cursor-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: #000;
+    /* font-size: 0.75rem; */
+    /*white-space: nowrap;*/
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+    width: 100%;
+    height: fit-content;
+  }
+</style>
+
+<!-- CustomCursor.astro -->
+<div class="cursor">
+  <span class="cursor-text"></span>
+</div>
+
+<!-- Add GSAP from CDN -->
+<script
+  is:inline
+  src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    // Grab custom cursor elements
+    const cursor = document.querySelector(".cursor");
+    const cursorText = cursor.querySelector(".cursor-text");
+
+    // Set initial mouse position
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    // Update cursor position with GSAP for smooth, hardware-accelerated movement
+    window.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      gsap.to(cursor, {
+        duration: 0.5,
+        x: mouseX,
+        y: mouseY,
+        ease: "power3.out",
+      });
+    });
+
+    // Show the custom cursor when hovering over an element with custom data attributes
+    function updateCursor(target) {
+      if (!target) return;
+      const el = target.closest("[data-cursor-text]");
+      if (!el) return;
+
+      const text = el.getAttribute("data-cursor-text") || "";
+      const color = el.getAttribute("data-cursor-color") || "transparent";
+
+      // Animate the custom cursor to be visible with the proper color
+      gsap.to(cursor, {
+        duration: 0.5,
+        opacity: 1,
+        scale: 1,
+        backgroundColor: color,
+        ease: "power3.out",
+      });
+      cursorText.textContent = text;
+      gsap.to(cursorText, {
+        duration: 0.5,
+        scale: 1,
+        opacity: 1,
+        ease: "back.out(1.7)",
+      });
+    }
+
+    // Hide the custom cursor when leaving the custom section
+    function resetCursor() {
+      gsap.to(cursorText, {
+        duration: 0.5,
+        scale: 0,
+        opacity: 0,
+        ease: "back.in(1.7)",
+      });
+      gsap.to(cursor, {
+        duration: 0.5,
+        opacity: 0,
+        scale: 0,
+        backgroundColor: getComputedStyle(
+          document.documentElement
+        ).getPropertyValue("--default-cursor-color"),
+        ease: "power3.out",
+      });
+    }
+
+    // Use event delegation to check for custom data attributes
+    document.addEventListener("mouseover", (e) => {
+      let target =
+        e.target.nodeType === Node.TEXT_NODE
+          ? e.target.parentElement
+          : e.target;
+      if (target.closest && target.closest("[data-cursor-text]")) {
+        updateCursor(target);
+      }
+    });
+    document.addEventListener("mouseout", (e) => {
+      let target =
+        e.target.nodeType === Node.TEXT_NODE
+          ? e.target.parentElement
+          : e.target;
+      if (target.closest && target.closest("[data-cursor-text]")) {
+        // Only reset if the new hovered element isn't within a custom section
+        if (
+          !e.relatedTarget ||
+          !e.relatedTarget.closest("[data-cursor-text]")
+        ) {
+          resetCursor();
+        }
+      }
+    });
+  });
+</script>

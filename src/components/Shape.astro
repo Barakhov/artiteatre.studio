@@ -1,22 +1,32 @@
 ---
 export interface Props {
   href: string;
-  title: string;
   shapeClass: string;
   bgColor: string;
   imgSrc: string;
   imgAlt: string;
   imgClass?: string;
+  cursorText?: string;
+  cursorColor?: string;
 }
 
-const { href, title, shapeClass, bgColor, imgSrc, imgAlt, imgClass } =
-  Astro.props;
+const {
+  href,
+  shapeClass,
+  bgColor,
+  imgSrc,
+  imgAlt,
+  imgClass,
+  cursorText,
+  cursorColor,
+} = Astro.props;
 ---
 
 <a
   href={href}
-  title={title}
   class="shapes-item w-1/4 aspect-square relative inline-block"
+  data-cursor-text={cursorText}
+  data-cursor-color={cursorColor}
 >
   <div class={`shape ${shapeClass} ${bgColor} absolute inset-0`}></div>
   <div class="absolute inset-0 flex items-center justify-center z-10">

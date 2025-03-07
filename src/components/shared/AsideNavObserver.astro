@@ -1,0 +1,38 @@
+---
+// No props needed or you could have ones to customize the observer behavior
+---
+
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    // Intersection Observer for highlighting menu items
+    const items = document.querySelectorAll('[data-item="observed"]');
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const myTarget = entry.target;
+            const sectionName = myTarget.id;
+
+            document.querySelectorAll("[list-item]").forEach((el) => {
+              el.classList.remove("active");
+            });
+
+            const listItem = document.querySelector(
+              `[list-item="${sectionName}"]`
+            );
+            if (listItem) {
+              listItem.classList.add("active");
+            }
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-10% 0px -50% 0px",
+        threshold: 0.1,
+      }
+    );
+
+    items.forEach((item) => io.observe(item));
+  });
+</script>
