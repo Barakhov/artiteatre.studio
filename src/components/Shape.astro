@@ -1,4 +1,6 @@
 ---
+import { twMerge } from "tailwind-merge";
+
 export interface Props {
   href: string;
   shapeClass: string;
@@ -20,6 +22,9 @@ const {
   cursorText,
   cursorColor,
 } = Astro.props;
+
+const baseClass = "w-40";
+const mergedClass = twMerge(baseClass, imgClass);
 ---
 
 <a
@@ -30,6 +35,6 @@ const {
 >
   <div class={`shape ${shapeClass} ${bgColor} absolute inset-0`}></div>
   <div class="absolute inset-0 flex items-center justify-center z-10">
-    <img class={imgClass ?? "w-40"} src={imgSrc} alt={imgAlt} />
+    <img class={mergedClass} src={imgSrc} alt={imgAlt} />
   </div>
 </a>
