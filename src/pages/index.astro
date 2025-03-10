@@ -16,12 +16,9 @@ const { title, intro, description } = inicioEntry.data;
   <main
     class="flex flex-col gap-20 overflow-hidden pb-20 relative z-10 bg-white shadow-main"
   >
-    <article
-      class="flex flex-col gap-8 min-h-[calc(100dvh-70px)]"
-      transition:name="myArticle"
-    >
-      <Container class="mt-32 mb-20">
-        <h1 class="mb-6 text-6xl md:text-8xl md:mb-4 italic">
+    <article class="grid grid-rows-[1fr_auto] min-h-[calc(100dvh-71px)]">
+      <Container class="flex flex-col justify-center h-[min(33vw,600px)]">
+        <h1 class="mb-6 text-6xl md:text-8xl md:mb-8 mt-8 italic">
           {title}
         </h1>
         <div class="flex flex-col md:flex-row gap-4 md:gap-10">
@@ -34,27 +31,27 @@ const { title, intro, description } = inicioEntry.data;
         </div>
       </Container>
 
-      <div class="shapes-container flex gap-2 p-2 mt-auto">
-        <Shape
-          href="/arte"
-          shapeClass="shape-1"
-          bgColor="bg-arte-primary"
-          imgSrc="/logos/eltrac.svg"
-          imgAlt="artiteatre Logo"
-          cursorText="Arte"
-          cursorColor="#FF3D00"
-          imgClass="w-[192px] transform translate-x-0.5 translate-y-2"
-        />
-
+      <div class="shapes-container flex gap-2 px-4 pb-4 mt-auto">
         <Shape
           href="/teatro"
-          shapeClass="shape-2"
+          shapeClass="shape-1"
           bgColor="bg-teatro-primary"
           imgSrc="/logos/logo-totteatresvg.svg"
           imgAlt="artiteatre Logo"
           cursorText="Teatro"
           cursorColor="#FFC400"
           imgClass="w-[152px]"
+        />
+
+        <Shape
+          href="/arte"
+          shapeClass="shape-2"
+          bgColor="bg-arte-primary"
+          imgSrc="/logos/eltrac.svg"
+          imgAlt="artiteatre Logo"
+          cursorText="Arte"
+          cursorColor="#FF3D00"
+          imgClass="w-[192px] transform translate-x-0.5 translate-y-2"
         />
 
         <Shape

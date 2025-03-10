@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/shared/Container.astro";
 import { marked } from "marked";
 import AsideNavObserver from "@/components/shared/AsideNavObserver.astro";
+import RevealImage from "@/components/shared/RevealImage.astro";
 
 // Get the intro entry
 const introEntry = await getEntry("pages", "verano-intro");
@@ -73,12 +74,12 @@ const sideNavigation = [
             </ul>
           </nav>
         </aside>
-        <div class="w-3/5">
+        <div class="w-4/5">
           <!-- Intro Section -->
           <article
             data-item="observed"
             id="introduccion"
-            class="mb-24 scroll-mt-28"
+            class="mb-24 scroll-mt-28 max-w-2xl"
           >
             <h2
               class="mb-6 text-4xl font-semibold italic text-verano-secondary"
@@ -101,42 +102,54 @@ const sideNavigation = [
             >
               Materias
             </h2>
-            <section class="marked text-lg">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
-                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
-                alias inventore rerum quisquam facilis quis incidunt. Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
-                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
-                quasi, tempore necessitatibus, adipisci deserunt, alias
-                inventore rerum quisquam facilis quis incidunt.
-              </p>
 
-              <br />
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
-                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
-                alias inventore rerum quisquam facilis quis incidunt. Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
-                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
-                quasi, tempore necessitatibus, adipisci deserunt, alias
-                inventore rerum quisquam facilis quis incidunt.
-              </p>
+            <div class="grid grid-cols-[2fr_5fr] gap-6">
+              <RevealImage
+                imageUrl="/teatre.jpg"
+                alt="A beautiful scene"
+                animationDuration={1.5}
+              />
 
-              <br />
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
-                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
-                alias inventore rerum quisquam facilis quis incidunt. Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
-                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
-                quasi, tempore necessitatibus, adipisci deserunt, alias
-                inventore rerum quisquam facilis quis incidunt.
-              </p>
-            </section>
+              <div class="marked text-lg">
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Eveniet eos ipsam iusto omnis sequi voluptatem distinctio
+                  veniam obcaecati quasi, tempore necessitatibus, adipisci
+                  deserunt, alias inventore rerum quisquam facilis quis
+                  incidunt. Lorem, ipsum dolor sit amet consectetur adipisicing
+                  elit. Eveniet eos ipsam iusto omnis sequi voluptatem
+                  distinctio veniam obcaecati quasi, tempore necessitatibus,
+                  adipisci deserunt, alias inventore rerum quisquam facilis quis
+                  incidunt.
+                </p>
+
+                <br />
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Eveniet eos ipsam iusto omnis sequi voluptatem distinctio
+                  veniam obcaecati quasi, tempore necessitatibus, adipisci
+                  deserunt, alias inventore rerum quisquam facilis quis
+                  incidunt. Lorem, ipsum dolor sit amet consectetur adipisicing
+                  elit. Eveniet eos ipsam iusto omnis sequi voluptatem
+                  distinctio veniam obcaecati quasi, tempore necessitatibus,
+                  adipisci deserunt, alias inventore rerum quisquam facilis quis
+                  incidunt.
+                </p>
+
+                <br />
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Eveniet eos ipsam iusto omnis sequi voluptatem distinctio
+                  veniam obcaecati quasi, tempore necessitatibus, adipisci
+                  deserunt, alias inventore rerum quisquam facilis quis
+                  incidunt. Lorem, ipsum dolor sit amet consectetur adipisicing
+                  elit. Eveniet eos ipsam iusto omnis sequi voluptatem
+                  distinctio veniam obcaecati quasi, tempore necessitatibus,
+                  adipisci deserunt, alias inventore rerum quisquam facilis quis
+                  incidunt.
+                </p>
+              </div>
+            </div>
           </article>
 
           <!-- Informacion Section -->
@@ -199,18 +212,17 @@ const sideNavigation = [
             >
               {teacherTitle}
             </h2>
-
             {
               teachers.map((teacher: any) => (
                 <section class="mb-12 last:mb-0">
                   <h3 class="mb-6 text-2xl font-semibold text-verano-secondary ">
                     {teacher.name}
                   </h3>
-                  <div class="flex gap-6 items-start">
-                    <img
-                      src={teacher.image}
+                  <div class="grid grid-cols-[2fr_5fr] gap-6">
+                    <RevealImage
+                      imageUrl={teacher.image}
                       alt={teacher.image_alt}
-                      class="min-w-48 h-48 object-cover overflow-hidden rounded mt-1"
+                      animationDuration={1.2}
                     />
                     <div class="marked text-lg">
                       <p set:html={marked(teacher.description)} />
@@ -232,22 +244,24 @@ const sideNavigation = [
             >
               {documentTitle}
             </h2>
-            {
-              documents.map((docItem: any) => (
-                <a
-                  href={docItem.doc}
-                  download
-                  class="mb-6 py-4 px-6 rounded-full inline-flex gap-3 items-center justify-start hover:bg-verano-primary transition-colors duration-300 bg-verano-50"
-                >
-                  <span class="text-xl font-semiboldNO">{docItem.name}</span>
-                  <img
-                    class="w-6"
-                    src="/icons/arrow-down.svg"
-                    alt="download document icon"
-                  />
-                </a>
-              ))
-            }
+            <div class="flex flex-col">
+              {
+                documents.map((docItem: any) => (
+                  <a
+                    href={docItem.doc}
+                    download
+                    class="mb-6 py-4 px-6 rounded-full inline-flex w-fit gap-3 items-center justify-start hover:bg-verano-primary transition-colors duration-300 bg-verano-50"
+                  >
+                    <span class="text-xl font-semiboldNO">{docItem.name}</span>
+                    <img
+                      class="w-6"
+                      src="/icons/arrow-down.svg"
+                      alt="download document icon"
+                    />
+                  </a>
+                ))
+              }
+            </div>
           </article>
         </div>
       </div>
