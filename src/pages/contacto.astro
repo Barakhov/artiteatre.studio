@@ -64,7 +64,12 @@ import { SITE_URL } from "@/data/config";
         </form>
       </article>
       <div>
-        <form name="contact" method="POST" data-netlify="true">
+        <form
+          name="contact"
+          method="POST"
+          action={`${SITE_URL}formulario-enviado/`}
+          data-netlify="true"
+        >
           <p>
             <label
               >Your Name: <input
