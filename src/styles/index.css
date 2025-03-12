@@ -4,14 +4,29 @@
 }
 
 .shape-1,
-.shape-3 {
+.shape-4 {
+  border-radius: 0;
   animation: shape-anim 24s infinite forwards linear;
 }
 
 .shape-2,
-.shape-4 {
+.shape-3 {
   border-radius: 100%/100%;
   animation: shape-anim-rev 24s infinite forwards linear;
+}
+
+@media (min-width: 768px) {
+  .shape-1,
+  .shape-3 {
+    border-radius: 0;
+    animation: shape-anim 24s infinite forwards linear;
+  }
+
+  .shape-2,
+  .shape-4 {
+    border-radius: 100%/100%;
+    animation: shape-anim-rev 24s infinite forwards linear;
+  }
 }
 
 .shape-2 {

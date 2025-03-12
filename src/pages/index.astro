@@ -16,22 +16,26 @@ const { title, intro, description } = inicioEntry.data;
   <main
     class="flex flex-col gap-20 overflow-hidden pb-20 relative z-10 bg-white shadow-main"
   >
-    <article class="grid grid-rows-[1fr_auto] min-h-[calc(100dvh-71px)]">
-      <Container class="flex flex-col justify-center h-[min(33vw,600px)]">
-        <h1 class="mb-6 text-6xl md:text-8xl md:mb-8 mt-8 italic">
+    <article class="grid grid-rows-[1fr_auto] lg:min-h-[calc(100dvh-71px)]">
+      <Container class="flex flex-col justify-center lg:h-[min(33vw,600px)]">
+        <h1 class="mb-6 text-6xl lg:text-8xl lg:mb-8 mt-8 italic">
           {title}
         </h1>
-        <div class="flex flex-col md:flex-row gap-4 md:gap-10">
-          <div class="mb-4 text-2xl md:text-3xl md:max-w-4xl md:w-2/3">
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-10">
+          <div class="mb-4 text-2xl max-w-xl lg:text-3xl lg:max-w-4xl lg:w-2/3">
             <p set:html={marked(intro)} />
           </div>
-          <div class="marked mb-4 md:text-l md:max-w-4xl md:w-1/3">
+          <div
+            class="marked mb-4 ml-auto max-w-lg lg:text-l lg:max-w-4xl lg:w-1/3"
+          >
             <p set:html={marked(description)} />
           </div>
         </div>
       </Container>
 
-      <div class="shapes-container flex gap-2 px-4 pb-4 mt-auto">
+      <div
+        class="shapes-container grid grid-cols-2 max-w-2xl w-full mx-auto lg:max-w-full lg:grid-cols-4 gap-2 px-4 pb-4 mt-auto"
+      >
         <Shape
           href="/teatro"
           shapeClass="shape-1"
@@ -71,7 +75,7 @@ const { title, intro, description } = inicioEntry.data;
           bgColor="bg-contact-primary"
           imgSrc="/logos/hand.svg"
           imgAlt="artiteatre Logo"
-          imgClass="wave w-20"
+          imgClass="wave w-32"
           cursorText="Contacto"
           cursorColor="#1DE9B6"
         />

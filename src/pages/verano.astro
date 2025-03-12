@@ -6,6 +6,7 @@ import { marked } from "marked";
 import AsideNavObserver from "@/components/shared/AsideNavObserver.astro";
 import RevealImage from "@/components/shared/RevealImage.astro";
 import Gallery from "@/components/Gallery.astro";
+import CustomCursor from "@/components/shared/CustomCursor.astro";
 
 // Get the intro entry
 const introEntry = await getEntry("pages", "verano-intro");
@@ -123,8 +124,8 @@ const galleryConfig = {
     }
   }
 </style>
-
 <Layout>
+  <CustomCursor />
   <div
     class="absolute top-0 w-full h-32 z-20 bg-gradient-to-b from-verano-primary/50 to-verano-primary/0"
   >
@@ -205,6 +206,7 @@ const galleryConfig = {
             <div class="grid grid-cols-[320px_1fr] gap-8">
               <RevealImage
                 imageUrl="/teatre.jpg"
+                bgColor="bg-verano-50"
                 alt="A beautiful scene"
                 animationDuration={1.5}
               />
@@ -259,8 +261,9 @@ const galleryConfig = {
               Galería de imágenes
             </h2>
 
-            <Gallery config={galleryConfig} />
-            <div class="grid grid-cols-[320px_1fr] gap-8"></div>
+            <div data-cursor-text="Ver" data-cursor-color="#76FF03">
+              <Gallery config={galleryConfig} />
+            </div>
           </article>
 
           <!-- Informacion Section -->
@@ -332,6 +335,7 @@ const galleryConfig = {
                   <div class="grid grid-cols-[320px_1fr] gap-8">
                     <RevealImage
                       imageUrl={teacher.image}
+                      bgColor="bg-verano-50"
                       alt={teacher.image_alt}
                       animationDuration={1.2}
                     />

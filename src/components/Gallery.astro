@@ -1,26 +1,47 @@
 ---
-// Gallery.astro
-// Expecting a prop "config" with an "images" array
 const { config } = Astro.props;
+
+// Function to chunk images into groups of 4
+const chunkArray = (
+  arr: { href: string; src: string; alt: string }[],
+  size: number
+): { href: string; src: string; alt: string }[][] => {
+  return arr.reduce(
+    (
+      acc: { href: string; src: string; alt: string }[][],
+      _: any,
+      i: number
+    ) => {
+      if (i % size === 0) acc.push(arr.slice(i, i + size));
+      return acc;
+    },
+    []
+  );
+};
+
+const imageChunks = chunkArray(config.images, 4);
 ---
 
-<!-- Include GLightbox CSS -->
 <link rel="stylesheet" href="/vendor/glightbox/glightbox.min.css" />
 
-<div class="gallery grid grid-cols-4 gap-4">
+<div>
   {
-    config.images.map((image: { href: string; src: string; alt: string }) => (
-      <a
-        href={image.href}
-        class="glightbox block aspect-square overflow-hidden rounded-2xl"
-        data-gallery="gallery"
-      >
-        <img
-          src={image.src}
-          class="object-cover w-full h-full"
-          alt={image.alt}
-        />
-      </a>
+    imageChunks.map((chunk) => (
+      <div class="gallery-group grid grid-cols-4 gap-4 [&:not(:last-child)]:mb-4">
+        {chunk.map((image) => (
+          <a
+            href={image.href}
+            class="gallery-item block aspect-square overflow-hidden rounded-2xl"
+            data-gallery="gallery"
+          >
+            <img
+              src={image.src}
+              class="object-cover w-full h-full"
+              alt={image.alt}
+            />
+          </a>
+        ))}
+      </div>
     ))
   }
 </div>
@@ -29,12 +50,45 @@ const { config } = Astro.props;
 <script is:inline src="/vendor/glightbox/glightbox.min.js"></script>
 <script is:inline>
   document.addEventListener("astro:page-load", () => {
+    // Ensure GLightbox is initialized on navigation
     const lightbox = GLightbox({
-      selector: ".glightbox",
+      selector: ".gallery-item",
       openEffect: "zoom",
       closeEffect: "fade",
       slideEffect: "slide",
       loop: false,
+    });
+
+    // Kill previous GSAP animations before initializing new ones
+    gsap.killTweensOf(".gallery-item");
+
+    // Re-register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Select all gallery groups
+    document.querySelectorAll(".gallery-group").forEach((group) => {
+      const items = group.querySelectorAll(".gallery-item");
+
+      // Reset styles before reanimating
+      gsap.set(items, { opacity: 0, y: 50 });
+
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 50 }, // Initial state
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power1.out",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: group,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+            once: true,
+          },
+        }
+      );
     });
   });
 </script>

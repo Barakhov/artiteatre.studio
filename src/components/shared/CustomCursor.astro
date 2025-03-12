@@ -53,6 +53,7 @@
   document.addEventListener("astro:page-load", () => {
     // Grab custom cursor elements
     const cursor = document.querySelector(".cursor");
+    if (!cursor) return;
     const cursorText = cursor.querySelector(".cursor-text");
 
     // Set initial mouse position
