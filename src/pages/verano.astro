@@ -19,8 +19,8 @@ const descargaEntry = await getEntry("pages", "verano-descargas");
 const { title: documentTitle, documents } = descargaEntry.data;
 
 const sideNavigation = [
-  { label: "Introducción", href: "#introduccion" },
   { label: "Materias", href: "#materias" },
+  { label: "Galería", href: "#galeria" },
   { label: "Información", href: "#informacion" },
   { label: "Profesorado", href: "#profesorado" },
   { label: "Documentos", href: "#documentos" },
@@ -46,13 +46,42 @@ const sideNavigation = [
   <main class="relative z-10 bg-white shadow-main">
     <Container>
       <!-- Hero Section -->
-      <article class="mt-32 mb-24 flex items-center">
+      <article class="mt-36 mb-20 flex items-center">
         <h1 class="text-6xl font-semibold italic">
           Aula viva - Escola d'estiu
         </h1>
       </article>
-      <div class="relative flex gap-6">
-        <aside class="h-fit w-1/5 sticky top-28">
+      <article class="mb-28 scroll-mt-28">
+        <!-- <h2 class="mb-8 text-4xl font-semibold italic text-verano-secondary">
+          {introTitle}
+        </h2> -->
+        <section class="grid grid-cols-2 gap-8">
+          <div
+            class="aspect-video relative overflow-hidden rounded-2xl clip-path-[fill-box]"
+            style="clip-path: fill-box;"
+          >
+            <video
+              class="w-full h-full object-cover"
+              loop
+              autoplay
+              muted
+              playsinline
+            >
+              <source
+                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="marked text-lg">
+            <p set:html={marked(intro)} />
+          </div>
+        </section>
+      </article>
+
+      <div class="relative flex gap-8">
+        <aside class="h-fit w-1/6 sticky top-28">
           <nav id="menu-submenu">
             <ul class="flex flex-col gap-2">
               {
@@ -74,23 +103,7 @@ const sideNavigation = [
             </ul>
           </nav>
         </aside>
-        <div class="w-4/5">
-          <!-- Intro Section -->
-          <article
-            data-item="observed"
-            id="introduccion"
-            class="mb-24 scroll-mt-28 max-w-2xl"
-          >
-            <h2
-              class="mb-6 text-4xl font-semibold italic text-verano-secondary"
-            >
-              {introTitle}
-            </h2>
-            <section class="marked text-lg">
-              <p set:html={marked(intro)} />
-            </section>
-          </article>
-
+        <div class="w-5/6">
           <!-- Materias Section -->
           <article
             data-item="observed"
@@ -98,12 +111,12 @@ const sideNavigation = [
             class="mb-24 scroll-mt-28"
           >
             <h2
-              class="mb-6 text-4xl font-semibold italic text-verano-secondary"
+              class="mb-8 text-4xl font-semibold italic text-verano-secondary"
             >
               Materias
             </h2>
 
-            <div class="grid grid-cols-[2fr_5fr] gap-6">
+            <div class="grid grid-cols-[320px_1fr] gap-8">
               <RevealImage
                 imageUrl="/teatre.jpg"
                 alt="A beautiful scene"
@@ -152,6 +165,17 @@ const sideNavigation = [
             </div>
           </article>
 
+          <!-- Gallery Section -->
+          <article data-item="observed" id="galeria" class="mb-24 scroll-mt-28">
+            <h2
+              class="mb-8 text-4xl font-semibold italic text-verano-secondary"
+            >
+              Galería de imágenes
+            </h2>
+
+            <div class="grid grid-cols-[320px_1fr] gap-8"></div>
+          </article>
+
           <!-- Informacion Section -->
           <article
             data-item="observed"
@@ -159,7 +183,7 @@ const sideNavigation = [
             class="mb-24 scroll-mt-28"
           >
             <h2
-              class="mb-6 text-4xl font-semibold italic text-verano-secondary"
+              class="mb-8 text-4xl font-semibold italic text-verano-secondary"
             >
               Información
             </h2>
@@ -208,7 +232,7 @@ const sideNavigation = [
             class="mb-24 scroll-mt-28"
           >
             <h2
-              class="mb-6 text-4xl font-semibold italic text-verano-secondary"
+              class="mb-8 text-4xl font-semibold italic text-verano-secondary"
             >
               {teacherTitle}
             </h2>
@@ -218,7 +242,7 @@ const sideNavigation = [
                   <h3 class="mb-6 text-2xl font-semibold text-verano-secondary ">
                     {teacher.name}
                   </h3>
-                  <div class="grid grid-cols-[2fr_5fr] gap-6">
+                  <div class="grid grid-cols-[320px_1fr] gap-8">
                     <RevealImage
                       imageUrl={teacher.image}
                       alt={teacher.image_alt}
@@ -240,7 +264,7 @@ const sideNavigation = [
             class="mb-24 scroll-mt-28"
           >
             <h2
-              class="mb-6 text-4xl font-semibold italic text-verano-secondary"
+              class="mb-8 text-4xl font-semibold italic text-verano-secondary"
             >
               {documentTitle}
             </h2>
