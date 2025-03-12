@@ -5,6 +5,7 @@ import Container from "@/components/shared/Container.astro";
 import { marked } from "marked";
 import AsideNavObserver from "@/components/shared/AsideNavObserver.astro";
 import RevealImage from "@/components/shared/RevealImage.astro";
+import Gallery from "@/components/Gallery.astro";
 
 // Get the intro entry
 const introEntry = await getEntry("pages", "verano-intro");
@@ -25,6 +26,91 @@ const sideNavigation = [
   { label: "Profesorado", href: "#profesorado" },
   { label: "Documentos", href: "#documentos" },
 ];
+
+const galleryConfig = {
+  images: [
+    {
+      href: "/galleries/verano/1.jpg",
+      src: "/galleries/verano/1.jpg",
+      alt: "Placeholder Image 1",
+    },
+    {
+      href: "/galleries/verano/4.jpg",
+      src: "/galleries/verano/4.jpg",
+      alt: "Placeholder Image 2",
+    },
+    {
+      href: "/galleries/verano/6.jpg",
+      src: "/galleries/verano/6.jpg",
+      alt: "Placeholder Image 3",
+    },
+    {
+      href: "/galleries/verano/11.jpg",
+      src: "/galleries/verano/11.jpg",
+      alt: "Placeholder Image 4",
+    },
+    {
+      href: "/galleries/verano/1.jpg",
+      src: "/galleries/verano/1.jpg",
+      alt: "Placeholder Image 1",
+    },
+    {
+      href: "/galleries/verano/4.jpg",
+      src: "/galleries/verano/4.jpg",
+      alt: "Placeholder Image 2",
+    },
+    {
+      href: "/galleries/verano/6.jpg",
+      src: "/galleries/verano/6.jpg",
+      alt: "Placeholder Image 3",
+    },
+    {
+      href: "/galleries/verano/11.jpg",
+      src: "/galleries/verano/11.jpg",
+      alt: "Placeholder Image 4",
+    },
+    {
+      href: "/galleries/verano/1.jpg",
+      src: "/galleries/verano/1.jpg",
+      alt: "Placeholder Image 1",
+    },
+    {
+      href: "/galleries/verano/4.jpg",
+      src: "/galleries/verano/4.jpg",
+      alt: "Placeholder Image 2",
+    },
+    {
+      href: "/galleries/verano/6.jpg",
+      src: "/galleries/verano/6.jpg",
+      alt: "Placeholder Image 3",
+    },
+    {
+      href: "/galleries/verano/11.jpg",
+      src: "/galleries/verano/11.jpg",
+      alt: "Placeholder Image 4",
+    },
+    {
+      href: "/galleries/verano/1.jpg",
+      src: "/galleries/verano/1.jpg",
+      alt: "Placeholder Image 1",
+    },
+    {
+      href: "/galleries/verano/4.jpg",
+      src: "/galleries/verano/4.jpg",
+      alt: "Placeholder Image 2",
+    },
+    {
+      href: "/galleries/verano/6.jpg",
+      src: "/galleries/verano/6.jpg",
+      alt: "Placeholder Image 3",
+    },
+    {
+      href: "/galleries/verano/11.jpg",
+      src: "/galleries/verano/11.jpg",
+      alt: "Placeholder Image 4",
+    },
+  ],
+};
 ---
 
 <style>
@@ -173,6 +259,7 @@ const sideNavigation = [
               Galería de imágenes
             </h2>
 
+            <Gallery config={galleryConfig} />
             <div class="grid grid-cols-[320px_1fr] gap-8"></div>
           </article>
 

@@ -1,0 +1,40 @@
+---
+// Gallery.astro
+// Expecting a prop "config" with an "images" array
+const { config } = Astro.props;
+---
+
+<!-- Include GLightbox CSS -->
+<link rel="stylesheet" href="/vendor/glightbox/glightbox.min.css" />
+
+<div class="gallery grid grid-cols-4 gap-4">
+  {
+    config.images.map((image: { href: string; src: string; alt: string }) => (
+      <a
+        href={image.href}
+        class="glightbox block aspect-square overflow-hidden rounded-2xl"
+        data-gallery="gallery"
+      >
+        <img
+          src={image.src}
+          class="object-cover w-full h-full"
+          alt={image.alt}
+        />
+      </a>
+    ))
+  }
+</div>
+
+<!-- GLightbox Initialization Script -->
+<script is:inline src="/vendor/glightbox/glightbox.min.js"></script>
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    const lightbox = GLightbox({
+      selector: ".glightbox",
+      openEffect: "zoom",
+      closeEffect: "fade",
+      slideEffect: "slide",
+      loop: false,
+    });
+  });
+</script>

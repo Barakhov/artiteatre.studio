@@ -16,7 +16,6 @@
     "@fontsource/hanken-grotesk": "^5.1.1",
     "astro": "^4.16.10",
     "astro-seo": "0.7.2",
-    "gsap": "^3.12.7",
     "marked": "^15.0.7",
     "tailwind-merge": "^2.6.0"
   },
