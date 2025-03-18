@@ -7,6 +7,7 @@ import AsideNavObserver from "@/components/shared/AsideNavObserver.astro";
 import RevealImage from "@/components/shared/RevealImage.astro";
 import Gallery from "@/components/Gallery.astro";
 import CustomCursor from "@/components/shared/CustomCursor.astro";
+import FlipCard from "@/components/FlipCard.astro";
 
 // Get the intro entry
 const introEntry = await getEntry("pages", "verano-intro");
@@ -127,7 +128,7 @@ const galleryConfig = {
 <Layout>
   <CustomCursor />
   <div
-    class="absolute top-0 w-full h-32 z-20 bg-gradient-to-b from-verano-primary/50 to-verano-primary/0"
+    class="absolute top-[71px] w-full h-24 z-20 bg-gradient-to-b from-verano-primary/30 to-verano-primary/0"
   >
   </div>
   <main class="relative z-10 bg-white shadow-main">
@@ -261,7 +262,7 @@ const galleryConfig = {
               Galería de imágenes
             </h2>
 
-            <div data-cursor-text="Ver" data-cursor-color="#76FF03">
+            <div data-cursor-text="Detalle " data-cursor-color="#76FF03">
               <Gallery config={galleryConfig} />
             </div>
           </article>
@@ -277,6 +278,26 @@ const galleryConfig = {
             >
               Información
             </h2>
+            <div
+              class="grid grid-cols-2 grid-rows-2 gap-4 mb-8"
+              data-cursor-text="Mas información"
+              data-cursor-color="#76FF03"
+            >
+              <FlipCard
+                frontTitle="julio"
+                frontImage="/flamingo-unsplash.jpg"
+              />
+              <FlipCard frontTitle="agosto" frontImage="/jump-unsplash.jpg" />
+              <FlipCard
+                frontTitle="julio & agosto"
+                frontImage="/kids-unsplash.jpg"
+              />
+              <FlipCard
+                frontTitle="por semanas"
+                frontImage="/donut-unsplash.jpg"
+              />
+            </div>
+
             <section class="marked text-lg">
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.

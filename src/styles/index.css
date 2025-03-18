@@ -3,46 +3,55 @@
   transition: background 0.3s ease-in-out;
 }
 
-.shape-1,
-.shape-4 {
+.shape-teatro,
+.shape-contacto {
   border-radius: 0;
   animation: shape-anim 24s infinite forwards linear;
 }
 
-.shape-2,
-.shape-3 {
+.shape-arte,
+.shape-verano {
   border-radius: 100%/100%;
   animation: shape-anim-rev 24s infinite forwards linear;
 }
 
 @media (min-width: 768px) {
-  .shape-1,
-  .shape-3 {
+  .shape-teatro,
+  .shape-verano {
     border-radius: 0;
     animation: shape-anim 24s infinite forwards linear;
   }
 
-  .shape-2,
-  .shape-4 {
+  .shape-arte,
+  .shape-contacto {
     border-radius: 100%/100%;
     animation: shape-anim-rev 24s infinite forwards linear;
   }
 }
 
-.shape-2 {
+.shape-arte {
   animation-delay: 0.1s;
 }
 
-.shape-3 {
+.shape-verano {
   animation-delay: 0.7s;
 }
 
-.shape-4 {
+.shape-contacto {
   animation-delay: 0.8s;
 }
 
-.shapes-container:has(a:hover) a:not(:hover) .shape {
-  background: #f3f4f6 !important; /* bg-gray-100  */
+.shapes-container:has(a:hover) a:not(:hover) .shape-teatro {
+  @apply bg-teatro-50;
+}
+.shapes-container:has(a:hover) a:not(:hover) .shape-arte {
+  @apply bg-arte-50;
+}
+.shapes-container:has(a:hover) a:not(:hover) .shape-verano {
+  @apply bg-verano-50;
+}
+.shapes-container:has(a:hover) a:not(:hover) .shape-contacto {
+  @apply bg-contacto-50;
 }
 
 .wave {

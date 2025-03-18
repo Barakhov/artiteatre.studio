@@ -1,0 +1,149 @@
+---
+// FlipCard.astro
+const {
+  frontImage = "/flamingo-unsplash.jpg",
+  frontPretitle = "Escuela de verano",
+  frontTitle = "Mes",
+  backText = "Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit amet!",
+} = Astro.props;
+---
+
+<style>
+  .card-container {
+    perspective: 1000px;
+    width: 100%;
+    margin: auto;
+  }
+  .card {
+    width: 100%;
+    min-height: 520px;
+    position: relative;
+    transition: transform 500ms ease-out;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+  /* When the card is flipped, rotate it 180 degrees */
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+  .card figure {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card .front {
+    @apply bg-verano-secondary;
+    /* @apply bg-verano-primary; */
+
+    /* background-color: #76ff03; */
+    z-index: 2;
+    border-radius: 16px;
+    text-align: center;
+    color: white;
+    /*position: relative;*/
+  }
+  .card .front::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    /* background: rgb(51, 105, 30);
+    background: linear-gradient(
+      180deg,
+      rgba(51, 105, 30, 0) 0%,
+      rgba(51, 105, 30, 1) 100%
+    ); */
+
+    background: rgba(0, 0, 0, 0.132);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.149) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    border-radius: 16px;
+    overflow: auto;
+  }
+  .card .back {
+    @apply bg-verano-50;
+    transform: rotateY(180deg);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 16px;
+  }
+  /* Optional: Styling for figcaptions */
+  .card figcaption {
+    max-width: 330px;
+    margin-inline: auto;
+    z-index: 1;
+  }
+</style>
+
+<div class="card-container">
+  <div class="card flipCard" data-front-image={frontImage}>
+    <figure class="front">
+      <figcaption>
+        <p class="uppercase text-2xl">{frontPretitle}</p>
+        <h3 class="font-semibold italic text-7xl mb-4">{frontTitle}</h3>
+      </figcaption>
+    </figure>
+    <figure class="back">
+      <figcaption>
+        <p class="text-xl mb-8 italic">
+          del <span class="font-semibold">1</span> martes al <span
+            class="font-semibold">31</span
+          > jueves
+        </p>
+        <p class="uppercase font-semibold text-6xl mb-8">460€</p>
+        <a
+          class="py-1 px-4 bg-verano-primary rounded-full hover:bg-verano-secondary hover:text-white transition-colors duration-300 text-xl"
+          href="/">Descuentos</a
+        >
+        <p class="text-2xl mt-8 mb-4 italic">
+          de lunes a viernes <br /> de <span class="font-semibold">9h</span> a <span
+            class="font-semibold">14h</span
+          >
+        </p>
+        <p class="text-gray-600">
+          (se abre <span class="font-semibold">8:45h</span> y se cierra <span
+            class="font-semibold">14:h</span
+          >)
+        </p>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    // Select all cards with the class "flipCard"
+    const cards = document.querySelectorAll(".flipCard");
+    cards.forEach((card) => {
+      const frontImage = card.getAttribute("data-front-image");
+      const frontElement = card.querySelector(".front");
+      if (frontElement) {
+        (frontElement as HTMLElement).style.background =
+          `url("${frontImage}") no-repeat center/cover`;
+      }
+
+      card.addEventListener("click", () => {
+        const containers = document.querySelectorAll(".card-container");
+        containers.forEach((container) => {
+          (container as HTMLElement).style.zIndex = "";
+        });
+        card.classList.toggle("is-flipped");
+        const container = card.closest(".card-container");
+        if (container) {
+          (container as HTMLElement).style.zIndex = "10";
+        }
+      });
+    });
+  });
+</script>

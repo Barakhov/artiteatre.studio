@@ -1,6 +1,8 @@
 type Social = {
   label: string;
   link: string;
+  icon: string;
+  tooltip: string;
 };
 
 type Information = {
@@ -15,12 +17,16 @@ const information: Information = {
   mail: "artiteatre.nadiabanegas@gmail.com",
   socials: [
     {
-      label: "Facebook - Musicaldansa",
+      label: "Musicaldansa",
       link: "https://www.facebook.com/Musicaldansa/",
+      icon: "facebook",
+      tooltip: "Escuela de teatro",
     },
     {
-      label: "Instagram - Musicaldansa",
+      label: "Musicaldansa",
       link: "https://www.instagram.com/musicaldansa/",
+      icon: "instagram",
+      tooltip: "Escuela de teatro",
     },
   ],
   phone: "971 31 31 47 / 666 231 065",

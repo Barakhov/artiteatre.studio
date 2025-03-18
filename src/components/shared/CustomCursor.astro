@@ -2,51 +2,12 @@
 
 ---
 
-<style>
-  [data-cursor-text] {
-    width: 60%;
-    height: 30vh;
-    background-color: #eaeaea80;
-    border: 4px dashed #888;
-    display: grid;
-    place-items: center;
-    font-size: 2rem;
-    color: #888;
-    margin: 2vh auto;
-    /* cursor: none; */ /* Uncomment to hide the default cursor */
-  }
-  .cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: transparent;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-  }
-  .cursor .cursor-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    color: #000;
-    /* font-size: 0.75rem; */
-    /*white-space: nowrap;*/
-    opacity: 0;
-    pointer-events: none;
-    text-align: center;
-    width: 100%;
-    height: fit-content;
-    padding-inline: 8px;
-  }
-</style>
-
-<!-- CustomCursor.astro -->
-<div class="cursor">
-  <span class="cursor-text"></span>
+<div
+  class="fixed top-0 left-0 z-[9999] w-[120px] h-[120px] rounded-full bg-transparent pointer-events-none transform -translate-x-1/2 -translate-y-1/2 cursor"
+>
+  <span
+    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 scale-0 text-black text-lg leading-[120%] opacity-0 pointer-events-none text-center w-full h-auto px-3 cursor-text"
+  ></span>
 </div>
 
 <script is:inline>
@@ -65,7 +26,7 @@
       mouseX = e.clientX;
       mouseY = e.clientY;
       gsap.to(cursor, {
-        duration: 0.5,
+        duration: 1.2,
         x: mouseX,
         y: mouseY,
         ease: "power3.out",
@@ -110,9 +71,7 @@
         duration: 0.5,
         opacity: 0,
         scale: 0,
-        backgroundColor: getComputedStyle(
-          document.documentElement
-        ).getPropertyValue("--default-cursor-color"),
+        backgroundColor: "transparent",
         ease: "power3.out",
       });
     }
