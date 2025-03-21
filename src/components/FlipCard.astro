@@ -1,9 +1,16 @@
 ---
+import VeranoIcon from "@/components/shared/VeranoIcon.astro";
+
 const {
-  iconName = "pinwheel.svg",
+  iconName = "",
   frontPretitle = "Escuela de verano",
   frontTitle = "Mes",
-  backText = "Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit amet!",
+  dates = "",
+  price = "",
+  discountLink = "",
+  discountText = "",
+  schedule = "de lunes a viernes",
+  time = "de 9h a 14h",
 } = Astro.props;
 ---
 
@@ -77,31 +84,31 @@ const {
             {frontTitle}
           </h3>
         </figcaption>
-        <img class="size-28" src={`/icons/verano/${iconName}`} alt="Icon" />
+        <VeranoIcon name={iconName} size="28" />
       </div>
     </figure>
     <figure class="back">
       <figcaption>
         <p class="uppercase text-xl mb-6 text-verano-secondary">
-          del <span class="font-semibold">1</span> martes al <span
-            class="font-semibold">31</span
-          > jueves
+          {dates}
         </p>
-        <p class="font-semibold italic text-7xl leading-none mb-6">460€</p>
-        <a
-          class="inline-block py-1 px-4 bg-verano-primary rounded-full hover:bg-verano-secondary hover:text-white transition-colors duration-300 text-xl"
-          href="/">Descuentos</a
-        >
+        <p class="font-semibold italic text-7xl leading-none mb-6">{price}</p>
+        {
+          discountLink && (
+            <a
+              class="inline-block py-1 px-4 bg-verano-primary rounded-full hover:bg-verano-secondary hover:text-white transition-colors duration-300 text-xl"
+              href={discountLink}
+              target="_blank"
+            >
+              {discountText}
+            </a>
+          )
+        }
         <p class="text-xl mt-6 mb-4 italic text-verano-secondary">
-          de lunes a viernes <br /> de <span class="font-semibold">9h</span> a <span
-            class="font-semibold">14h</span
-          >
+          {schedule}
+          <br />
+          {time}
         </p>
-        <!-- <p class="text-gray-600">
-          (se abre <span class="font-semibold">8:45h</span> y se cierra <span
-            class="font-semibold">14:h</span
-          >)
-        </p> -->
       </figcaption>
     </figure>
   </div>

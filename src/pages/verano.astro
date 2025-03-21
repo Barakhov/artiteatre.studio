@@ -204,51 +204,96 @@ const galleryConfig = {
               Materias
             </h2>
 
-            <div class="grid grid-cols-[320px_1fr] gap-8">
+            <div class="grid grid-cols-[1fr_1fr] gap-8 mb-12">
               <RevealImage
-                imageUrl="/teatre.jpg"
+                imageUrl="/verano-naturaleza.jpg"
                 bgColor="bg-verano-50"
                 alt="A beautiful scene"
                 animationDuration={1.5}
               />
 
-              <div class="marked text-lg">
+              <div class="marked text-lg flex flex-col gap-4 justify-center">
+                <h3
+                  class="font-semibold text-2xl text-verano-secondary capitalize"
+                >
+                  Actividades artísticas
+                </h3>
                 <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Eveniet eos ipsam iusto omnis sequi voluptatem distinctio
-                  veniam obcaecati quasi, tempore necessitatibus, adipisci
-                  deserunt, alias inventore rerum quisquam facilis quis
-                  incidunt. Lorem, ipsum dolor sit amet consectetur adipisicing
-                  elit. Eveniet eos ipsam iusto omnis sequi voluptatem
-                  distinctio veniam obcaecati quasi, tempore necessitatibus,
-                  adipisci deserunt, alias inventore rerum quisquam facilis quis
-                  incidunt.
+                  Nos adentraremos en el mundo del arte a través de la
+                  experimentación con distintos materiales y potenciando la
+                  creatividad de cada alumno al mismo tiempo que iremos
+                  adquiriendo destreza manual aplicada según la edad de cada
+                  uno. Uniremos el concepto del arte y el del ecologismo
+                  mediante la utilización de materiales reciclados encontrados
+                  en el entorno
                 </p>
+              </div>
+            </div>
+            <div class="grid grid-cols-[1fr_1fr] gap-8 mb-12">
+              <RevealImage
+                imageUrl="/verano-teatro.jpg"
+                bgColor="bg-verano-50"
+                alt="A beautiful scene"
+                animationDuration={1.5}
+              />
 
-                <br />
+              <div class="marked text-lg flex flex-col gap-4 justify-center">
+                <h3 class="font-semibold text-2xl text-verano-secondary">
+                  Actividades teatrales
+                </h3>
                 <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Eveniet eos ipsam iusto omnis sequi voluptatem distinctio
-                  veniam obcaecati quasi, tempore necessitatibus, adipisci
-                  deserunt, alias inventore rerum quisquam facilis quis
-                  incidunt. Lorem, ipsum dolor sit amet consectetur adipisicing
-                  elit. Eveniet eos ipsam iusto omnis sequi voluptatem
-                  distinctio veniam obcaecati quasi, tempore necessitatibus,
-                  adipisci deserunt, alias inventore rerum quisquam facilis quis
-                  incidunt.
+                  ¿Qué mejor manera de potenciar la creatividad que con el arte
+                  y el teatro? Gracias al carácter plástico del teatro podremos
+                  incluir otros valores como el trabajo en grupo, el diálogo, el
+                  valorar tanto la propia opinión como la de los demás… en
+                  definitiva dar herramientas contra los valores actuales de
+                  esta sociedad: el SÍ y LOS DEMÁS TAMBIÉN frente al NO y el
+                  SÓLO YO. Y todo a través del juego como herramienta de
+                  aprendizaje.
                 </p>
+              </div>
+            </div>
+            <div class="grid grid-cols-[1fr_1fr] gap-8 mb-12">
+              <RevealImage
+                imageUrl="/verano-naturaleza.jpg"
+                bgColor="bg-verano-50"
+                alt="A beautiful scene"
+                animationDuration={1.5}
+              />
 
-                <br />
+              <div class="marked text-lg flex flex-col gap-4 justify-center">
+                <h3
+                  class="font-semibold text-2xl text-verano-secondary capitalize"
+                >
+                  Somos naturaleza
+                </h3>
                 <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Eveniet eos ipsam iusto omnis sequi voluptatem distinctio
-                  veniam obcaecati quasi, tempore necessitatibus, adipisci
-                  deserunt, alias inventore rerum quisquam facilis quis
-                  incidunt. Lorem, ipsum dolor sit amet consectetur adipisicing
-                  elit. Eveniet eos ipsam iusto omnis sequi voluptatem
-                  distinctio veniam obcaecati quasi, tempore necessitatibus,
-                  adipisci deserunt, alias inventore rerum quisquam facilis quis
-                  incidunt.
+                  Necesitamos la naturaleza para vivir. Hay que respetarla,
+                  respirarla. Para poder vivir con armonía hace falta conocer la
+                  naturaleza, observarla y escucharla. Porque cuidamos aquello
+                  que amamos pero antes debemos conocerlo para poder amarlo.
+                </p>
+              </div>
+            </div>
+            <div class="grid grid-cols-[1fr_1fr] gap-8 mb-12">
+              <RevealImage
+                imageUrl="/verano-teatro.jpg"
+                bgColor="bg-verano-50"
+                alt="A beautiful scene"
+                animationDuration={1.5}
+              />
+
+              <div class="marked text-lg flex flex-col gap-4 justify-center">
+                <h3
+                  class="font-semibold text-2xl text-verano-secondary capitalize"
+                >
+                  Y mucho mas!
+                </h3>
+                <p>
+                  Y además, excursiones, juegos de mesa, juegos cooperativos,
+                  corresponsales, asambleas, canciones, cuaderno de bitácora,
+                  lecturas, minfullness y mucho más. Todo aquello que completa
+                  educativamente para pasar el mejor verano.
                 </p>
               </div>
             </div>
@@ -279,37 +324,39 @@ const galleryConfig = {
               Información
             </h2>
             <div class="grid grid-cols-2 grid-rows-2 gap-12 mb-16">
-              <FlipCard frontTitle="julio" iconName="corners-1.svg" />
-              <FlipCard frontTitle="agosto" iconName="corners-2.svg" />
-              <FlipCard frontTitle="julio & agosto" iconName="pinwheel.svg" />
-              <FlipCard frontTitle="por semanas" iconName="quarters.svg" />
+              <FlipCard
+                frontTitle="julio"
+                iconName="julio"
+                dates="del 1 martes al 31 jueves"
+                price="460€"
+                discountLink="/assets/pec_escola_destiu_cast.pdf#page=39"
+                discountText="Ver descuentos"
+              />
+              <FlipCard
+                frontTitle="agosto"
+                iconName="agosto"
+                dates="del 1 viernes al 29 viernes"
+                price="460€"
+                discountLink="/assets/pec_escola_destiu_cast.pdf#page=39"
+                discountText="Ver descuentos"
+              />
+              <FlipCard
+                frontTitle="julio & agosto"
+                iconName="dosmeses"
+                dates="del 1 de julio al 29 de agosto"
+                price="828€"
+                discountLink="/assets/pec_escola_destiu_cast.pdf#page=39"
+                discountText="Ver descuentos"
+              />
+              <FlipCard
+                frontTitle="por semanas"
+                iconName="semanas"
+                dates="5 días seguidos"
+                price="140€"
+              />
             </div>
 
             <section class="marked text-lg">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
-                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
-                alias inventore rerum quisquam facilis quis incidunt. Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
-                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
-                quasi, tempore necessitatibus, adipisci deserunt, alias
-                inventore rerum quisquam facilis quis incidunt.
-              </p>
-
-              <br />
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
-                obcaecati quasi, tempore necessitatibus, adipisci deserunt,
-                alias inventore rerum quisquam facilis quis incidunt. Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos
-                ipsam iusto omnis sequi voluptatem distinctio veniam obcaecati
-                quasi, tempore necessitatibus, adipisci deserunt, alias
-                inventore rerum quisquam facilis quis incidunt.
-              </p>
-
-              <br />
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
@@ -340,7 +387,7 @@ const galleryConfig = {
                   <h3 class="mb-6 text-2xl font-semibold text-verano-secondary ">
                     {teacher.name}
                   </h3>
-                  <div class="grid grid-cols-[320px_1fr] gap-8">
+                  <div class="grid grid-cols-[1fr_3fr] gap-8">
                     <RevealImage
                       imageUrl={teacher.image}
                       bgColor="bg-verano-50"
@@ -372,7 +419,7 @@ const galleryConfig = {
                 documents.map((docItem: any) => (
                   <a
                     href={docItem.doc}
-                    download
+                    target="_blank"
                     class="mb-6 py-4 px-6 rounded-full inline-flex w-fit gap-3 items-center justify-start hover:bg-verano-primary transition-colors duration-300 bg-verano-50"
                   >
                     <span class="text-xl font-semiboldNO">{docItem.name}</span>
