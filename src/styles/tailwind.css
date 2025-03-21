@@ -11,7 +11,7 @@
     margin-bottom: 16px;
   }
 
-  a {
+  a:not(.no-underline) {
     text-decoration: underline;
     &:hover {
       text-decoration: none;

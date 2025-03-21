@@ -1,5 +1,5 @@
 ---
-const { name = "dosmeses", size = "28" } = Astro.props as {
+const { name = "dosmeses", size = "size-28" } = Astro.props as {
   name?: "dosmeses" | "julio" | "agosto" | "semanas";
   size?: string;
 };
@@ -28,4 +28,4 @@ const icons = {
 };
 ---
 
-<div class={`size-${size}`} set:html={icons[name]} />
+<div class={`${size}`} set:html={icons[name]} />
