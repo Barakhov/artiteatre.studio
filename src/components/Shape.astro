@@ -23,7 +23,7 @@ const {
   cursorColor,
 } = Astro.props;
 
-const baseClass = "w-40";
+const baseClass = "w-2/3";
 const mergedClass = twMerge(baseClass, imgClass);
 ---
 
@@ -35,6 +35,6 @@ const mergedClass = twMerge(baseClass, imgClass);
 >
   <div class={`shape ${shapeClass} ${bgColor} absolute inset-0`}></div>
   <div class="absolute inset-0 flex items-center justify-center z-10">
-    <img class={mergedClass} src={imgSrc} alt={imgAlt} />
+    <img class={`${mergedClass}`} src={imgSrc} alt={imgAlt} />
   </div>
 </a>
