@@ -31,14 +31,12 @@ collections:
       - { name: body, label: Body, widget: markdown }
   - name: inicio
     label: Inicio
-    files:
-      - name: index
-        label: Inicio
-        file: src/content/inicio.md
-        fields:
-          - { label: Titulo, name: title, widget: string }
-          - { label: Introduccion, name: intro, widget: markdown }
-          - { label: Descripcion, name: description, widget: markdown }
+    folder: src/content/inicio
+    format: frontmatter
+    fields:
+      - { label: Titulo, name: title, widget: string }
+      - { label: Introduccion, name: intro, widget: markdown }
+      - { label: Descripcion, name: description, widget: markdown }
   - name: verano
     label: Verano
     files:
