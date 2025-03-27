@@ -1,7 +1,16 @@
 ---
 title: "Profesorado"
-teachers: |
-  Nuestro equipo docente está formado por profesionales altamente cualificados y con amplia experiencia en educación infantil y actividades creativas. Cada uno de nuestros profesores está especializado en diferentes áreas, lo que nos permite ofrecer una experiencia educativa completa y enriquecedora.
-
-  El personal está comprometido con la seguridad y el bienestar de los niños, y trabaja en estrecha colaboración para crear un ambiente acogedor y estimulante. Además, todos nuestros profesores están formados en primeros auxilios y siguen protocolos de seguridad actualizados.
+teachers:
+  - name: "Profesor 1"
+    image: "/assets/teachers/teacher1.jpg"
+    image_alt: "Profesor 1 impartiendo clase"
+    description: |
+      Profesor especializado en artes plásticas con más de 10 años de experiencia en educación infantil.
+      Su enfoque pedagógico se centra en fomentar la creatividad y la expresión artística en los niños.
+  - name: "Profesor 2"
+    image: "/assets/teachers/teacher2.jpg"
+    image_alt: "Profesor 2 en el aula"
+    description: |
+      Experto en teatro infantil y expresión corporal. Ha desarrollado programas educativos
+      que combinan el juego con el aprendizaje teatral para niños de diferentes edades.
 ---
