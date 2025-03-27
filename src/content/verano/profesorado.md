@@ -24,4 +24,15 @@ teachers:
 
 
       Ha trabajado como profesora de tiro con arco en diversos colegios de Ibiza, además ha sido deportista de alto rendimiento, demostrando su habilidad para enseñar y su pasión por el deporte.
+  - name: Raquel Orellana Guasch
+    image: /assets/raquel-profe.jpg
+    image_alt: Foto de Raquel soriendo a camara
+    description: >-
+      Nacida en Ibiza el 1994, dibujante de manga e ilustradora. Cursé mis
+      estudios artísticos en la Escuela Joso, en la Escuela Llotja y en la
+      Escuela Groc en Barcelona, y estoy especializada en dibujo manga y
+      narrativa de cómic.
+
+
+      Empecé trabajando de monitora de tiempo libre para el Ayuntamiento de Sant Josep de Sa Talaia en la escuela de verano de Can Raspalls. Estuve trabajando en la escuela de arte Novart en Barcelona desde el 2018 hasta el 2023. También he sido colorista (encargada de ponerle color a los cómics) de la editorial catalana Letrablanka, y sigo trabajando con proyectos para diferentes editoriales. Actualmente estoy dibujando y guionizando mi primer manga bajo el sello de una de las editoriales que comento anteriormente.
 ---
