@@ -14,6 +14,7 @@
     "@astrojs/tailwind": "^5.1.2",
     "@divriots/jampack": "^0.30.0",
     "@fontsource/hanken-grotesk": "^5.1.1",
+    "@fontsource/lora": "^5.2.5",
     "astro": "^4.16.10",
     "astro-seo": "0.7.2",
     "marked": "^15.0.7",

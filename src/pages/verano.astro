@@ -10,15 +10,15 @@ import CustomCursor from "@/components/shared/CustomCursor.astro";
 import FlipCard from "@/components/FlipCard.astro";
 
 // Get the intro entry
-const introEntry = await getEntry("pages", "verano-intro");
+const introEntry = await getEntry("verano", "intro");
 const { title: introTitle, intro } = introEntry.data;
 
 // Get the teachers entry
-const teachersEntry = await getEntry("pages", "verano-profesorado");
+const teachersEntry = await getEntry("verano", "profesorado");
 const { title: teacherTitle, teachers } = teachersEntry.data;
 
 // Get the documents entry
-const descargaEntry = await getEntry("pages", "verano-descargas");
+const descargaEntry = await getEntry("verano", "descargas");
 const { title: documentTitle, documents } = descargaEntry.data;
 
 const sideNavigation = [
@@ -127,10 +127,10 @@ const galleryConfig = {
 </style>
 <Layout>
   <CustomCursor />
-  <div
+  <!-- <div
     class="absolute top-[71px] w-full h-24 z-20 bg-gradient-to-b from-verano-primary/30 to-verano-primary/0"
   >
-  </div>
+  </div> -->
   <main class="relative z-10 bg-white shadow-main">
     <Container>
       <!-- Hero Section -->
@@ -140,7 +140,7 @@ const galleryConfig = {
         </h1>
       </article>
       <article class="mb-28 scroll-mt-28">
-        <!-- <h2 class="mb-8 text-4xl font-semibold italic text-verano-secondary">
+        <!-- <h2 class="mb-8 text-5xl font-bold italic text-verano-secondary">
           {introTitle}
         </h2> -->
         <section class="grid grid-cols-2 gap-8">
@@ -163,14 +163,14 @@ const galleryConfig = {
             </video>
           </div>
           <div class="marked text-lg">
-            <p set:html={marked(intro)} />
+            <p class="font-serif" set:html={marked(intro)} />
           </div>
         </section>
       </article>
 
       <div class="relative flex gap-8">
         <aside class="h-fit w-1/6 sticky top-28">
-          <nav id="menu-submenu">
+          <nav id="menu-submenu" class="mb-[120px]">
             <ul class="flex flex-col gap-2">
               {
                 sideNavigation.map((item: { label: string; href: string }) => (
@@ -198,9 +198,7 @@ const galleryConfig = {
             id="materias"
             class="mb-24 scroll-mt-28"
           >
-            <h2
-              class="mb-8 text-4xl font-semibold italic text-verano-secondary"
-            >
+            <h2 class="mb-8 text-5xl font-bold italic text-verano-secondary">
               Materias
             </h2>
 
@@ -215,11 +213,11 @@ const galleryConfig = {
 
               <div class="marked text-lg flex flex-col gap-4 justify-center">
                 <h3
-                  class="font-semibold text-2xl text-verano-secondary capitalize"
+                  class="font-semibold text-4xl text-verano-secondary capitalize"
                 >
                   Actividades artísticas
                 </h3>
-                <p>
+                <p class="font-serif">
                   Nos adentraremos en el mundo del arte a través de la
                   experimentación con distintos materiales y potenciando la
                   creatividad de cada alumno al mismo tiempo que iremos
@@ -241,10 +239,12 @@ const galleryConfig = {
             </div>
             <div class="grid grid-cols-[1fr_1fr] gap-8 mb-12">
               <div class="marked text-lg flex flex-col gap-4 justify-center">
-                <h3 class="font-semibold text-2xl text-verano-secondary">
+                <h3
+                  class="font-semibold text-4xl text-verano-secondary capitalize"
+                >
                   Actividades teatrales
                 </h3>
-                <p>
+                <p class="font-serif">
                   ¿Qué mejor manera de potenciar la creatividad que con el arte
                   y el teatro? Gracias al carácter plástico del teatro podremos
                   incluir otros valores como el trabajo en grupo, el diálogo, el
@@ -282,11 +282,11 @@ const galleryConfig = {
 
               <div class="marked text-lg flex flex-col gap-4 justify-center">
                 <h3
-                  class="font-semibold text-2xl text-verano-secondary capitalize"
+                  class="font-semibold text-4xl text-verano-secondary capitalize"
                 >
                   Somos naturaleza
                 </h3>
-                <p>
+                <p class="font-serif">
                   Necesitamos la naturaleza para vivir. Hay que respetarla,
                   respirarla. Para poder vivir con armonía hace falta conocer la
                   naturaleza, observarla y escucharla. Porque cuidamos aquello
@@ -306,11 +306,11 @@ const galleryConfig = {
             <div class="grid grid-cols-[1fr_1fr] gap-8 mb-12">
               <div class="marked text-lg flex flex-col gap-4 justify-center">
                 <h3
-                  class="font-semibold text-2xl text-verano-secondary capitalize"
+                  class="font-semibold text-4xl text-verano-secondary capitalize"
                 >
                   Y mucho mas!
                 </h3>
-                <p>
+                <p class="font-serif">
                   Y además, excursiones, juegos de mesa, juegos cooperativos,
                   corresponsales, asambleas, canciones, cuaderno de bitácora,
                   lecturas, minfullness y mucho más. Todo aquello que completa
@@ -337,9 +337,7 @@ const galleryConfig = {
 
           <!-- Gallery Section -->
           <article data-item="observed" id="galeria" class="mb-24 scroll-mt-28">
-            <h2
-              class="mb-8 text-4xl font-semibold italic text-verano-secondary"
-            >
+            <h2 class="mb-8 text-5xl font-bold italic text-verano-secondary">
               Galería de imágenes
             </h2>
 
@@ -354,9 +352,7 @@ const galleryConfig = {
             id="informacion"
             class="mb-24 scroll-mt-28"
           >
-            <h2
-              class="mb-8 text-4xl font-semibold italic text-verano-secondary"
-            >
+            <h2 class="mb-8 text-5xl font-bold italic text-verano-secondary">
               Información
             </h2>
             <div class="grid grid-cols-2 grid-rows-2 gap-12 mb-16">
@@ -393,7 +389,7 @@ const galleryConfig = {
             </div>
 
             <section class="marked text-lg">
-              <p>
+              <p class="font-serif">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Eveniet eos ipsam iusto omnis sequi voluptatem distinctio veniam
                 obcaecati quasi, tempore necessitatibus, adipisci deserunt,
@@ -412,17 +408,12 @@ const galleryConfig = {
             id="profesorado"
             class="mb-24 scroll-mt-28"
           >
-            <h2
-              class="mb-8 text-4xl font-semibold italic text-verano-secondary"
-            >
+            <h2 class="mb-8 text-5xl font-bold italic text-verano-secondary">
               {teacherTitle}
             </h2>
             {
               teachers.map((teacher: any) => (
                 <section class="mb-12 last:mb-0">
-                  <h3 class="mb-6 text-2xl font-semibold text-verano-secondary ">
-                    {teacher.name}
-                  </h3>
                   <div class="grid grid-cols-[1fr_3fr] gap-8">
                     <RevealImage
                       imageUrl={teacher.image}
@@ -431,7 +422,13 @@ const galleryConfig = {
                       animationDuration={1.2}
                     />
                     <div class="marked text-lg">
-                      <p set:html={marked(teacher.description)} />
+                      <h3 class="mb-6 text-3xl font-semibold text-verano-secondary ">
+                        {teacher.name}
+                      </h3>
+                      <p
+                        class="font-serif"
+                        set:html={marked(teacher.description)}
+                      />
                     </div>
                   </div>
                 </section>
@@ -445,9 +442,7 @@ const galleryConfig = {
             id="documentos"
             class="mb-24 scroll-mt-28"
           >
-            <h2
-              class="mb-8 text-4xl font-semibold italic text-verano-secondary"
-            >
+            <h2 class="mb-8 text-5xl font-bold italic text-verano-secondary">
               {documentTitle}
             </h2>
             <div class="flex flex-col">

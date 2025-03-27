@@ -4,6 +4,12 @@
 
 <script is:inline>
   document.addEventListener("astro:page-load", () => {
+    // Select the first item by default
+    const firstListItem = document.querySelector("[list-item]:first-child");
+    if (firstListItem) {
+      firstListItem.classList.add("active");
+    }
+
     // Intersection Observer for highlighting menu items
     const items = document.querySelectorAll('[data-item="observed"]');
     const io = new IntersectionObserver(
@@ -28,8 +34,8 @@
       },
       {
         root: null,
-        rootMargin: "-10% 0px -50% 0px",
-        threshold: 0.1,
+        rootMargin: "-5% 0px -40% 0px", // Adjusted to be more lenient
+        threshold: 0.05, // Reduced threshold for better detection
       }
     );
 

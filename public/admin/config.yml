@@ -29,25 +29,25 @@ collections:
         }
       - { label: "Draft", name: "isDraft", widget: "boolean", default: false }
       - { name: body, label: Body, widget: markdown }
-  - name: pages
-    label: Pages
+  - name: inicio
+    label: Inicio
+    file: src/content/inicio.md
+    fields:
+      - { label: Titulo, name: title, widget: string }
+      - { label: Introduccion, name: intro, widget: markdown }
+      - { label: Descripcion, name: description, widget: markdown }
+  - name: verano
+    label: Verano
     files:
-      - name: inicio
-        label: Inicio
-        file: src/content/pages/inicio.md
+      - name: intro
+        label: "Introducción"
+        file: src/content/verano/intro.md
         fields:
           - { label: Titulo, name: title, widget: string }
           - { label: Introduccion, name: intro, widget: markdown }
-          - { label: Descripcion, name: description, widget: markdown }
-      - name: verano-intro
-        label: "Escuela de verano - Introducción"
-        file: src/content/pages/verano-intro.md
-        fields:
-          - { label: Titulo, name: title, widget: string }
-          - { label: Introduccion, name: intro, widget: markdown }
-      - name: verano-profesorado
-        label: "Escuela de verano - Profesorado"
-        file: src/content/pages/verano-profesorado.md
+      - name: profesorado
+        label: "Profesorado"
+        file: src/content/verano/profesorado.md
         fields:
           - { label: Titulo, name: title, widget: string }
           - label: "Profesoras/es"
@@ -68,9 +68,9 @@ collections:
                   widget: markdown,
                   required: true,
                 }
-      - name: verano-descargas
-        label: "Escuela de verano - Docs. para descargar"
-        file: src/content/pages/verano-descargas.md
+      - name: descargas
+        label: "Docs. para descargar"
+        file: src/content/verano/descargas.md
         fields:
           - { label: Titulo, name: title, widget: string }
           - label: "Documentos para descargar"
