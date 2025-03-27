@@ -82,3 +82,21 @@ collections:
             fields:
               - { label: "Nombre", name: name, widget: string, required: true }
               - { label: "Documento", name: doc, widget: file, required: true }
+      - name: materias
+        label: "Materias"
+        file: src/content/verano/materias.md
+        fields:
+          - { label: Titulo, name: title, widget: string }
+          - label: "Materias"
+            name: materias
+            widget: list
+            fields:
+              - { label: "Titulo", name: title, widget: string, required: true }
+              - { label: "Imagen", name: image, widget: image, required: true }
+              - { label: "Texto", name: text, widget: markdown, required: true }
+              - {
+                  label: "Enlace",
+                  name: enlace,
+                  widget: string,
+                  required: true,
+                }
