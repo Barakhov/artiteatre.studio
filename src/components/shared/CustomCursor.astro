@@ -12,6 +12,19 @@
 
 <script is:inline>
   document.addEventListener("astro:page-load", () => {
+    // Check if device is touch-enabled
+    const isTouchDevice =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+    // If it's a touch device, hide the cursor and return early
+    if (isTouchDevice) {
+      const cursor = document.querySelector(".cursor");
+      if (cursor) {
+        cursor.style.display = "none";
+      }
+      return;
+    }
+
     // Grab custom cursor elements
     const cursor = document.querySelector(".cursor");
     if (!cursor) return;
