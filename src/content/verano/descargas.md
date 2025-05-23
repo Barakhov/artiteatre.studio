@@ -12,5 +12,5 @@ documents:
   - name: Programa educatiu escola d'estiu (Català)
     doc: /assets/pec_escola_destiu_cat_2025.pdf
   - name: Programa educativo escola d'estiu (Castellano)
-    doc: /assets/pec_escola_destiu_cast.pdf
+    doc: /assets/pec_escola_destiu_cast_2025.pdf
 ---
