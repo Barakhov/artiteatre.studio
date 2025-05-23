@@ -10,7 +10,7 @@ documents:
   - name: Formulario de inscripción escuela de verano (Castellano)
     doc: /assets/formulario_de_inscripcion.pdf
   - name: Programa educatiu escola d'estiu (Català)
-    doc: /assets/pec_escola_destiu_cat.pdf
+    doc: /assets/pec_escola_destiu_cat_2025.pdf
   - name: Programa educativo escola d'estiu (Castellano)
-    doc: /assets/pec_escola_destiu_cast.pdf
+    doc: /assets/pec_escola_destiu_cast_2025.pdf
 ---
