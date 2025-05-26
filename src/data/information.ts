@@ -17,10 +17,10 @@ const information: Information = {
   mail: "artiteatre.nadiabanegas@gmail.com",
   socials: [
     {
-      label: "Musicaldansa",
-      link: "https://www.facebook.com/Musicaldansa/",
-      icon: "facebook",
-      tooltip: "Escuela de teatro",
+      label: "Aula viva",
+      link: "https://www.instagram.com/eltracmusicaldansa/",
+      icon: "instagram",
+      tooltip: "Escuela de verano",
     },
     {
       label: "Musicaldansa",

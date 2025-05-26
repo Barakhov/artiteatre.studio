@@ -7,7 +7,7 @@ import Shape from "@/components/Shape.astro";
 import { marked } from "marked";
 import CustomCursor from "@/components/shared/CustomCursor.astro";
 
-const inicioEntry = await getEntry("pages", "inicio");
+const inicioEntry = await getEntry("inicio", "inicio");
 const { title, intro, description } = inicioEntry.data;
 ---
 
