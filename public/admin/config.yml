@@ -8,7 +8,7 @@ backend:
 publish_mode: editorial_workflow
 media_folder: public/assets
 public_folder: /assets
-site_url: "https://aesthetic-elf-c76dc5.netlify.app/" # site name name here
+site_url: "https://artiteatre.studio/" # site name name here
 
 collections:
   - name: post
