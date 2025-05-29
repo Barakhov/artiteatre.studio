@@ -8,6 +8,7 @@ import RevealImage from "@/components/shared/RevealImage.astro";
 import Gallery from "@/components/Gallery.astro";
 import CustomCursor from "@/components/shared/CustomCursor.astro";
 import FlipCard from "@/components/FlipCard.astro";
+import SlideShow from "@/components/SlideShow.astro";
 
 // Get the intro entry
 const introEntry = await getEntry("verano", "intro");
@@ -180,32 +181,20 @@ const galleryConfig = {
         </h1>
       </article>
       <article class="mb-12 lg:mb-28 scroll-mt-28">
-        <div class="marked text-lg lg:columns-2">
+        <!-- <div class="marked text-lg lg:columns-2">
           <p class="font-serif" set:html={marked(intro)} />
-        </div>
+        </div> -->
         <!-- <h2 class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary">
           {introTitle}
         </h2> -->
-        <!-- <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div
-            class="aspect-video relative overflow-hidden rounded-2xl clip-path-[fill-box] order-1 md:order-none"
-            style="clip-path: fill-box;"
-          >
-            <video
-              class="w-full h-full object-cover"
-              loop
-              autoplay
-              muted
-              playsinline
-            >
-              <source src="/video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+        <section class="flex flex-col lg:flex-row gap-8 h-full">
+          <div class="w-full lg:min-w-[50%]">
+            <SlideShow />
           </div>
           <div class="marked text-lg order-2 lg:order-none">
             <p class="font-serif" set:html={marked(intro)} />
           </div>
-        </section> -->
+        </section>
       </article>
 
       <div class="relative flex gap-8">
