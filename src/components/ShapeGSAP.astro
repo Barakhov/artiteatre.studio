@@ -1,0 +1,88 @@
+---
+import { twMerge } from "tailwind-merge";
+
+export interface Props {
+  href: string;
+  bgColor: string;
+  imgSrc: string;
+  imgAlt: string;
+  imgClass?: string;
+  cursorText?: string;
+  cursorColor?: string;
+}
+
+const { href, bgColor, imgSrc, imgAlt, imgClass, cursorText, cursorColor } =
+  Astro.props;
+
+const baseClass = "w-2/3";
+const mergedClass = twMerge(baseClass, imgClass);
+---
+
+<a
+  href={href}
+  class="shapes-item aspect-square relative inline-block"
+  data-cursor-text={cursorText}
+  data-cursor-color={cursorColor}
+>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <svg
+      id="morph-svg"
+      class="w-full h-full"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <g class={bgColor} id="wrapper" style="transform-origin: 50% 50%;">
+        <path
+          id="shape"
+          class={`text-${bgColor.replace("bg-", "")}`}
+          d="M0,0 h100 v100 h-100 Z"
+          style="will-change: d; fill: currentColor;"></path>
+      </g>
+    </svg>
+  </div>
+  <div class="absolute inset-0 flex items-center justify-center z-10">
+    <img class={`${mergedClass}`} src={imgSrc} alt={imgAlt} />
+  </div>
+</a>
+
+<script>
+  declare const gsap: any;
+  declare const MorphSVGPlugin: any;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(MorphSVGPlugin);
+
+    const squarePath = "M0,0 h100 v100 h-100 Z";
+    const circlePath = "M50,0 A50,50 0 1,1 50,100 A50,50 0 1,1 50,0 Z";
+
+    const tl = gsap.timeline({
+      repeat: -1,
+      defaults: { duration: 0.5, ease: "none" },
+    });
+
+    tl.to("#shape", { morphSVG: circlePath }, 0)
+      .to(
+        "#morph-svg",
+        {
+          rotation: "+=45",
+          transformOrigin: "50% 50%",
+          transformBox: "fill-box",
+        },
+        0
+      )
+      .to({}, {}, "+=2.5")
+      .to("#shape", { morphSVG: squarePath }, 3)
+      .to(
+        "#morph-svg",
+        {
+          rotation: "+=135",
+          transformOrigin: "50% 50%",
+          transformBox: "fill-box",
+        },
+        3
+      )
+      .to({}, {}, "+=2.5");
+
+    tl.timeScale(1);
+  });
+</script>

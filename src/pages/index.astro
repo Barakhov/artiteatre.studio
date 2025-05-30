@@ -4,6 +4,7 @@ import { getEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/shared/Container.astro";
 import Shape from "@/components/Shape.astro";
+import ShapeGSAP from "@/components/ShapeGSAP.astro";
 import { marked } from "marked";
 import CustomCursor from "@/components/shared/CustomCursor.astro";
 
@@ -36,10 +37,9 @@ const { title, intro, description } = inicioEntry.data;
       <div
         class="shapes-container grid grid-cols-2 max-w-2xl w-full mx-auto lg:max-w-full lg:grid-cols-4 gap-2 px-4 pb-4 mt-auto"
       >
-        <Shape
+        <ShapeGSAP
           href="/teatro"
-          shapeClass="shape-teatro"
-          bgColor="bg-teatro-primary"
+          bgColor="text-teatro-primary"
           imgSrc="/logos/logo-totteatresvg.svg"
           imgAlt="artiteatre Logo"
           cursorText="Teatro"
