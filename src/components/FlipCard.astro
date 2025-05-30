@@ -69,6 +69,28 @@ const {
     margin-inline: auto;
     z-index: 1;
   }
+
+  @keyframes rotateAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    15% {
+      transform: rotate(180deg);
+    }
+    40% {
+      transform: rotate(180deg);
+    }
+    55% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .front-mobile-rotate-icon {
+    animation: rotateAnimation 4s infinite;
+  }
 </style>
 
 <div class="card-container">
@@ -93,6 +115,11 @@ const {
         </figcaption>
         <VeranoIcon name={iconName} size="size-20 md:size-28" />
       </div>
+      <img
+        class="front-mobile-rotate-icon absolute bottom-6 right-6 opacity-30 w-8 mt-1 lg:hidden"
+        src="/icons/rotate.svg"
+        alt="rotate card icon"
+      />
     </figure>
     <figure class="back">
       <figcaption>
