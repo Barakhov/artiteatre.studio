@@ -1,0 +1,17 @@
+---
+interface Props {
+  href: string;
+  text: string;
+}
+
+const { href, text } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  class="py-4 px-6 rounded-full inline-flex w-full md:w-fit gap-3 items-center justify-between md:justify-start hover:bg-verano-primary transition-colors duration-300 bg-verano-50"
+>
+  <span class="text-xl">{text}</span>
+  <img class="w-6" src="/icons/arrow-down.svg" alt="download document icon" />
+</a>

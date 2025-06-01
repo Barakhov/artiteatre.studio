@@ -8,6 +8,7 @@ import RevealImage from "@/components/shared/RevealImage.astro";
 import Gallery from "@/components/Gallery.astro";
 import CustomCursor from "@/components/shared/CustomCursor.astro";
 import FlipCard from "@/components/FlipCard.astro";
+import DocumentLink from "@/components/DocumentLink.astro";
 
 // Get the intro entry
 const introEntry = await getEntry("verano", "intro");
@@ -167,10 +168,6 @@ const galleryConfig = {
 </style>
 <Layout>
   <CustomCursor />
-  <!-- <div
-    class="absolute top-[71px] w-full h-24 z-20 bg-gradient-to-b from-verano-primary/30 to-verano-primary/0"
-  >
-  </div> -->
   <main class="relative z-10 bg-white shadow-main">
     <Container>
       <!-- Hero Section -->
@@ -179,33 +176,21 @@ const galleryConfig = {
           Aula viva - Escuela de verano
         </h1>
       </article>
-      <article class="mb-12 lg:mb-28 scroll-mt-28">
-        <div class="marked text-lg lg:columns-2">
+      <article class="mb-14 lg:mb-28 scroll-mt-28">
+        <div class="marked text-lg lg:columns-2 mb-12 lg:mb-8">
           <p class="font-serif" set:html={marked(intro)} />
         </div>
-        <!-- <h2 class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary">
-          {introTitle}
-        </h2> -->
-        <!-- <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div
-            class="aspect-video relative overflow-hidden rounded-2xl clip-path-[fill-box] order-1 md:order-none"
-            style="clip-path: fill-box;"
-          >
-            <video
-              class="w-full h-full object-cover"
-              loop
-              autoplay
-              muted
-              playsinline
-            >
-              <source src="/video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="marked text-lg order-2 lg:order-none">
-            <p class="font-serif" set:html={marked(intro)} />
-          </div>
-        </section> -->
+
+        <div class="flex flex-col gap-4 items-end">
+          <DocumentLink
+            href="/assets/pec_escola_destiu_cat_2025.pdf"
+            text="Programa educatiu escola d'estiu (Català)"
+          />
+          <DocumentLink
+            href="/assets/pec_escola_destiu_cast_2025.pdf"
+            text="Programa educativo escuela de verano (Castellano)"
+          />
+        </div>
       </article>
 
       <div class="relative flex gap-8">
@@ -591,6 +576,23 @@ const galleryConfig = {
                 price="140€"
               />
             </div>
+            <div class="flex items-start gap-4 flex-col">
+              <p>
+                Se puede encontrar <span class="font-semibold"
+                  >información más detallada</span
+                > en los siguientes enlaces:
+              </p>
+              <div class="flex flex-col gap-4">
+                <DocumentLink
+                  href="/assets/pec_escola_destiu_cat_2025.pdf"
+                  text="Programa educatiu escola d'estiu (Català)"
+                />
+                <DocumentLink
+                  href="/assets/pec_escola_destiu_cast_2025.pdf"
+                  text="Programa educativo escuela de verano (Castellano)"
+                />
+              </div>
+            </div>
           </article>
 
           <!-- Teachers Section -->
@@ -642,21 +644,10 @@ const galleryConfig = {
             >
               {documentTitle}
             </h2>
-            <div class="flex flex-col">
+            <div class="flex flex-col gap-4">
               {
                 documents.map((docItem: any) => (
-                  <a
-                    href={docItem.doc}
-                    target="_blank"
-                    class="mb-6 py-4 px-6 rounded-full inline-flex w-full md:w-fit gap-3 items-center justify-between md:justify-start hover:bg-verano-primary transition-colors duration-300 bg-verano-50"
-                  >
-                    <span class="text-xl font-semiboldNO">{docItem.name}</span>
-                    <img
-                      class="w-6"
-                      src="/icons/arrow-down.svg"
-                      alt="download document icon"
-                    />
-                  </a>
+                  <DocumentLink href={docItem.doc} text={docItem.name} />
                 ))
               }
             </div>
