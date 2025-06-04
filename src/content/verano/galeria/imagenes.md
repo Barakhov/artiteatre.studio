@@ -21,4 +21,6 @@ images:
     caption: "9"
   - image: /assets/10.jpg
     caption: "10"
+  - image: /assets/mola-lola.jpg
+    caption: "molo lola "
 ---
