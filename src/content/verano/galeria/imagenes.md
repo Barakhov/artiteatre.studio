@@ -1,10 +1,12 @@
 ---
 title: imagenes
 images:
-  - image: /assets/1.jpg
-    caption: "1"
+  - image: /assets/mola-lola.jpg
+    caption: gente feliz niña asustada
   - image: /assets/2.jpg
     caption: "2"
+  - image: /assets/1.jpg
+    caption: "1"
   - image: /assets/3.jpg
     caption: "3"
   - image: /assets/4.jpg
@@ -21,6 +23,4 @@ images:
     caption: "9"
   - image: /assets/10.jpg
     caption: "10"
-  - image: /assets/mola-lola.jpg
-    caption: gente feliz niña asustada
 ---
