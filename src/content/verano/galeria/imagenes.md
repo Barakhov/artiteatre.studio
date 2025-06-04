@@ -18,7 +18,9 @@ images:
   - image: /assets/8.jpg
     caption: "8"
   - image: /assets/9.jpg
-    caption: "10"
+    caption: "9"
   - image: /assets/10.jpg
     caption: "10"
+  - image: /assets/mola-lola.jpg
+    caption: gente feliz niña asustada
 ---
