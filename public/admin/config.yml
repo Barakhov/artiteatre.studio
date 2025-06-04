@@ -105,4 +105,14 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Título", name: "title", widget: "string", required: true }
-      - { label: "Imagen", name: "image", widget: "image", required: true }
+      - label: "Imágenes"
+        name: "images"
+        widget: "list"
+        fields:
+          - { label: "Imagen", name: "image", widget: "image", required: true }
+          - {
+              label: "Pie de foto",
+              name: "caption",
+              widget: "string",
+              required: true,
+            }
