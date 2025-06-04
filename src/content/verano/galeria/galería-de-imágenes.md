@@ -1,5 +1,5 @@
 ---
-title: Galería de imágenes
+title: Galeria de imagenes
 images:
   - image: /assets/1.jpg
     caption: text
