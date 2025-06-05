@@ -131,7 +131,7 @@ collections:
                   required: true,
                 }
               - {
-                  label: "Pie de foto",
+                  label: "Describe la imagen",
                   name: "caption",
                   widget: "string",
                   required: true,
