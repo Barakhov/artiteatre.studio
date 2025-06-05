@@ -45,8 +45,8 @@ images:
     image: /assets/21.jpg
   - caption: "22"
     image: /assets/22.jpg
-  - caption: "23"
-    image: /assets/23.jpg
   - caption: "24"
     image: /assets/24.jpg
+  - caption: "23"
+    image: /assets/23.jpg
 ---
