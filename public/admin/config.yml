@@ -1,70 +1,90 @@
 backend:
-  name: github
-  repo: Barakhov/artiteatre.studio #replace new repo
-  branch: main
+  name: "github"
+  repo: "Barakhov/artiteatre.studio"
+  branch: "main"
   squash_merges: true
   open_authoring: true
 
-publish_mode: editorial_workflow
-media_folder: public/assets
-public_folder: /assets
-site_url: "https://artiteatre.studio/" # site name name here
+publish_mode: "editorial_workflow"
+media_folder: "public/assets"
+public_folder: "/assets"
+site_url: "https://artiteatre.studio/"
 
 collections:
-  - name: inicio
-    label: Inicio
-    folder: src/content/inicio
-    format: frontmatter
+  - name: "inicio"
+    label: "Inicio"
+    folder: "src/content/inicio"
+    format: "frontmatter"
     fields:
-      - { label: Titulo, name: title, widget: string }
-      - { label: Introduccion, name: intro, widget: markdown }
-      - { label: Descripcion, name: description, widget: markdown }
-  - name: verano
-    label: Verano
+      - { label: "Titulo", name: "title", widget: "string" }
+      - { label: "Introduccion", name: "intro", widget: "markdown" }
+      - { label: "Descripcion", name: "description", widget: "markdown" }
+  - name: "verano"
+    label: "Verano"
     files:
-      - name: intro
+      - name: "intro"
         label: "Introducción"
-        file: src/content/verano/intro.md
+        file: "src/content/verano/intro.md"
         fields:
-          - { label: Titulo, name: title, widget: string }
-          - { label: Introduccion, name: intro, widget: markdown }
-      - name: profesorado
+          - { label: "Titulo", name: "title", widget: "string" }
+          - { label: "Introduccion", name: "intro", widget: "markdown" }
+      - name: "profesorado"
         label: "Profesorado"
-        file: src/content/verano/profesorado.md
+        file: "src/content/verano/profesorado.md"
         fields:
-          - { label: Titulo, name: title, widget: string }
+          - { label: "Titulo", name: "title", widget: "string" }
           - label: "Profesoras/es"
-            name: teachers
-            widget: list
+            name: "teachers"
+            widget: "list"
             fields:
-              - { label: "Nombre", name: name, widget: string, required: true }
-              - { label: "Imagen", name: image, widget: image, required: true }
+              - {
+                  label: "Nombre",
+                  name: "name",
+                  widget: "string",
+                  required: true,
+                }
+              - {
+                  label: "Imagen",
+                  name: "image",
+                  widget: "image",
+                  required: true,
+                }
               - {
                   label: "Texto alternativo/descriptivo para la imagen",
-                  name: image_alt,
-                  widget: string,
+                  name: "image_alt",
+                  widget: "string",
                   required: true,
                 }
               - {
                   label: "Biografía",
-                  name: description,
-                  widget: markdown,
+                  name: "description",
+                  widget: "markdown",
                   required: true,
                 }
-      - name: descargas
+      - name: "descargas"
         label: "Docs. para descargar"
-        file: src/content/verano/descargas.md
+        file: "src/content/verano/descargas.md"
         fields:
-          - { label: Titulo, name: title, widget: string }
+          - { label: "Titulo", name: "title", widget: "string" }
           - label: "Documentos para descargar"
-            name: documents
-            widget: list
+            name: "documents"
+            widget: "list"
             fields:
-              - { label: "Nombre", name: name, widget: string, required: true }
-              - { label: "Documento", name: doc, widget: file, required: true }
-      - name: materias
+              - {
+                  label: "Nombre",
+                  name: "name",
+                  widget: "string",
+                  required: true,
+                }
+              - {
+                  label: "Documento",
+                  name: "doc",
+                  widget: "file",
+                  required: true,
+                }
+      - name: "materias"
         label: "Materias"
-        file: src/content/verano/materias.md
+        file: "src/content/verano/materias.md"
         fields:
           - { label: "Título", name: "title", widget: "string", required: true }
           - label: "Materias"
@@ -90,14 +110,14 @@ collections:
                   required: true,
                 }
               - {
-                  label: "Enlace",
-                  name: "link",
+                  label: "Fichero",
+                  name: "file",
                   widget: "file",
                   required: true,
                 }
-      - name: galeria
+      - name: "galeria"
         label: "Galería"
-        file: src/content/verano/galeria.md
+        file: "src/content/verano/galeria.md"
         fields:
           - { label: "Título", name: "title", widget: "string", required: true }
           - label: "Imágenes"
