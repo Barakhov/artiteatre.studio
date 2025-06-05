@@ -22,6 +22,43 @@ const { title: teacherTitle, teachers } = teachersEntry.data;
 const descargaEntry = await getEntry("verano", "descargas");
 const { title: documentTitle, documents } = descargaEntry.data;
 
+// Load gallery entries
+interface GalleryEntry {
+  frontmatter: {
+    title: string;
+    images: Array<{
+      image: string;
+      caption: string;
+    }>;
+  };
+}
+
+// Load gallery entries
+const allEntries = Object.entries(
+  import.meta.glob<GalleryEntry>("../content/verano/galeria/*.md", {
+    eager: true,
+  })
+)
+  .map(([filePath, mod]) => {
+    const entry = mod as GalleryEntry;
+    if (!entry.frontmatter) {
+      throw new Error(`Invalid gallery entry in ${filePath}`);
+    }
+    return entry.frontmatter.images.map((img) => ({
+      title: entry.frontmatter.title,
+      href: img.image,
+      src: img.image,
+      alt: img.caption,
+      caption: img.caption,
+    }));
+  })
+  .flat();
+
+// Prepare config for Gallery component
+const galleryConfig = {
+  images: allEntries.map(({ href, src, alt }) => ({ href, src, alt })),
+};
+
 const sideNavigation = [
   { label: "Materias", href: "#materias" },
   { label: "Galería", href: "#galeria" },
@@ -29,131 +66,6 @@ const sideNavigation = [
   { label: "Profesorado", href: "#profesorado" },
   { label: "Documentos", href: "#documentos" },
 ];
-
-const galleryConfig = {
-  images: [
-    {
-      href: "/galleries/verano/1.jpg",
-      src: "/galleries/verano/1.jpg",
-      alt: "Placeholder Image 1",
-    },
-    {
-      href: "/galleries/verano/2.jpg",
-      src: "/galleries/verano/2.jpg",
-      alt: "Placeholder Image 2",
-    },
-    {
-      href: "/galleries/verano/3.jpg",
-      src: "/galleries/verano/3.jpg",
-      alt: "Placeholder Image 3",
-    },
-    {
-      href: "/galleries/verano/4.jpg",
-      src: "/galleries/verano/4.jpg",
-      alt: "Placeholder Image 4",
-    },
-    {
-      href: "/galleries/verano/5.jpg",
-      src: "/galleries/verano/5.jpg",
-      alt: "Placeholder Image 5",
-    },
-    {
-      href: "/galleries/verano/6.jpg",
-      src: "/galleries/verano/6.jpg",
-      alt: "Placeholder Image 6",
-    },
-    {
-      href: "/galleries/verano/7.jpg",
-      src: "/galleries/verano/7.jpg",
-      alt: "Placeholder Image 7",
-    },
-    {
-      href: "/galleries/verano/8.jpg",
-      src: "/galleries/verano/8.jpg",
-      alt: "Placeholder Image 8",
-    },
-    {
-      href: "/galleries/verano/9.jpg",
-      src: "/galleries/verano/9.jpg",
-      alt: "Placeholder Image 9",
-    },
-    {
-      href: "/galleries/verano/10.jpg",
-      src: "/galleries/verano/10.jpg",
-      alt: "Placeholder Image 10",
-    },
-    {
-      href: "/galleries/verano/11.jpg",
-      src: "/galleries/verano/11.jpg",
-      alt: "Placeholder Image 11",
-    },
-    {
-      href: "/galleries/verano/12.jpg",
-      src: "/galleries/verano/12.jpg",
-      alt: "Placeholder Image 12",
-    },
-    {
-      href: "/galleries/verano/13.jpg",
-      src: "/galleries/verano/13.jpg",
-      alt: "Placeholder Image 13",
-    },
-    {
-      href: "/galleries/verano/14.jpg",
-      src: "/galleries/verano/14.jpg",
-      alt: "Placeholder Image 14",
-    },
-    {
-      href: "/galleries/verano/15.jpg",
-      src: "/galleries/verano/15.jpg",
-      alt: "Placeholder Image 15",
-    },
-    {
-      href: "/galleries/verano/16.jpg",
-      src: "/galleries/verano/16.jpg",
-      alt: "Placeholder Image 16",
-    },
-    {
-      href: "/galleries/verano/17.jpg",
-      src: "/galleries/verano/17.jpg",
-      alt: "Placeholder Image 17",
-    },
-    {
-      href: "/galleries/verano/18.jpg",
-      src: "/galleries/verano/18.jpg",
-      alt: "Placeholder Image 18",
-    },
-    {
-      href: "/galleries/verano/19.jpg",
-      src: "/galleries/verano/19.jpg",
-      alt: "Placeholder Image 19",
-    },
-    {
-      href: "/galleries/verano/20.jpg",
-      src: "/galleries/verano/20.jpg",
-      alt: "Placeholder Image 20",
-    },
-    {
-      href: "/galleries/verano/21.jpg",
-      src: "/galleries/verano/21.jpg",
-      alt: "Placeholder Image 21",
-    },
-    {
-      href: "/galleries/verano/22.jpg",
-      src: "/galleries/verano/22.jpg",
-      alt: "Placeholder Image 22",
-    },
-    {
-      href: "/galleries/verano/23.jpg",
-      src: "/galleries/verano/23.jpg",
-      alt: "Placeholder Image 23",
-    },
-    {
-      href: "/galleries/verano/24.jpg",
-      src: "/galleries/verano/24.jpg",
-      alt: "Placeholder Image 24",
-    },
-  ],
-};
 ---
 
 <style>
