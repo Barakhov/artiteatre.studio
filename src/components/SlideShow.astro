@@ -1,0 +1,140 @@
+---
+interface SlideImage {
+  src: string;
+  alt: string;
+}
+
+const images: SlideImage[] = [
+  {
+    src: "/galleries/verano-hero/1.jpg",
+    alt: "Aula viva foto: image 1",
+  },
+  {
+    src: "/galleries/verano-hero/2.jpg",
+    alt: "Aula viva foto: image 2",
+  },
+  {
+    src: "/galleries/verano-hero/3.jpg",
+    alt: "Aula viva foto: image 3",
+  },
+  {
+    src: "/galleries/verano-hero/4.jpg",
+    alt: "Aula viva foto: image 4",
+  },
+  {
+    src: "/galleries/verano-hero/5.jpg",
+    alt: "Aula viva foto: image 5",
+  },
+  {
+    src: "/galleries/verano-hero/6.jpg",
+    alt: "Aula viva foto: image 6",
+  },
+  {
+    src: "/galleries/verano-hero/7.jpg",
+    alt: "Aula viva foto: image 7",
+  },
+  {
+    src: "/galleries/verano-hero/8.jpg",
+    alt: "Aula viva foto: image 8",
+  },
+  {
+    src: "/galleries/verano-hero/9.jpg",
+    alt: "Aula viva foto: image 9",
+  },
+  {
+    src: "/galleries/verano-hero/10.jpg",
+    alt: "Aula viva foto: image 10",
+  },
+  {
+    src: "/galleries/verano-hero/11.jpg",
+    alt: "Aula viva foto: image 11",
+  },
+  {
+    src: "/galleries/verano-hero/12.jpg",
+    alt: "Aula viva foto: image 12",
+  },
+  {
+    src: "/galleries/verano-hero/13.jpg",
+    alt: "Aula viva foto: image 13",
+  },
+  {
+    src: "/galleries/verano-hero/14.jpg",
+    alt: "Aula viva foto: image 14",
+  },
+  {
+    src: "/galleries/verano-hero/15.jpg",
+    alt: "Aula viva foto: image 15",
+  },
+  {
+    src: "/galleries/verano-hero/16.jpg",
+    alt: "Aula viva foto: image 16",
+  },
+  {
+    src: "/galleries/verano-hero/17.jpg",
+    alt: "Aula viva foto: image 17",
+  },
+  {
+    src: "/galleries/verano-hero/18.jpg",
+    alt: "Aula viva foto: image 18",
+  },
+  {
+    src: "/galleries/verano-hero/19.jpg",
+    alt: "Aula viva foto: image 19",
+  },
+  {
+    src: "/galleries/verano-hero/20.jpg",
+    alt: "Aula viva foto: image 20",
+  },
+];
+---
+
+<div
+  class="slideshow-container relative w-full aspect-[4/3] overflow-hidden rounded-2xl shadow-md"
+>
+  {
+    images.map((image: SlideImage, index: number) => (
+      <div
+        class:list={[
+          "absolute inset-0 w-full h-full transition-opacity duration-1000",
+          index === 0 ? "opacity-100" : "opacity-0",
+        ]}
+        data-slide={index}
+      >
+        <img
+          src={image.src}
+          alt={image.alt}
+          class="w-full h-full object-cover"
+        />
+      </div>
+    ))
+  }
+</div>
+
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    const slides = document.querySelectorAll("[data-slide]");
+    let currentSlide = 0;
+    const slideInterval = 5000; // 5 seconds per slide
+
+    function nextSlide() {
+      const nextIndex = (currentSlide + 1) % slides.length;
+
+      gsap.to(slides[currentSlide], {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.inOut",
+      });
+
+      gsap.to(slides[nextIndex], {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.inOut",
+      });
+
+      currentSlide = nextIndex;
+    }
+
+    // Start the slideshow
+    setInterval(nextSlide, slideInterval);
+  });
+</script>
