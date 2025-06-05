@@ -98,21 +98,26 @@ collections:
                   widget: string,
                   required: true,
                 }
-  - name: galeria
-    label: "Galería"
-    folder: src/content/verano/galeria
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Título", name: "title", widget: "string", required: true }
-      - label: "Imágenes"
-        name: "images"
-        widget: "list"
+      - name: galeria
+        label: "Galería"
+        folder: src/content/verano/galeria
+        create: true
+        slug: "{{slug}}"
         fields:
-          - { label: "Imagen", name: "image", widget: "image", required: true }
-          - {
-              label: "Pie de foto",
-              name: "caption",
-              widget: "string",
-              required: true,
-            }
+          - { label: "Título", name: "title", widget: "string", required: true }
+          - label: "Imágenes"
+            name: "images"
+            widget: "list"
+            fields:
+              - {
+                  label: "Imagen",
+                  name: "image",
+                  widget: "image",
+                  required: true,
+                }
+              - {
+                  label: "Pie de foto",
+                  name: "caption",
+                  widget: "string",
+                  required: true,
+                }
