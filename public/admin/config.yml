@@ -66,18 +66,33 @@ collections:
         label: "Materias"
         file: src/content/verano/materias.md
         fields:
-          - { label: Titulo, name: title, widget: string }
+          - { label: "Título", name: "title", widget: "string", required: true }
           - label: "Materias"
-            name: materias
-            widget: list
+            name: "materias"
+            widget: "list"
             fields:
-              - { label: "Titulo", name: title, widget: string, required: true }
-              - { label: "Imagen", name: image, widget: image, required: true }
-              - { label: "Texto", name: text, widget: markdown, required: true }
+              - {
+                  label: "Título",
+                  name: "title",
+                  widget: "string",
+                  required: true,
+                }
+              - {
+                  label: "Imagen",
+                  name: "image",
+                  widget: "image",
+                  required: true,
+                }
+              - {
+                  label: "Texto",
+                  name: "text",
+                  widget: "markdown",
+                  required: true,
+                }
               - {
                   label: "Enlace",
-                  name: enlace,
-                  widget: string,
+                  name: "link",
+                  widget: "string",
                   required: true,
                 }
       - name: galeria
