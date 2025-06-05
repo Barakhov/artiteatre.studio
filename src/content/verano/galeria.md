@@ -2,9 +2,9 @@
 title: Galería de imágenes
 images:
   - image: /assets/1.jpg
-    caption: "1"
+    caption: bombillas pintadas
   - image: /assets/2.jpg
-    caption: "2"
+    caption: niños y niñas merendando
   - image: /assets/3.jpg
     caption: "3"
   - image: /assets/4.jpg
@@ -45,8 +45,8 @@ images:
     image: /assets/21.jpg
   - caption: "22"
     image: /assets/22.jpg
-  - caption: "24"
-    image: /assets/24.jpg
   - caption: "23"
     image: /assets/23.jpg
+  - caption: "24"
+    image: /assets/24.jpg
 ---
