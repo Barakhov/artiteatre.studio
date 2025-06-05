@@ -11,24 +11,6 @@ public_folder: /assets
 site_url: "https://artiteatre.studio/" # site name name here
 
 collections:
-  - name: post
-    label: Posts
-    folder: src/content/posts
-    create: true
-    format: frontmatter
-    preview_path: post/{{slug}}
-    fields:
-      - { name: title, label: Title }
-      - { name: description, label: Description }
-      - { name: publishedAt, label: Date, widget: date }
-      - {
-          label: "Publish",
-          name: "isPublish",
-          widget: "boolean",
-          default: true,
-        }
-      - { label: "Draft", name: "isDraft", widget: "boolean", default: false }
-      - { name: body, label: Body, widget: markdown }
   - name: inicio
     label: Inicio
     folder: src/content/inicio
@@ -119,3 +101,21 @@ collections:
                   widget: "string",
                   required: true,
                 }
+  # - name: post
+  #   label: Posts
+  #   folder: src/content/posts
+  #   create: true
+  #   format: frontmatter
+  #   preview_path: post/{{slug}}
+  #   fields:
+  #     - { name: title, label: Title }
+  #     - { name: description, label: Description }
+  #     - { name: publishedAt, label: Date, widget: date }
+  #     - {
+  #         label: "Publish",
+  #         name: "isPublish",
+  #         widget: "boolean",
+  #         default: true,
+  #       }
+  #     - { label: "Draft", name: "isDraft", widget: "boolean", default: false }
+  #     - { name: body, label: Body, widget: markdown }
