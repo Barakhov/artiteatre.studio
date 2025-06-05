@@ -36,7 +36,7 @@ interface GalleryEntry {
 
 // Load gallery entries
 const allEntries = Object.entries(
-  import.meta.glob<GalleryEntry>("../content/verano/galeria/*.md", {
+  import.meta.glob<GalleryEntry>("../content/verano/galeria.md", {
     eager: true,
   })
 )
