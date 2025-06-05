@@ -1,8 +1,6 @@
 ---
 title: imagenes
 images:
-  - image: /assets/mola-lola.jpg
-    caption: sldkfhgoiañhgñoia s
   - image: /assets/1.jpg
     caption: "1"
   - image: /assets/2.jpg
