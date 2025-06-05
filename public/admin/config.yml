@@ -100,9 +100,7 @@ collections:
                 }
       - name: galeria
         label: "Galería"
-        folder: src/content/verano/galeria
-        create: true
-        slug: "{{slug}}"
+        file: src/content/verano/galeria.md
         fields:
           - { label: "Título", name: "title", widget: "string", required: true }
           - label: "Imágenes"
