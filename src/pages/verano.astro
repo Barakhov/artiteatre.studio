@@ -23,6 +23,10 @@ const { title: teacherTitle, teachers } = teachersEntry.data;
 const descargaEntry = await getEntry("verano", "descargas");
 const { title: documentTitle, documents } = descargaEntry.data;
 
+// Get the materias entry
+const materiasEntry = await getEntry("verano", "materias");
+const { title: materiasTitle, materias } = materiasEntry.data;
+
 // Load gallery entries
 interface GalleryEntry {
   frontmatter: {
@@ -150,164 +154,53 @@ const sideNavigation = [
             <h2
               class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary"
             >
-              Materias
+              {materiasTitle}
             </h2>
 
-            <div
-              class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-4 lg:gap-8 mb-16 lg:mb-12"
-            >
-              <div class="max-w-[500px] mx-auto lg:max-w-none">
-                <RevealImage
-                  imageUrl="/verano-arte.jpg"
-                  bgColor="bg-white"
-                  alt="A beautiful scene"
-                  animationDuration={1.5}
-                  id="revela-materias"
-                />
-              </div>
-
-              <div class="marked text-lg flex flex-col gap-4 justify-center">
-                <h3
-                  class="font-semibold text-3xl lg:text-4xl text-verano-secondary capitalize"
-                >
-                  Actividades artísticas
-                </h3>
-                <p class="font-serif">
-                  Nos adentraremos en el mundo del arte a través de la
-                  experimentación con distintos materiales y potenciando la
-                  creatividad de cada alumno al mismo tiempo que iremos
-                  adquiriendo destreza manual aplicada según la edad de cada
-                  uno. Uniremos el concepto del arte y el del ecologismo
-                  mediante la utilización de materiales reciclados encontrados
-                  en el entorno
-                </p>
-                <div>
-                  <a
-                    class="inline py-1 px-4 bg-verano-50 no-underline rounded-full hover:bg-verano-primary transition-colors duration-300 text-xl"
-                    href="/assets/pec_escola_destiu_cast_2025.pdf#page=18"
-                    target="_blank"
-                  >
-                    Mas información
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-4 lg:gap-8 mb-16 lg:mb-12"
-            >
-              <div
-                class="marked text-lg flex flex-col gap-4 justify-center order-2 lg:order-none"
-              >
-                <h3
-                  class="font-semibold text-3xl lg:text-4xl text-verano-secondary capitalize"
-                >
-                  Actividades teatrales
-                </h3>
-                <p class="font-serif">
-                  ¿Qué mejor manera de potenciar la creatividad que con el arte
-                  y el teatro? Gracias al carácter plástico del teatro podremos
-                  incluir otros valores como el trabajo en grupo, el diálogo, el
-                  valorar tanto la propia opinión como la de los demás… en
-                  definitiva dar herramientas contra los valores actuales de
-                  esta sociedad: el SÍ y LOS DEMÁS TAMBIÉN frente al NO y el
-                  SÓLO YO. Y todo a través del juego como herramienta de
-                  aprendizaje.
-                </p>
-                <div>
-                  <a
-                    class="inline py-1 px-4 bg-verano-50 no-underline rounded-full hover:bg-verano-primary transition-colors duration-300 text-xl"
-                    href="/assets/pec_escola_destiu_cast_2025.pdf#page=18"
-                    target="_blank"
-                  >
-                    Mas información
-                  </a>
-                </div>
-              </div>
-
-              <div
-                class="max-w-[500px] mx-auto lg:max-w-none order-1 lg:order-none"
-              >
-                <RevealImage
-                  imageUrl="/verano-teatro.jpg"
-                  bgColor="bg-white"
-                  alt="A beautiful scene"
-                  animationDuration={1.5}
-                />
-              </div>
-            </div>
-            <div
-              class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-4 lg:gap-8 mb-16 lg:mb-12"
-            >
-              <div class="max-w-[500px] mx-auto lg:max-w-none">
-                <RevealImage
-                  imageUrl="/verano-naturaleza.jpg"
-                  bgColor="bg-white"
-                  alt="A beautiful scene"
-                  animationDuration={1.5}
-                />
-              </div>
-
-              <div class="marked text-lg flex flex-col gap-4 justify-center">
-                <h3
-                  class="font-semibold text-3xl lg:text-4xl text-verano-secondary capitalize"
-                >
-                  Somos naturaleza
-                </h3>
-                <p class="font-serif">
-                  Necesitamos la naturaleza para vivir. Hay que respetarla,
-                  respirarla. Para poder vivir con armonía hace falta conocer la
-                  naturaleza, observarla y escucharla. Porque cuidamos aquello
-                  que amamos pero antes debemos conocerlo para poder amarlo.
-                </p>
-                <div>
-                  <a
-                    class="inline py-1 px-4 bg-verano-50 no-underline rounded-full hover:bg-verano-primary transition-colors duration-300 text-xl"
-                    href="/assets/pec_escola_destiu_cast_2025.pdf#page=18"
-                    target="_blank"
-                  >
-                    Mas información
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-4 lg:gap-8 mb-16 lg:mb-12"
-            >
-              <div
-                class="marked text-lg flex flex-col gap-4 justify-center order-2 lg:order-none"
-              >
-                <h3
-                  class="font-semibold text-3xl lg:text-4xl text-verano-secondary capitalize"
-                >
-                  Y mucho mas!
-                </h3>
-                <p class="font-serif">
-                  Y además, excursiones, juegos de mesa, juegos cooperativos,
-                  corresponsales, asambleas, canciones, cuaderno de bitácora,
-                  lecturas, mindfulness y mucho más. Todo aquello que completa
-                  educativamente para pasar el mejor verano.
-                </p>
-                <div>
-                  <a
-                    class="inline py-1 px-4 bg-verano-50 no-underline rounded-full hover:bg-verano-primary transition-colors duration-300 text-xl"
-                    href="/assets/pec_escola_destiu_cast_2025.pdf#page=18"
-                    target="_blank"
-                  >
-                    Mas información
-                  </a>
-                </div>
-              </div>
-              <div
-                class="max-w-[500px] mx-auto lg:max-w-none order-1 lg:order-none"
-              >
-                <RevealImage
-                  imageUrl="/verano-mas.jpg"
-                  bgColor="bg-white"
-                  alt="A beautiful scene"
-                  animationDuration={1.5}
-                />
-              </div>
-            </div>
+            {
+              materias.map(
+                (
+                  materia: {
+                    title: string;
+                    text: string;
+                    image: string;
+                    file: string;
+                  },
+                  index: number
+                ) => (
+                  <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-4 lg:gap-8 mb-16 lg:mb-12">
+                    <div
+                      class={`max-w-[500px] mx-auto lg:max-w-none ${index % 2 !== 0 ? "order-1 lg:order-2" : ""}`}
+                    >
+                      <RevealImage
+                        imageUrl={materia.image}
+                        bgColor="bg-white"
+                        alt={materia.title}
+                        animationDuration={1.5}
+                        id={index === 0 ? "revela-materias" : undefined}
+                      />
+                    </div>
+                    <div
+                      class={`marked text-lg flex flex-col gap-4 justify-center ${index % 2 !== 0 ? "order-2 lg:order-1" : ""}`}
+                    >
+                      <h3 class="font-semibold text-3xl lg:text-4xl text-verano-secondary capitalize">
+                        {materia.title}
+                      </h3>
+                      <p class="font-serif">{materia.text}</p>
+                      <div>
+                        <a
+                          class="inline py-1 px-4 bg-verano-50 no-underline rounded-full hover:bg-verano-primary transition-colors duration-300 text-xl"
+                          href={materia.file}
+                          target="_blank"
+                        >
+                          Mas información
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )
+              )
+            }
           </article>
 
           <!-- Gallery Section -->
@@ -319,7 +212,7 @@ const sideNavigation = [
             <h2
               class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary"
             >
-              Galería de imágenes
+              {allEntries[0]?.title}
             </h2>
 
             <div data-cursor-text="Ver imagen" data-cursor-color="#76FF03">
