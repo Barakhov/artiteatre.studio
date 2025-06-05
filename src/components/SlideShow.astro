@@ -114,7 +114,7 @@ const images: SlideImage[] = [
   document.addEventListener("astro:page-load", () => {
     const slides = document.querySelectorAll("[data-slide]");
     let currentSlide = 0;
-    const slideInterval = 5000; // 5 seconds per slide
+    const slideInterval = 3000; // 3 seconds per slide
 
     function nextSlide() {
       const nextIndex = (currentSlide + 1) % slides.length;
