@@ -1,0 +1,122 @@
+---
+interface Props {
+  percentage?: number;
+  duration?: number;
+  color?: string;
+  backgroundColor?: string;
+  id?: string;
+}
+
+const {
+  percentage = 100,
+  duration = 1.5,
+  color = "#2196F3",
+  backgroundColor = "#E3F2FD",
+  id = `chart-${Math.random().toString(36).slice(2)}`,
+} = Astro.props;
+---
+
+<div class="pie w-full h-full aspect-square" id={id}>
+  <div
+    class="pie-holder relative w-full h-full flex items-center justify-center"
+  >
+    <svg
+      class="w-full h-full"
+      viewBox="0 0 120 120"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <!-- Background circle -->
+      <circle cx="60" cy="60" r="55" fill={backgroundColor}></circle>
+      <!-- Remaining percentage path -->
+      <path
+        id={`pie-path-remaining-${id}`}
+        fill={color}
+        fill-opacity="0.8"
+        d=""
+        transform="translate(60, 60) scale(0.99) translate(-60, -60)"
+      >
+        <title>{`${100 - percentage}%`}</title>
+      </path>
+      <!-- Main percentage path -->
+      <path
+        id={`pie-path-${id}`}
+        fill={color}
+        d=""
+        transform="translate(60, 60) scale(0.99) translate(-60, -60)"
+      >
+        <title>{`${percentage}%`}</title>
+      </path>
+    </svg>
+  </div>
+</div>
+
+<script define:vars={{ percentage, duration, id }}>
+  document.addEventListener("astro:page-load", () => {
+    const piePath = document.getElementById(`pie-path-${id}`);
+    const remainingPath = document.getElementById(`pie-path-remaining-${id}`);
+    const pieHolder = document.querySelector(`#${id} .pie-holder`);
+    if (!piePath || !remainingPath || !pieHolder) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const radius = 55;
+    const cx = 60,
+      cy = 60;
+
+    // Simplified arc path generation
+    const getArcPath = (startAngle, endAngle) => {
+      const startRad = (startAngle * Math.PI) / 180;
+      const endRad = (endAngle * Math.PI) / 180;
+      const startX = cx + radius * Math.cos(startRad - Math.PI / 2);
+      const startY = cy + radius * Math.sin(startRad - Math.PI / 2);
+      const endX = cx + radius * Math.cos(endRad - Math.PI / 2);
+      const endY = cy + radius * Math.sin(endRad - Math.PI / 2);
+      const largeArc = endAngle - startAngle > 180 ? 1 : 0;
+      return `M ${cx} ${cy} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArc} 1 ${endX} ${endY} Z`;
+    };
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: pieHolder,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+        once: true,
+      },
+      defaults: { ease: "power2.out" },
+    });
+
+    // Add a small delay before starting animations
+    tl.to({}, { duration: 0.5 })
+      .to(
+        {},
+        {
+          duration: duration,
+          onUpdate: function () {
+            const progress = this.progress();
+            const mainAngle = progress * (percentage / 100) * 360;
+            const remainingAngle = progress * ((100 - percentage) / 100) * 360;
+
+            // Set main percentage path
+            piePath.setAttribute("d", getArcPath(0, mainAngle));
+
+            // Set remaining percentage path starting from where main percentage ends
+            remainingPath.setAttribute(
+              "d",
+              getArcPath(mainAngle, mainAngle + remainingAngle)
+            );
+          },
+        }
+      )
+      .to(pieHolder, {
+        scale: 1.02,
+        duration: 0.4,
+        yoyo: true,
+        repeat: 1,
+        ease: "power1.inOut",
+      });
+
+    // Set initial state
+    piePath.setAttribute("d", getArcPath(0, 0));
+    remainingPath.setAttribute("d", getArcPath(0, 0));
+  });
+</script>

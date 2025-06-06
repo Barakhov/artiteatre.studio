@@ -10,6 +10,8 @@ import CustomCursor from "@/components/shared/CustomCursor.astro";
 import FlipCard from "@/components/FlipCard.astro";
 import DocumentLink from "@/components/DocumentLink.astro";
 import SlideShow from "@/components/SlideShow.astro";
+import ChartNum from "@/components/ChartNum.astro";
+import ChartPie from "@/components/ChartPie.astro";
 
 // Get the intro entry
 const introEntry = await getEntry("verano", "intro");
@@ -149,7 +151,7 @@ const sideNavigation = [
           <article
             data-item="observed"
             id="materias"
-            class="mb-12 lg:mb-24 scroll-mt-28"
+            class="mb-12 lg:mb-24 scroll-mt-28 pb-12 lg:pb-24"
           >
             <h2
               class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary"
@@ -207,7 +209,7 @@ const sideNavigation = [
           <article
             data-item="observed"
             id="galeria"
-            class="mb-12 lg:mb-24 scroll-mt-28"
+            class="mb-12 lg:mb-24 scroll-mt-28 pb-12 lg:pb-24"
           >
             <h2
               class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary"
@@ -224,7 +226,7 @@ const sideNavigation = [
           <article
             data-item="observed"
             id="informacion"
-            class="mb-12 lg:mb-24 scroll-mt-28"
+            class="mb-12 lg:mb-24 scroll-mt-28 pb-12 lg:pb-24"
           >
             <h2
               class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary"
@@ -361,7 +363,9 @@ const sideNavigation = [
               </span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mb-16">
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mb-16 md:mb-24"
+            >
               <FlipCard
                 frontTitle="julio"
                 iconName="julio"
@@ -393,7 +397,117 @@ const sideNavigation = [
                 price="140€"
               />
             </div>
-            <div class="flex items-start gap-4 flex-col">
+
+            <section
+              class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 md:mb-24"
+            >
+              <h3
+                class="text-3xl md:text-4xl font-semibold text-verano-secondary"
+              >
+                ¿Qué opinan las familias sobre nuestra escuela de verano?
+              </h3>
+              <p class="text-lg font-serif mb-8">
+                En Aula Viva damos mucho valor a la voz de las familias, porque
+                creemos que escucharos es clave para seguir mejorando. Por eso,
+                realizamos una encuesta anónima para conocer vuestra
+                experiencia. Estos son algunos de los resultados.
+              </p>
+
+              <div class="flex flex-row items-start gap-4">
+                <div
+                  class="flex justify-center max-w-24 md:max-w-32 xl:max-w-40 mx-auto"
+                >
+                  <ChartNum
+                    percentage={100}
+                    color="#B2FF59"
+                    backgroundColor="#33691e"
+                  />
+                </div>
+                <div class="flex flex-col text-left flex-1">
+                  <h3
+                    class="mb-4 text-2xl md:text-3xl font-semibold text-verano-secondary"
+                  >
+                    Seguridad y bienestar
+                  </h3>
+                  <p class="text-lg">
+                    El 100% de las familias encuestadas considera que sus hijos
+                    están seguros y se sienten bien en nuestra escuela.
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-row items-start gap-4">
+                <div
+                  class="flex justify-center max-w-24 md:max-w-32 xl:max-w-40 mx-auto"
+                >
+                  <ChartNum
+                    percentage={100}
+                    color="#B2FF59"
+                    backgroundColor="#33691e"
+                  />
+                </div>
+                <div class="flex flex-col text-left flex-1">
+                  <h3
+                    class="mb-4 text-2xl md:text-3xl font-semibold text-verano-secondary"
+                  >
+                    Dirección del centro
+                  </h3>
+                  <p class="text-lg">
+                    Todas las familias (100%) otorgan la máxima puntuación a la
+                    dirección por su cercanía, implicación y organización.
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-row items-start gap-4">
+                <div
+                  class="flex justify-center max-w-24 md:max-w-32 xl:max-w-40 mx-auto"
+                >
+                  <ChartNum
+                    percentage={100}
+                    color="#B2FF59"
+                    backgroundColor="#33691e"
+                  />
+                </div>
+                <div class="flex flex-col text-left flex-1">
+                  <h3
+                    class="mb-4 text-2xl md:text-3xl font-semibold text-verano-secondary"
+                  >
+                    Recomendación
+                  </h3>
+                  <p class="text-lg">
+                    El 100% recomendaría nuestra escuela a otras familias.
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-row items-start gap-4">
+                <div
+                  class="flex justify-center max-w-24 md:max-w-32 xl:max-w-40 mx-auto"
+                >
+                  <ChartPie
+                    percentage={86}
+                    color="#B2FF59"
+                    backgroundColor="#33691e"
+                    id="my-custom-chart"
+                  />
+                </div>
+                <div class="flex flex-col text-left flex-1">
+                  <h3
+                    class="mb-4 text-2xl md:text-3xl font-semibold text-verano-secondary"
+                  >
+                    Material didáctico
+                  </h3>
+                  <p class="text-lg">
+                    El 84% de las familias puntúa con un <span
+                      class="font-semibold">10</span
+                    > los materiales artísticos, teatrales y lúdicos utilizados.
+                    El 16% restante lo valora con un <span class="font-semibold"
+                      >9</span
+                    >.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="flex items-start gap-4 flex-col">
               <p>
                 Se puede encontrar <span class="font-semibold"
                   >información más detallada</span
@@ -409,14 +523,14 @@ const sideNavigation = [
                   text="Programa educativo escuela de verano (Castellano)"
                 />
               </div>
-            </div>
+            </section>
           </article>
 
           <!-- Teachers Section -->
           <article
             data-item="observed"
             id="profesorado"
-            class="mb-12 lg:mb-24 scroll-mt-28"
+            class="mb-12 lg:mb-24 scroll-mt-28 pb-12 lg:pb-24"
           >
             <h2
               class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary"
@@ -436,7 +550,7 @@ const sideNavigation = [
                       />
                     </div>
                     <div class="marked text-lg">
-                      <h3 class="mb-4 md:mb-6 text-2xl md:text-3xl font-semibold text-verano-secondary">
+                      <h3 class="mb-4 text-2xl md:text-3xl font-semibold text-verano-secondary">
                         {teacher.name}
                       </h3>
                       <p
@@ -454,7 +568,7 @@ const sideNavigation = [
           <article
             data-item="observed"
             id="documentos"
-            class="mb-12 lg:mb-24 scroll-mt-28"
+            class="mb-12 lg:mb-24 scroll-mt-28 pb-12 lg:pb-24"
           >
             <h2
               class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary"
@@ -472,6 +586,6 @@ const sideNavigation = [
         </div>
       </div>
     </Container>
+    <AsideNavObserver />
   </main>
-  <AsideNavObserver />
 </Layout>

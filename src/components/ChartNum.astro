@@ -1,0 +1,124 @@
+---
+interface Props {
+  percentage?: number;
+  duration?: number;
+  color?: string;
+  backgroundColor?: string;
+  id?: string;
+}
+
+const {
+  percentage = 100,
+  duration = 1.5,
+  color = "#d6225e",
+  backgroundColor = "#8A133B",
+  id = `chart-${Math.random().toString(36).slice(2)}`,
+} = Astro.props;
+---
+
+<div class="pie w-full h-full aspect-square" id={id}>
+  <div
+    class="pie-holder relative w-full h-full flex items-center justify-center"
+  >
+    <svg
+      class="w-full h-full"
+      viewBox="-8 -5 115 110"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <path
+        d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94"
+        stroke={backgroundColor}
+        stroke-width="16"
+        fill-opacity="0"></path>
+      <path
+        class="progress-path"
+        d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94"
+        stroke={color}
+        stroke-width="15"
+        fill-opacity="0"
+        style="stroke-dasharray: 0, 295.351; stroke-dashoffset: 0;"></path>
+    </svg>
+    <span
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center flex items-center justify-center"
+    >
+      <strong
+        class="number-display block text-2xl md:text-3xl xl:text-4xl font-bold text-verano-secondary"
+        >0</strong
+      >
+      <span
+        class="text-2xl md:text-3xl xl:text-4xl font-bold text-verano-secondary"
+        >%</span
+      >
+    </span>
+  </div>
+</div>
+
+<script define:vars={{ percentage, duration, id }}>
+  document.addEventListener("astro:page-load", () => {
+    const container = document.getElementById(id);
+    if (!container) return;
+
+    const numberDisplay = container.querySelector(".number-display");
+    const progressPath = container.querySelector(".progress-path");
+    const pieHolder = container.querySelector(".pie-holder");
+
+    if (!numberDisplay || !progressPath || !pieHolder) return;
+
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Set initial state
+    progressPath.style.strokeDasharray = "0 295.351";
+
+    const counter = { value: 0 };
+
+    // Calculate the stroke-dasharray based on the percentage
+    const circumference = 2 * Math.PI * 47; // 2πr where r=47
+    const dashArray = (circumference * percentage) / 100;
+
+    function updateHandler() {
+      if (numberDisplay) {
+        numberDisplay.innerHTML = Math.round(counter.value).toString();
+      }
+    }
+
+    // Create the animation timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: pieHolder,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+        once: true,
+      },
+      defaults: { ease: "none" },
+    });
+
+    // Add a small delay before starting animations
+    tl.to({}, { duration: 0.5 })
+      .to(progressPath, {
+        duration: duration,
+        strokeDasharray: `${dashArray} ${circumference}`,
+        ease: "power2.out",
+      })
+      .to(
+        counter,
+        {
+          duration: duration,
+          value: percentage,
+          roundProps: "value",
+          onUpdate: updateHandler,
+        },
+        0
+      )
+      .to(pieHolder, {
+        scale: 1.02,
+        duration: 0.4,
+        ease: "power1.inOut",
+      })
+      .to(pieHolder, {
+        scale: 1,
+        duration: 0.4,
+        ease: "power1.inOut",
+      });
+  });
+</script>
