@@ -1,7 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/shared/Container.astro";
-import { SITE_URL } from "@/data/config";
 ---
 
 <Layout>
@@ -20,29 +19,18 @@ import { SITE_URL } from "@/data/config";
           </p>
 
           <form
-            target="_blank"
-            action="https://formsubmit.co/5d7f85a3bfef8d3f7d94f2459a0acf0d"
+            action="/formulario-enviado/"
             method="POST"
             class="w-full max-w-2xl"
+            name="contacto"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
           >
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="text" name="_honey" style="display:none" />
-            <input
-              type="hidden"
-              name="_cc"
-              value="artiteatre.nadiabanegas@gmail.com"
-            />
-            <input
-              type="hidden"
-              name="_next"
-              value={`${SITE_URL}formulario-enviado/`}
-            />
-            <input
-              type="hidden"
-              name="_subject"
-              value="Nuevo mensaje de contacto - Artiteatre"
-            />
-            <input type="hidden" name="_template" value="table" />
+            <p class="hidden">
+              <label>
+                Don’t fill this out if you’re human: <input name="bot-field" />
+              </label>
+            </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
                 <input
