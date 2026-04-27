@@ -6,19 +6,21 @@ type Props = {
   title?: string;
   description?: string;
   noindex?: boolean;
+  canonical?: string;
   og?: {
     title: string;
     type: string;
     description: string;
     image: string;
     alt: string;
-    // Optionally add width/height if needed:
     width?: number;
     height?: number;
   };
 };
 
-const { title, description, noindex, og } = Astro.props;
+const { title, description, noindex, canonical, og } = Astro.props;
+
+const canonicalURL = canonical || Astro.url.href;
 
 const DEFAULT_TITLE_PAGE = "Artiteatre - Nadia Banegas";
 const DEFAULT_DESCRIPTION_PAGE =
@@ -30,10 +32,9 @@ const openGraph = {
   title: og?.title || DEFAULT_TITLE_PAGE,
   type: og?.type || "website",
   image: og?.image || DEFAULT_IMAGE,
-  alt: og?.alt || "og image",
-  url: DEFAULT_URL_SITE,
+  alt: og?.alt || "Artiteatre — escuela de arte y teatro en Ibiza",
+  url: canonicalURL,
   description: og?.description || DEFAULT_DESCRIPTION_PAGE,
-  // Optionally include width and height if you have them:
   width: og?.width,
   height: og?.height,
 };
@@ -45,6 +46,7 @@ const openGraph = {
     title={title || DEFAULT_TITLE_PAGE}
     description={description || DEFAULT_DESCRIPTION_PAGE}
     noindex={noindex || false}
+    canonical={canonicalURL}
     openGraph={{
       basic: {
         title: openGraph.title,
@@ -62,7 +64,6 @@ const openGraph = {
       },
     }}
     twitter={{
-      creator: "@a_barakhov",
       imageAlt: openGraph.alt,
     }}
     extend={{
@@ -73,14 +74,11 @@ const openGraph = {
       meta: [
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "generator", content: Astro.generator },
-        {
-          name: "twitter:image",
-          content: openGraph.image,
-        },
+        { property: "og:locale", content: "es_ES" },
+        { name: "twitter:image", content: openGraph.image },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: openGraph.title },
         { name: "twitter:description", content: openGraph.description },
-        { name: "twitter:site", content: "@a_barakhov" },
       ],
     }}
   />

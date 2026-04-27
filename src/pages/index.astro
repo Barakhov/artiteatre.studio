@@ -11,21 +11,21 @@ const inicioEntry = await getEntry("inicio", "inicio");
 const { title, intro, description } = inicioEntry.data;
 ---
 
-<Layout>
+<Layout
+  title="Artiteatre — Academia de arte, teatro y escuela deverano en Ibiza"
+  description="Artiteatre es la escuela de Nadia Banegas en Ibiza: El Traç (escuela de arte), Tot Teatre (escuela de teatro) y Aula Viva (escuela de verano para niños)."
+>
   <CustomCursor />
   <main
     class="flex flex-col gap-20 overflow-hidden pb-20 relative z-10 bg-white shadow-main"
   >
     <article class="grid grid-rows-[1fr_auto] lg:min-h-[calc(100dvh-71px)]">
       <Container class="flex flex-col justify-center lg:h-[min(33vw,600px)]">
-        <!-- <h1 class="mb-6 text-6xl lg:text-8xl lg:mb-8 mt-8 italic">
-          {title}
-        </h1> -->
         <div
           class="flex flex-col lg:flex-row gap-4 lg:gap-10 mt-12 lg:mt-0 mb-4"
         >
           <div class="mb-4 text-2xl max-w-xl lg:text-3xl lg:max-w-4xl lg:w-2/3">
-            <p set:html={marked(intro)} />
+            <h1 set:html={marked(intro)} />
           </div>
           <div
             class="marked mb-4 ml-auto max-w-lg lg:text-l lg:max-w-4xl lg:w-1/3"
@@ -49,7 +49,7 @@ const { title, intro, description } = inicioEntry.data;
           shapeClass="shape-teatro"
           bgColor="bg-teatro-primary"
           imgSrc="/logos/logo-totteatresvg.svg"
-          imgAlt="artiteatre Logo"
+          imgAlt="Tot Teatre — Escuela de teatro en Ibiza"
           cursorText="Teatro"
           cursorColor="#FFC400"
           imgClass="xl:max-w-[230px] max-w-[152px]"
@@ -60,7 +60,7 @@ const { title, intro, description } = inicioEntry.data;
           shapeClass="shape-arte"
           bgColor="bg-arte-primary"
           imgSrc="/logos/eltrac.svg"
-          imgAlt="artiteatre Logo"
+          imgAlt="El Traç — Escuela de arte en Ibiza"
           cursorText="Escuela de arte"
           cursorColor="#FF3D00"
           imgClass="xl:max-w-[260px] max-w-[192px] transform translate-x-0.5 translate-y-2"
@@ -71,7 +71,7 @@ const { title, intro, description } = inicioEntry.data;
           shapeClass="shape-verano"
           bgColor="bg-verano-primary"
           imgSrc="/logos/logo-aulaviva.svg"
-          imgAlt="artiteatre Logo"
+          imgAlt="Aula Viva — Escuela de verano en Ibiza para niños"
           cursorText="Escuela de verano"
           cursorColor="#76FF03"
           imgClass="xl:max-w-[230px] max-w-[152px]"
@@ -82,7 +82,7 @@ const { title, intro, description } = inicioEntry.data;
           shapeClass="shape-contacto"
           bgColor="bg-contacto-primary"
           imgSrc="/logos/hand.svg"
-          imgAlt="artiteatre Logo"
+          imgAlt="Contactar con Artiteatre"
           imgClass="xl:max-w-[180px] max-w-32 wave"
           cursorText="Contacto"
           cursorColor="#1DE9B6"
