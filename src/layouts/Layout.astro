@@ -24,9 +24,10 @@ export interface Props {
   description?: string;
   canonical?: string;
   noindex?: boolean;
+  gsap?: boolean;
 }
 
-const { title, description, canonical, noindex } = Astro.props;
+const { title, description, canonical, noindex, gsap } = Astro.props;
 ---
 
 <!doctype html>
@@ -45,16 +46,19 @@ const { title, description, canonical, noindex } = Astro.props;
 
     <script src="../scripts/pageLoad.js"></script>
 
-    <script
-      is:inline
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"
-    ></script>
-
-    <script
-      is:inline
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js"
-    ></script>
+    {gsap && (
+      <>
+        <script
+          is:inline
+          defer
+          src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"
+        ></script>
+        <script
+          is:inline
+          defer
+          src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js"
+        ></script>
+      </>
+    )}
   </body>
 </html>
