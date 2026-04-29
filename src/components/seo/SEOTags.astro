@@ -1,6 +1,7 @@
 ---
 import { SEO } from "astro-seo";
 import { SITE_URL } from "@/data/config";
+import information from "@/data/information";
 
 type Props = {
   title?: string;
@@ -27,6 +28,25 @@ const DEFAULT_DESCRIPTION_PAGE =
   "La escuela de Nadia Banegas, que integra tres iniciativas educativas: EL TRAÇ (Escuela de arte), AULA VIVA (Escuela de verano) y TOT TEATRE (Escuela de teatro), cada una con un enfoque único, caracterizado por un trabajo honesto, meticuloso y ético";
 const DEFAULT_URL_SITE = SITE_URL;
 const DEFAULT_IMAGE = `${DEFAULT_URL_SITE}opengraph-image.jpg`;
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "EducationalOrganization"],
+  name: "Artiteatre",
+  url: DEFAULT_URL_SITE,
+  description: DEFAULT_DESCRIPTION_PAGE,
+  founder: { "@type": "Person", name: "Nadia Banegas" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Pasaje Isidoro Macabich Edfo Olimpo, 20 bis, 6º 3ª",
+    addressLocality: "Ibiza",
+    postalCode: "07800",
+    addressCountry: "ES",
+  },
+  telephone: information.phone,
+  email: information.mail,
+  sameAs: information.socials.map((s) => s.link),
+};
 
 const openGraph = {
   title: og?.title || DEFAULT_TITLE_PAGE,
@@ -82,18 +102,5 @@ const openGraph = {
       ],
     }}
   />
-  <script
-    defer
-    data-domain="artiteatre.studio"
-    src="https://plausible.io/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"
-  ></script>
-  <script>
-    (window as any).plausible =
-      (window as any).plausible ||
-      function () {
-        ((window as any).plausible.q = (window as any).plausible.q || []).push(
-          arguments
-        );
-      };
-  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
 </head>
