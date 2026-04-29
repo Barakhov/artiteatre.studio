@@ -13,13 +13,57 @@ import Container from "@/components/shared/Container.astro";
   </div>
   <main class="relative z-10 bg-white shadow-main">
     <Container>
-      <div
-        class="grid h-[calc(100dvh-71px)] place-content-center bg-white px-4"
+      <article
+        class="min-h-dvh mx-auto grid lg:grid-cols-2 gap-4 pt-16 pb-12"
       >
-        <div class="text-center">
-          <h1 class="mb-6 text-sm font-semibold uppercase tracking-widest text-gray-400">
+        <section class="flex flex-col justify-center">
+          <h1
+            class="text-2xl md:text-3xl font-semibold italic mb-8 tracking-widest"
+          >
             El Traç — Escuela de arte en Ibiza
           </h1>
+          <div class="text-lg space-y-6 max-w-2xl">
+            <p class="font-serif">
+              El Traç es la escuela de arte de Artiteatre, fundada en Ibiza por
+              Nadia Banegas. Desde 2006 imparte clases de pintura, dibujo y
+                otras disciplinas plásticas para niños y niñas, jóvenes y adultos
+                en grupos reducidos que garantizan una atención personalizada.
+              </p>
+            <p class="font-serif">
+              El punto de partida es siempre la observación. Los alumnos
+              aprenden a mirar con atención antes de aprender a representar. Las
+              clases combinan ejercicios de dibujo y aplicación de distintas
+              técnicas con proyectos libres que permiten a cada alumno
+              desarrollar su propia creatividad. Se trabaja con distintos
+              materiales: lápiz, carbón, acuarela, acrílico, óleo, etc.
+            </p>
+            <p class="font-serif">
+              Cada año, los alumnos participan en exposiciones y concursos de
+              pintura rápida que forman parte de la vida cultural de Ibiza.
+            </p>
+
+            <div class="flex gap-4 lg:hidden">
+              <a
+                class="py-1 px-4 bg-gray-100 rounded-full hover:bg-gray-800 hover:text-white transition-colors duration-300 text-lg"
+                href="/">Volver al inicio</a
+              >
+              <a
+                class="py-1 px-4 bg-gray-100 rounded-full hover:bg-contacto-primary transition-colors duration-300 text-lg"
+                href="/contacto"
+                >Contacto
+              </a>
+            </div>
+            <p class="text-base text-gray-600">
+              Artiteatre también ofrece <a
+                class="underline hover:no-underline"
+                href="/teatro">clases de teatro con Musicaldansa</a
+              > y <a class="underline hover:no-underline" href="/verano"
+                >la escuela de verano Aula Viva</a
+              > para niños durante julio y agosto.
+            </p>
+          </div>
+        </section>
+        <section class=" flex-col items-center justify-center text-center hidden lg:flex">
           <img
             src="/illustrations/arte-artwork.svg"
             alt="Ilustración de El Traç, escuela de arte"
@@ -27,43 +71,22 @@ import Container from "@/components/shared/Container.astro";
             width="1024"
             height="768"
           />
-
-          <h2
-            class="mt-6 text-2xl font-bold tracking-tight text-gray-800 sm:text-4xl"
-          >
-            ¡Vaya!
-          </h2>
-
-          <p class="mt-4 mb-6 text-gray-600 mx-auto max-w-lg">
-            Parece que aquí no hay contenido de momento.
+          <p class="mt-6 mb-6 text-gray-600 mx-auto max-w-lg">
+            Aún estamos trabajando en el contenido de esta página.
           </p>
+          <div class="flex gap-4">
           <a
             class="py-1 px-4 bg-gray-100 rounded-full hover:bg-gray-800 hover:text-white transition-colors duration-300 text-lg"
             href="/">Volver al inicio</a
           >
+          <a
+            class="py-1 px-4 bg-gray-100 rounded-full hover:bg-contacto-primary transition-colors duration-300 text-lg"
+            href="/contacto"
+            >Contacto
+          </a>
         </div>
-      </div>
-      <section class="py-16 lg:py-24 max-w-2xl">
-        <div class="marked text-lg space-y-6 font-serif">
-          <p>
-            El Traç es la escuela de arte de Artiteatre, fundada en Ibiza por Nadia Banegas. Desde 2006 imparte clases de pintura, dibujo y otras disciplinas plásticas para niños y niñas, jóvenes y adultos en grupos reducidos que garantizan una atención personalizada.
-          </p>
-          <p>
-            El punto de partida es siempre la observación. Los alumnos aprenden a mirar con atención antes de aprender a representar. Las clases combinan ejercicios de dibujo y aplicación de distintas técnicas con proyectos libres que permiten a cada alumno desarrollar su propia creatividad. Se trabaja con distintos materiales: lápiz, carbón, acuarela, acrílico, óleo, etc.
-          </p>
-          <p>
-            Cada año, los alumnos participan en exposiciones y concursos de pintura rápida que forman parte de la vida cultural de Ibiza.
-          </p>
-          <p class="text-base text-gray-600">
-            Artiteatre también ofrece <a
-              class="underline hover:no-underline"
-              href="/teatro">clases de teatro con Musicaldansa</a
-            > y <a class="underline hover:no-underline" href="/verano"
-              >la escuela de verano Aula Viva</a
-            > para niños durante julio y agosto.
-          </p>
-        </div>
-      </section>
+        </section>
+      </article>
     </Container>
   </main>
 </Layout>
