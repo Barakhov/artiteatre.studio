@@ -254,3 +254,19 @@
 .inicio-cta-button:hover::before {
   opacity: 1;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .shape-teatro,
+  .shape-arte,
+  .shape-verano,
+  .shape-contacto {
+    animation: none;
+  }
+  .wave {
+    animation: none;
+  }
+  .inicio-cta-button,
+  .inicio-cta-button::before {
+    animation: none;
+  }
+}

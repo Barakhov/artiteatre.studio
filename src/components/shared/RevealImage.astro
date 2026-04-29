@@ -25,6 +25,12 @@ const {
 
 <script is:inline define:vars={{ id, animationDuration }}>
   document.addEventListener("astro:page-load", () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const el = document.getElementById(id);
+      if (el) el.querySelector(".reveal")?.classList.remove("invisible");
+      return;
+    }
+
     gsap.registerPlugin(ScrollTrigger);
 
     // Kill any existing animations for this element

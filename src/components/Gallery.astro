@@ -71,7 +71,7 @@ const imageChunks = chunkArray(config.images, 4);
     });
 
     // Only run GSAP animations on medium screens and up
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= 768 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       // Kill previous GSAP animations before initializing new ones
       gsap.killTweensOf(".gallery-item");
 

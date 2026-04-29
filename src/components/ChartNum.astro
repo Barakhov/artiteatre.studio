@@ -64,6 +64,15 @@ const {
 
     if (!numberDisplay || !progressPath || !pieHolder) return;
 
+    const circumference = 2 * Math.PI * 47; // 2πr where r=47
+    const dashArray = (circumference * percentage) / 100;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      numberDisplay.innerHTML = percentage.toString();
+      progressPath.style.strokeDasharray = `${dashArray} ${circumference}`;
+      return;
+    }
+
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
@@ -71,10 +80,6 @@ const {
     progressPath.style.strokeDasharray = "0 295.351";
 
     const counter = { value: 0 };
-
-    // Calculate the stroke-dasharray based on the percentage
-    const circumference = 2 * Math.PI * 47; // 2πr where r=47
-    const dashArray = (circumference * percentage) / 100;
 
     function updateHandler() {
       if (numberDisplay) {

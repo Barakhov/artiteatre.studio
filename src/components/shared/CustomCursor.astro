@@ -12,16 +12,16 @@
 
 <script is:inline>
   document.addEventListener("astro:page-load", () => {
-    // Check if device is touch-enabled
+    // Check if device is touch-enabled or user prefers reduced motion
     const isTouchDevice =
       "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-    // If it's a touch device, hide the cursor and return early
-    if (isTouchDevice) {
+    if (isTouchDevice || prefersReducedMotion) {
       const cursor = document.querySelector(".cursor");
-      if (cursor) {
-        cursor.style.display = "none";
-      }
+      if (cursor) cursor.style.display = "none";
       return;
     }
 

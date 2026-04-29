@@ -57,8 +57,6 @@ const {
     const pieHolder = document.querySelector(`#${id} .pie-holder`);
     if (!piePath || !remainingPath || !pieHolder) return;
 
-    gsap.registerPlugin(ScrollTrigger);
-
     const radius = 55;
     const cx = 60,
       cy = 60;
@@ -74,6 +72,16 @@ const {
       const largeArc = endAngle - startAngle > 180 ? 1 : 0;
       return `M ${cx} ${cy} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArc} 1 ${endX} ${endY} Z`;
     };
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const fullAngle = (percentage / 100) * 360;
+      const remainingAngle = ((100 - percentage) / 100) * 360;
+      piePath.setAttribute("d", getArcPath(0, fullAngle));
+      remainingPath.setAttribute("d", getArcPath(fullAngle, fullAngle + remainingAngle));
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
 
     const tl = gsap.timeline({
       scrollTrigger: {
