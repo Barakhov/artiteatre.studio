@@ -29,41 +29,16 @@ const { title: documentTitle, documents } = descargaEntry.data;
 const materiasEntry = await getEntry("verano", "materias");
 const { title: materiasTitle, materias } = materiasEntry.data;
 
-// Load gallery entries
-interface GalleryEntry {
-  frontmatter: {
-    title: string;
-    images: Array<{
-      image: string;
-      caption: string;
-    }>;
-  };
-}
+// Load gallery entry
+const galeriaEntry = await getEntry("verano", "galeria");
+const { title: galleryTitle, images: galleryImages } = galeriaEntry.data;
 
-// Load gallery entries
-const allEntries = Object.entries(
-  import.meta.glob<GalleryEntry>("../content/verano/galeria.md", {
-    eager: true,
-  })
-)
-  .map(([filePath, mod]) => {
-    const entry = mod as GalleryEntry;
-    if (!entry.frontmatter) {
-      throw new Error(`Invalid gallery entry in ${filePath}`);
-    }
-    return entry.frontmatter.images.map((img) => ({
-      title: entry.frontmatter.title,
-      href: img.image,
-      src: img.image,
-      alt: img.caption,
-      caption: img.caption,
-    }));
-  })
-  .flat();
-
-// Prepare config for Gallery component
 const galleryConfig = {
-  images: allEntries.map(({ href, src, alt }) => ({ href, src, alt })),
+  images: (galleryImages ?? []).map(({ image, caption }) => ({
+    href: image,
+    src: image,
+    alt: caption,
+  })),
 };
 
 const sideNavigation = [
@@ -100,18 +75,12 @@ const sideNavigation = [
         </h1>
       </article>
       <article class="mb-12 lg:mb-28 scroll-mt-28">
-        <!-- <div class="marked text-lg lg:columns-2">
-          <p class="font-serif" set:html={marked(intro)} />
-        </div> -->
-        <!-- <h2 class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary">
-          {introTitle}
-        </h2> -->
         <section class="flex flex-col lg:flex-row gap-8 h-full">
           <div class="w-full lg:min-w-[50%]">
             <SlideShow />
           </div>
           <div class="marked text-lg order-2 lg:order-none">
-            <p class="font-serif" set:html={marked(intro)} />
+            <p class="font-serif" set:html={marked(intro ?? "")} />
           </div>
         </section>
 
@@ -164,16 +133,7 @@ const sideNavigation = [
             </h2>
 
             {
-              materias.map(
-                (
-                  materia: {
-                    title: string;
-                    text: string;
-                    image: string;
-                    file: string;
-                  },
-                  index: number
-                ) => (
+              (materias ?? []).map((materia, index) => (
                   <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-4 lg:gap-8 mb-16 lg:mb-12">
                     <div
                       class={`max-w-[500px] mx-auto lg:max-w-none ${index % 2 !== 0 ? "order-1 lg:order-2" : ""}`}
@@ -218,7 +178,7 @@ const sideNavigation = [
             <h2
               class="mb-4 lg:mb-8 text-4xl lg:text-5xl font-bold italic text-verano-secondary"
             >
-              {allEntries[0]?.title}
+              {galleryTitle}
             </h2>
 
             <div data-cursor-text="Ver imagen" data-cursor-color="#76FF03">
@@ -542,7 +502,7 @@ const sideNavigation = [
               {teacherTitle}
             </h2>
             {
-              teachers.map((teacher: any) => (
+              (teachers ?? []).map((teacher) => (
                 <section class="mb-12 md:mb-20 last:mb-0">
                   <div class="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-6 md:gap-8">
                     <div class="max-w-[500px]">
@@ -581,7 +541,7 @@ const sideNavigation = [
             </h2>
             <div class="flex flex-col gap-4">
               {
-                documents.map((docItem: any) => (
+                (documents ?? []).map((docItem) => (
                   <DocumentLink href={docItem.doc} text={docItem.name} />
                 ))
               }
