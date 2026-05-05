@@ -8,6 +8,10 @@ const {
   imgWidth,
   imgHeight,
 } = Astro.props;
+
+const webpUrl = imageUrl.match(/\.jpe?g$/i)
+  ? imageUrl.replace(/\.jpe?g$/i, ".webp")
+  : null;
 ---
 
 <div
@@ -17,15 +21,18 @@ const {
   <div
     class="reveal invisible relative w-full h-full overflow-hidden rounded-2xl"
   >
-    <img
-      class="h-full w-full object-cover origin-left"
-      src={imageUrl}
-      alt={alt}
-      loading="lazy"
-      decoding="async"
-      width={imgWidth}
-      height={imgHeight}
-    />
+    <picture>
+      {webpUrl && <source srcset={webpUrl} type="image/webp" />}
+      <img
+        class="h-full w-full object-cover origin-left"
+        src={imageUrl}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        width={imgWidth}
+        height={imgHeight}
+      />
+    </picture>
   </div>
 </div>
 

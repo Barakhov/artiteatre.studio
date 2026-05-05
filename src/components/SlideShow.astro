@@ -100,16 +100,19 @@ const images: SlideImage[] = [
         ]}
         data-slide={index}
       >
-        <img
-          src={image.src}
-          alt={image.alt}
-          class="w-full h-full object-cover"
-          width="1200"
-          height="900"
-          loading={index === 0 ? "eager" : "lazy"}
-          fetchpriority={index === 0 ? "high" : undefined}
-          decoding="async"
-        />
+        <picture>
+          <source srcset={image.src.replace(".jpg", ".webp")} type="image/webp" />
+          <img
+            src={image.src}
+            alt={image.alt}
+            class="w-full h-full object-cover"
+            width="1200"
+            height="900"
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchpriority={index === 0 ? "high" : undefined}
+            decoding="async"
+          />
+        </picture>
       </div>
     ))
   }
