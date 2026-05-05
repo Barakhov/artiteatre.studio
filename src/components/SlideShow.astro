@@ -104,6 +104,11 @@ const images: SlideImage[] = [
           src={image.src}
           alt={image.alt}
           class="w-full h-full object-cover"
+          width="1200"
+          height="900"
+          loading={index === 0 ? "eager" : "lazy"}
+          fetchpriority={index === 0 ? "high" : undefined}
+          decoding="async"
         />
       </div>
     ))

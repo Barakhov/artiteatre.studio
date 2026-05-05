@@ -39,6 +39,10 @@ const imageChunks = chunkArray(config.images, 4);
               src={image.src}
               class="object-cover w-full h-full"
               alt={image.alt}
+              width="1000"
+              height="667"
+              loading="lazy"
+              decoding="async"
             />
           </a>
         ))}

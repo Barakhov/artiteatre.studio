@@ -5,6 +5,8 @@ const {
   animationDuration = 1.5,
   id = `reveal-${Math.random().toString(36).slice(2)}`,
   bgColor = "",
+  imgWidth,
+  imgHeight,
 } = Astro.props;
 ---
 
@@ -19,6 +21,10 @@ const {
       class="h-full w-full object-cover origin-left"
       src={imageUrl}
       alt={alt}
+      loading="lazy"
+      decoding="async"
+      width={imgWidth}
+      height={imgHeight}
     />
   </div>
 </div>
