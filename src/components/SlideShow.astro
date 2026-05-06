@@ -1,98 +1,25 @@
 ---
-interface SlideImage {
-  src: string;
-  alt: string;
-}
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
-const images: SlideImage[] = [
-  {
-    src: "/galleries/verano-hero/1.jpg",
-    alt: "Aula viva foto: image 1",
-  },
-  {
-    src: "/galleries/verano-hero/2.jpg",
-    alt: "Aula viva foto: image 2",
-  },
-  {
-    src: "/galleries/verano-hero/3.jpg",
-    alt: "Aula viva foto: image 3",
-  },
-  {
-    src: "/galleries/verano-hero/4.jpg",
-    alt: "Aula viva foto: image 4",
-  },
-  {
-    src: "/galleries/verano-hero/5.jpg",
-    alt: "Aula viva foto: image 5",
-  },
-  {
-    src: "/galleries/verano-hero/6.jpg",
-    alt: "Aula viva foto: image 6",
-  },
-  {
-    src: "/galleries/verano-hero/7.jpg",
-    alt: "Aula viva foto: image 7",
-  },
-  {
-    src: "/galleries/verano-hero/8.jpg",
-    alt: "Aula viva foto: image 8",
-  },
-  {
-    src: "/galleries/verano-hero/9.jpg",
-    alt: "Aula viva foto: image 9",
-  },
-  {
-    src: "/galleries/verano-hero/10.jpg",
-    alt: "Aula viva foto: image 10",
-  },
-  {
-    src: "/galleries/verano-hero/11.jpg",
-    alt: "Aula viva foto: image 11",
-  },
-  {
-    src: "/galleries/verano-hero/12.jpg",
-    alt: "Aula viva foto: image 12",
-  },
-  {
-    src: "/galleries/verano-hero/13.jpg",
-    alt: "Aula viva foto: image 13",
-  },
-  {
-    src: "/galleries/verano-hero/14.jpg",
-    alt: "Aula viva foto: image 14",
-  },
-  {
-    src: "/galleries/verano-hero/15.jpg",
-    alt: "Aula viva foto: image 15",
-  },
-  {
-    src: "/galleries/verano-hero/16.jpg",
-    alt: "Aula viva foto: image 16",
-  },
-  {
-    src: "/galleries/verano-hero/17.jpg",
-    alt: "Aula viva foto: image 17",
-  },
-  {
-    src: "/galleries/verano-hero/18.jpg",
-    alt: "Aula viva foto: image 18",
-  },
-  {
-    src: "/galleries/verano-hero/19.jpg",
-    alt: "Aula viva foto: image 19",
-  },
-  {
-    src: "/galleries/verano-hero/20.jpg",
-    alt: "Aula viva foto: image 20",
-  },
-];
+const modules = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/galleries/verano-hero/*.jpg",
+  { eager: true }
+);
+
+const images = Object.entries(modules)
+  .map(([path, mod]) => {
+    const num = parseInt(path.match(/(\d+)\.jpg$/)?.[1] ?? "0");
+    return { src: mod.default, alt: `Aula viva foto: imagen ${num}`, num };
+  })
+  .sort((a, b) => a.num - b.num);
 ---
 
 <div
   class="slideshow-container relative w-full aspect-[4/3] overflow-hidden rounded-2xl shadow-md"
 >
   {
-    images.map((image: SlideImage, index: number) => (
+    images.map(({ src, alt }, index) => (
       <div
         class:list={[
           "absolute inset-0 w-full h-full transition-opacity duration-1000",
@@ -100,19 +27,16 @@ const images: SlideImage[] = [
         ]}
         data-slide={index}
       >
-        <picture>
-          <source srcset={image.src.replace(".jpg", ".webp")} type="image/webp" />
-          <img
-            src={image.src}
-            alt={image.alt}
-            class="w-full h-full object-cover"
-            width="1200"
-            height="900"
-            loading={index === 0 ? "eager" : "lazy"}
-            fetchpriority={index === 0 ? "high" : undefined}
-            decoding="async"
-          />
-        </picture>
+        <Image
+          src={src}
+          alt={alt}
+          class="w-full h-full object-cover"
+          width={1200}
+          height={900}
+          loading={index === 0 ? "eager" : "lazy"}
+          fetchpriority={index === 0 ? "high" : undefined}
+          decoding="async"
+        />
       </div>
     ))
   }

@@ -30,7 +30,7 @@ const imageChunks = chunkArray(config.images, 4);
       <div class="gallery-group grid grid-cols-2 md:grid-cols-4 gap-4 [&:not(:last-child)]:mb-4">
         {chunk.map((image) => (
           <a
-            href={image.href}
+            href={image.href.replace(/\.jpe?g$/i, ".webp")}
             class="gallery-item block aspect-square overflow-hidden rounded-2xl"
             data-gallery="gallery"
             aria-label={`View ${image.alt}`}
