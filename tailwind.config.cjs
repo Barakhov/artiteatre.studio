@@ -8,7 +8,6 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Hanken Grotesk", "Hanken Grotesk Fallback", ...defaultTheme.fontFamily.sans],
-        serif: ["Hanken Grotesk", "Hanken Grotesk Fallback", ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
         main: "0px 16px 16px -4px rgb(64 66 70 / 12%)",

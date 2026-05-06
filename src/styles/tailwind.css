@@ -9,7 +9,6 @@
 
   p {
     margin-bottom: 16px;
-    @apply font-serif;
   }
 
   a:not(.no-underline) {

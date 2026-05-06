@@ -81,7 +81,7 @@ const sideNavigation = [
             <SlideShow />
           </div>
           <div class="marked text-lg order-2 lg:order-none">
-            <p class="font-serif" set:html={marked(intro ?? "")} />
+            <p set:html={marked(intro ?? "")} />
           </div>
         </section>
 
@@ -155,7 +155,7 @@ const sideNavigation = [
                       <h3 class="font-semibold text-3xl lg:text-4xl text-verano-secondary capitalize">
                         {materia.title}
                       </h3>
-                      <p class="font-serif">{materia.text}</p>
+                      <p>{materia.text}</p>
                       <div>
                         <a
                           class="inline py-1 px-4 bg-verano-50 no-underline rounded-full hover:bg-verano-primary transition-colors duration-300 text-xl"
@@ -381,7 +381,7 @@ const sideNavigation = [
               >
                 ¿Qué opinan las familias sobre nuestra escuela de verano?
               </h3>
-              <p class="text-lg font-serif mb-8">
+              <p class="text-lg mb-8">
                 En Aula Viva damos mucho valor a la voz de las familias, porque
                 creemos que escucharos es clave para seguir mejorando. Por eso,
                 realizamos una encuesta anónima para conocer vuestra
@@ -531,7 +531,6 @@ const sideNavigation = [
                         {teacher.name}
                       </h3>
                       <p
-                        class="font-serif"
                         set:html={marked(teacher.description)}
                       />
                     </div>
